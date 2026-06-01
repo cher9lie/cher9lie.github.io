@@ -59,5 +59,45 @@ const {
         ) !important;
       }
     </style>
+
+    {/* Apple 风格滚动入场动画 */}
+    <script>
+      function initScrollReveal() {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view')
+                observer.unobserve(entry.target)
+              }
+            })
+          },
+          { threshold: 0.06, rootMargin: '0px 0px -24px 0px' }
+        )
+
+        // 首页各 Section 区块逐个入场（错开 60ms）
+        const contentSections = document.querySelectorAll('#content > *')
+        contentSections.forEach((el, i) => {
+          el.classList.add('reveal')
+          el.style.setProperty('--reveal-delay', `${i * 60}ms`)
+          observer.observe(el)
+        })
+
+        // 博文列表的每一条 li 项（错开 50ms）
+        const listItems = document.querySelectorAll('ul.flex.flex-col > li')
+        listItems.forEach((el, i) => {
+          if (!el.classList.contains('reveal')) {
+            el.classList.add('reveal')
+            el.style.setProperty('--reveal-delay', `${i * 50}ms`)
+            observer.observe(el)
+          }
+        })
+      }
+
+      // 初始执行
+      initScrollReveal()
+      // Astro View Transition 切换后重新执行
+      document.addEventListener('astro:after-swap', initScrollReveal)
+    </script>
   </body>
 </html>

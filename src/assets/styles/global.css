@@ -1,37 +1,70 @@
-/* Animation */
-@keyframes fade-in-up {
-  0% {
-    transform: translateY(2rem);
+/* =====================
+   Apple 风格入场动画
+   ===================== */
+
+/* 页面加载时的主动画（.animate 元素：顶部 hero、主内容区容器） */
+@keyframes apple-enter {
+  from {
+    transform: translateY(28px) scale(0.97);
     opacity: 0;
+    filter: blur(6px);
   }
-  100% {
-    transform: translateY(0);
+  to {
+    transform: translateY(0) scale(1);
     opacity: 1;
+    filter: blur(0px);
   }
-}
-.animate {
-  opacity: 0;
-  animation: 300ms fade-in-up;
-  animation-fill-mode: forwards;
-}
-@media (prefers-reduced-motion) {
-  .animate {
-    opacity: 0;
-    animation: 100ms fade-in-up;
-    animation-fill-mode: forwards;
-  }
-}
-#content-header {
-  animation-delay: 50ms;
-}
-#content {
-  animation-delay: 100ms;
-}
-#sidebar {
-  animation-delay: 150ms;
 }
 
-/* Katex */
+.animate {
+  opacity: 0;
+  animation: apple-enter 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion) {
+  .animate {
+    animation-duration: 200ms;
+  }
+}
+
+#content-header {
+  animation-delay: 60ms;
+}
+#content {
+  animation-delay: 160ms;
+}
+#sidebar {
+  animation-delay: 200ms;
+}
+
+/* =====================
+   滚动触发 Reveal（IntersectionObserver 配合）
+   初始隐藏 → JS 添加 .in-view 后过渡到可见
+   ===================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  transition:
+    opacity 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--reveal-delay, 0ms),
+    transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion) {
+  .reveal {
+    transition-duration: 150ms;
+  }
+}
+
+/* =====================
+   Katex
+   ===================== */
 span.katex-display {
   overflow-y: scroll;
   padding: 0.5rem;
@@ -50,14 +83,15 @@ span.katex-display {
   padding-inline-start: 0.5rem;
 }
 
-/* Shiki */
+/* =====================
+   Shiki 代码块
+   ===================== */
 .astro-code {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   border-radius: 0.5rem;
   background-color: hsl(var(--muted) / var(--un-bg-opacity, 1)) !important;
 
-  /* Code container */
   & pre {
     margin: 0;
     padding-top: 0.85rem;
@@ -108,7 +142,6 @@ span.katex-display {
     }
   }
 
-  /* Shiki transformer */
   &:has(code) {
     position: relative;
   }
@@ -156,22 +189,13 @@ span.katex-display {
       border: 1px solid hsl(var(--border) / var(--un-border-opacity, 1));
     }
     &.copied {
-      & .success {
-        display: block;
-      }
-
-      & .ready {
-        display: none;
-      }
+      & .success { display: block; }
+      & .ready { display: none; }
     }
   }
   &:hover {
-    button.copy {
-      opacity: 1;
-    }
-    .language {
-      opacity: 0;
-    }
+    button.copy { opacity: 1; }
+    .language { opacity: 0; }
   }
 
   & .highlighted,
@@ -183,7 +207,6 @@ span.katex-display {
   & .highlighted::before {
     background-color: rgba(149, 166, 183, 0.32) !important;
   }
-
   & .diff {
     &.remove {
       background-color: rgba(244, 63, 94, 0.16);
@@ -207,7 +230,9 @@ span.katex-display {
   }
 }
 
-/* Scroll bar */
+/* =====================
+   Scroll bar
+   ===================== */
 :root {
   --scrollbar-width: 6px;
   --scrollbar-bg: #e0e0e0;
