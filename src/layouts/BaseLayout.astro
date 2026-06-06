@@ -79,7 +79,7 @@ const {
         const contentSections = document.querySelectorAll('#content > *')
         contentSections.forEach((el, i) => {
           el.classList.add('reveal')
-          el.style.setProperty('--reveal-delay', `${i * 60}ms`)
+          ;(el as HTMLElement).style.setProperty('--reveal-delay', `${i * 60}ms`)
           observer.observe(el)
         })
 
@@ -88,7 +88,7 @@ const {
         listItems.forEach((el, i) => {
           if (!el.classList.contains('reveal')) {
             el.classList.add('reveal')
-            el.style.setProperty('--reveal-delay', `${i * 50}ms`)
+            ;(el as HTMLElement).style.setProperty('--reveal-delay', `${i * 50}ms`)
             observer.observe(el)
           }
         })
