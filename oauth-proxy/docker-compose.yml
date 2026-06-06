@@ -1,0 +1,22 @@
+services:
+  decap-oauth:
+    image: vencax/netlify-cms-github-oauth-provider
+    container_name: decap-oauth
+    restart: unless-stopped
+    ports:
+      # 如果使用 Nginx/Caddy 反向代理，可以不暴露外部端口
+      - "127.0.0.1:3000:3000"
+    environment:
+      # ── 必填 ──────────────────────────────────────────────────
+      # 在 GitHub 创建 OAuth App 后填入 Client ID 和 Secret
+      - OAUTH_CLIENT_ID=${OAUTH_CLIENT_ID}
+      - OAUTH_CLIENT_SECRET=${OAUTH_CLIENT_SECRET}
+
+      # 允许发起认证请求的来源（你的博客域名）
+      - ORIGIN=https://050418.xyz
+
+      # ── 可选 ──────────────────────────────────────────────────
+      # GitHub Enterprise 用户才需要修改以下两项，普通 GitHub 用留空
+      # - GIT_HOSTNAME=https://github.com
+      # - OAUTH_TOKEN_PATH=/login/oauth/access_token
+      # - OAUTH_AUTHORIZE_PATH=/login/oauth/authorize

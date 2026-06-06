@@ -1,0 +1,118 @@
+# Decap CMS 配置
+# 文档: https://decapcms.org/docs/
+
+backend:
+  name: github
+  repo: cher9lie/cher9lie.github.io
+  branch: main
+  base_url: https://oauth.050418.xyz
+
+# 界面语言
+locale: zh
+
+# 全局媒体文件夹（当集合未指定时使用）
+# 博客集合会覆盖此设置，将图片存放在文章同目录下
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+# 发布工作流（可选，需要 GitHub 仓库开启 branch protection）
+# publish_mode: editorial_workflow
+
+collections:
+  # ─── 博客文章 ─────────────────────────────────────────────
+  - name: blog
+    label: 博客文章
+    label_singular: 文章
+    folder: src/content/blog
+    create: true
+    # 每篇文章创建独立子目录：src/content/blog/my-post/index.md
+    slug: "{{slug}}"
+    path: "{{slug}}/index"
+    # 图片上传到文章所在目录，与现有 ./thumbnail.jpg 模式一致
+    media_folder: ""
+    public_folder: "./"
+    # 按发布日期降序排列
+    sortable_fields: ["publishDate", "title"]
+    view_groups:
+      - label: 语言
+        field: language
+    fields:
+      - label: 标题
+        name: title
+        widget: string
+        hint: "最多 60 个字符"
+
+      - label: 发布日期
+        name: publishDate
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        hint: "格式：2025-01-01"
+
+      - label: 更新日期
+        name: updatedDate
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        required: false
+        hint: "可选，文章有修改时填写"
+
+      - label: 摘要描述
+        name: description
+        widget: string
+        hint: "最多 160 个字符，用于 SEO 和文章列表展示"
+
+      - label: 标签
+        name: tags
+        widget: list
+        required: false
+        default: []
+        hint: "回车添加，标签会被统一转为小写"
+
+      - label: 语言
+        name: language
+        widget: select
+        options:
+          - label: 中文
+            value: Chinese
+          - label: 英文
+            value: English
+        required: false
+
+      - label: 封面图片
+        name: heroImage
+        widget: object
+        required: false
+        hint: "上传图片后，文件会保存在文章目录下（如 ./thumbnail.jpg）"
+        fields:
+          - label: 图片文件
+            name: src
+            widget: image
+            required: false
+            hint: "建议命名为 thumbnail.jpg"
+          - label: 背景主色调
+            name: color
+            widget: string
+            required: false
+            pattern:
+              - "^#[0-9A-Fa-f]{3,6}$"
+              - "请输入十六进制颜色值，例如 #D58388"
+            hint: "用于图片加载前的占位背景色，例如 #D58388"
+
+      - label: 草稿
+        name: draft
+        widget: boolean
+        default: false
+        hint: "草稿不会在博客列表中显示"
+
+      - label: 允许评论
+        name: comment
+        widget: boolean
+        default: true
+
+      - label: 正文内容
+        name: body
+        widget: markdown
+        hint: "支持 Markdown 语法"
