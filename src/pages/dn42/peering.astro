@@ -1,0 +1,72 @@
+---
+import PageLayout from '@/layouts/CommonPage.astro'
+
+const headings = [
+  { depth: 2, slug: 'node-info', text: '节点信息' },
+  { depth: 2, slug: 'features', text: '支持的功能' },
+  { depth: 2, slug: 'requirements', text: 'Peering 要求' },
+  { depth: 2, slug: 'contact', text: '联系我' },
+  { depth: 2, slug: 'current-peers', text: '当前 Peers' }
+]
+---
+
+<PageLayout title='Peering Information' {headings}>
+  <h2 id='node-info'>节点信息</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>字段</th>
+        <th>值</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>ASN</strong></td><td>AS4242420418</td></tr>
+      <tr><td><strong>IPv4</strong></td><td>172.23.215.64/27</td></tr>
+      <tr><td><strong>IPv6</strong></td><td>fd46:f2af:3888::/48</td></tr>
+      <tr><td><strong>WireGuard 公钥</strong></td><td><code>RAgNnBc7k+wuYGARju5JwBlRYm398pX4Vs8kPWt++AE=</code></td></tr>
+      <tr><td><strong>WireGuard 端口</strong></td><td>你的 ASN 后五位</td></tr>
+      <tr><td><strong>Endpoint</strong></td><td>dn42.050418.xyz</td></tr>
+      <tr><td><strong>位置</strong></td><td>Phoenix, AZ, US (Oracle Cloud)</td></tr>
+      <tr><td><strong>Looking Glass</strong></td><td><a href='https://lg.050418.xyz' target='_blank'>lg.050418.xyz</a></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id='features'>支持的功能</h2>
+  <ul>
+    <li>WireGuard 隧道</li>
+    <li>MultiProtocol BGP (MP-BGP)</li>
+    <li>Extended Next Hop</li>
+    <li>IPv4 + IPv6 双栈</li>
+  </ul>
+
+  <h2 id='requirements'>Peering 要求</h2>
+  <ul>
+    <li>你需要有一个已注册的 DN42 ASN</li>
+    <li>优先接受有 Looking Glass 的 peer</li>
+    <li>延迟无特别要求</li>
+  </ul>
+
+  <h2 id='contact'>联系我</h2>
+  <p>如果你想和我 peer，请通过以下方式联系：</p>
+  <ul>
+    <li>DN42 Wiki 留言</li>
+    <li>GitHub: <a href='https://github.com/cher9lie' target='_blank'>cher9lie</a></li>
+  </ul>
+
+  <h2 id='current-peers'>当前 Peers</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Peer</th>
+        <th>ASN</th>
+        <th>位置</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>RoutedBits</td><td>AS4242420207</td><td>Atlanta, US</td></tr>
+      <tr><td>Kioubit</td><td>AS4242423914</td><td>Global</td></tr>
+      <tr><td>SUNNET</td><td>AS4242423088</td><td>Los Angeles, US</td></tr>
+      <tr><td>Lan Tian</td><td>AS4242422547</td><td>Los Angeles, US</td></tr>
+    </tbody>
+  </table>
+</PageLayout>

@@ -1,0 +1,39 @@
+---
+import PageLayout from '@/layouts/CommonPage.astro'
+
+const headings = [
+  { depth: 2, slug: 'quick-links', text: '快速链接' },
+  { depth: 2, slug: 'network-overview', text: '网络概况' }
+]
+---
+
+<PageLayout title='DN42 Network' {headings}>
+  <p>
+    我在 <a href='https://dn42.eu' target='_blank'>DN42</a> 实验网络中运营
+    <strong>AS4242420418</strong> 节点，位于 Phoenix, AZ (Oracle Cloud)。
+  </p>
+
+  <h2 id='quick-links'>快速链接</h2>
+  <ul>
+    <li><a href='/dn42/peering'>Peering 信息</a> — 想和我 peer？看这里</li>
+    <li><a href='https://lg.050418.xyz' target='_blank'>Looking Glass</a> — 查看路由和 BGP 状态</li>
+  </ul>
+
+  <h2 id='network-overview'>网络概况</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>字段</th>
+        <th>值</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>ASN</strong></td><td>AS4242420418</td></tr>
+      <tr><td><strong>IPv4</strong></td><td>172.23.215.64/27</td></tr>
+      <tr><td><strong>IPv6</strong></td><td>fd46:f2af:3888::/48</td></tr>
+      <tr><td><strong>节点位置</strong></td><td>Phoenix, AZ, US</td></tr>
+      <tr><td><strong>BIRD 版本</strong></td><td>2.18</td></tr>
+      <tr><td><strong>当前 Peers</strong></td><td>4 (RoutedBits, Kioubit, SUNNET, Lan Tian)</td></tr>
+    </tbody>
+  </table>
+</PageLayout>
