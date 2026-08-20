@@ -1,21 +1,16 @@
 ---
 import { Image } from 'astro:assets'
 
-import { Button, Collapse, Icon } from 'astro-pure/user'
+import { Button, Collapse } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
 import ProjectSection from '@/components/projects/ProjectSection.astro'
-import Sponsors from '@/components/projects/Sponsors.astro'
-import Sponsorship from '@/components/projects/Sponsorship.astro'
-import alipay from '@/assets/alipay-qrcode.jpg'
 import KeyIcon from '@/assets/icons/key.svg'
-import wechat from '@/assets/wechat-qrcode.jpg'
 
 const headings = [
   { depth: 2, slug: 'programs', text: 'Programs' },
   { depth: 2, slug: 'learnings', text: 'Learnings' },
   { depth: 2, slug: 'others', text: 'Others' },
-  { depth: 2, slug: 'gpg-signature', text: 'GPG Signature' },
-  { depth: 2, slug: 'sponsorship', text: 'Sponsorship' }
+  { depth: 2, slug: 'gpg-signature', text: 'GPG Signature' }
 ]
 ---
 
@@ -29,13 +24,7 @@ const headings = [
       loading='lazy'
     />
   </p>
-  <p>
-    If you think it would be useful or interesting to collaborate on a project, you can donate to
-    support my work or contact me to discuss a project.
-  </p>
-  <Button title='Checkout sponsorship' class='w-fit' href='#sponsorship'>
-    <Icon class='size-5' name='receive-money' slot='before' />
-  </Button>
+  <p>If you would like to collaborate on a project, feel free to contact me.</p>
 
   <h2 id='programs'>Programs</h2>
   <ProjectSection
@@ -128,46 +117,4 @@ const headings = [
   <Button href='https://keys.openpgp.org/search?q=114514' title='Checkout my key' target='_blank'>
     <KeyIcon class='size-5' slot='before' />
   </Button>
-
-  <!-- sponsorship -->
-  <h2 id='sponsorship'>Sponsorship</h2>
-  <p>Please leave a message or contact me proactively after sponsorship.</p>
-  <Sponsorship
-    methods={[
-      { name: 'WeChat', icon: 'wechat-pay', image: wechat },
-      { name: 'Alipay', icon: 'alipay', image: alipay }
-    ]}
-  />
-  <p>Thanks to the following sponsors:</p>
-  <Sponsors
-    progressMax={25}
-    sponsors={[
-      { name: 'Arthals', platform: 'Wechat', amount: 50, date: '2025-11-06' },
-      { name: '顾**', platform: 'Wechat', amount: 28, date: '2025-06-23' },
-      { name: 'Anonymous', platform: 'Wechat', amount: 20, date: '2022-04-06' },
-      { name: '华雄 (1300****71)', platform: 'QQ', amount: 5, date: '2019-12-30' },
-      { name: '◌ (1934****45)', platform: 'QQ', amount: 3, date: '2019-12-30' },
-      { name: 'C*a (酷安@暴走の蜗牛)', amount: 2, date: '2019-07-02' }
-    ]}
-  />
 </PageLayout>
-
-<style>
-  .sponsorship-card {
-    & .sponsorship-card-img {
-      opacity: 0.3;
-      --un-blur: blur(4px);
-      filter: var(--un-blur);
-    }
-
-    &:hover {
-      & .sponsorship-card-icon {
-        opacity: 0;
-      }
-      & .sponsorship-card-img {
-        opacity: 1;
-        --un-blur: blur(0);
-      }
-    }
-  }
-</style>
