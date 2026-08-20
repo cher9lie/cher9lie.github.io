@@ -1,6 +1,7 @@
 ---
 title: '如何计算海王星轨道：从观测残差到天空坐标'
 publishDate: 2026-08-19
+updatedDate: 2026-08-20
 description: '从参考坐标系、视线几何、开普勒传播和摄动方程出发，完整解释如何由天王星残差反演未知行星，并把试算轨道变成可供望远镜验证的赤经赤纬。'
 tags:
   - astronomy
@@ -33,6 +34,8 @@ comment: true
 | **史料原值** | 可在 1846 年论文或同期报告中直接核对 | 亚当斯残差表、伽勒报告的经度 |
 | **现代记号复述** | 用向量、矩阵和数值积分重写同一物理问题 | 直接/间接摄动、加权最小二乘 |
 | **教学重建** | 为解释算法而设计的简化数值，不等同于历史完整解 | 21 点正弦拟合、共线摄动量级 |
+
+> **技术审校记录（2026-08-20）**：修正了 1846 历元黄赤交角及相应赤经赤纬；区分 JPL 两套不同区间的拟合根数；明确 DE440 使用海王星系统质量、光行时的发射时刻，以及角度残差的 $0/360^\circ$ 分支处理。
 
 ![计算海王星轨道所需的坐标系与地心视线几何](./01-coordinate-frames-and-parallax.png)
 
@@ -83,6 +86,14 @@ $$
 
 这里必须使用 `atan2(y,x)`，而不能只算 $\arctan(y/x)$。后者会丢失象限信息，在 $x<0$ 时可能把目标放到天空的另一侧。
 
+对两个角度作差时还要处理 $0/360^\circ$ 的分支。例如 $359.9^\circ$ 与 $0.1^\circ$ 相差的是 $0.2^\circ$，不是 $359.8^\circ$。工程上应写成
+
+$$
+\Delta\lambda=
+\operatorname{wrap}_{(-\pi,\pi]}
+\!\left(\lambda_{obs}-\lambda_{calc}\right).
+$$
+
 但请注意，$\mathbf u_g$ 仍然只是一条**方向**。单次角度观测没有直接给出行星距离。
 
 ## 3. 地球公转怎样进入计算
@@ -102,7 +113,7 @@ r^2=\lVert\mathbf r_E\rVert^2
 +2\Delta(\mathbf r_E\cdot\mathbf u_g)+\Delta^2.
 $$
 
-整理并取正距离根：
+整理后，在本文讨论的外行星情形 $r>\lVert\mathbf r_E\rVert$ 且视线与试算日距球相交时，唯一的正距离根为：
 
 $$
 \boxed{
@@ -140,7 +151,7 @@ $$
 
 ## 4. 从状态向量到六个轨道根数
 
-若已经在同一日心惯性参考架中得到位置 $\mathbf r$ 和速度 $\mathbf v$，两体近似下可以构造瞬时密切轨道。设太阳引力参数为 $\mu$：
+若已经在同一日心惯性参考架中得到位置 $\mathbf r$ 和速度 $\mathbf v$，两体近似下可以构造瞬时密切轨道。严格的相对两体参数是 $\mu=G(M_\odot+m)$；忽略行星质量时才近似取 $GM_\odot$：
 
 $$
 \mathbf h=\mathbf r\times\mathbf v,
@@ -222,14 +233,24 @@ $$
 }.
 $$
 
-JPL 给出的行星近似根数显示，海王星 J2000 附近的半长轴约为 $30.0695$ AU、偏心率约为 $0.00895$、倾角约为 $1.7701^\circ$。这些低精度公式适合制图和教学，不应代替高精度星历；JPL 也明确提醒，二体近似的长期传播不能用于精确会合或多年高精度定位。需要实际指向望远镜时，应使用 [JPL Horizons](https://ssd.jpl.nasa.gov/horizons/) 或 [SPICE](https://naif.jpl.nasa.gov/naif/) 的行星星历。近似根数与适用区间见 [JPL Approximate Positions of the Planets](https://ssd.jpl.nasa.gov/planets/approx_pos.html)。
+这里采用主动、右手旋转；下文 MATLAB 中的 $R_1$、$R_3$ 给出了具体矩阵。如果软件库采用“旋转坐标轴”的被动约定，同一变换会写成相反的角号，不能只看函数名照搬。
+
+JPL 页面给出了两套为不同时间范围拟合的近似根数，不能混称为同一组“现代常数”：
+
+| JPL 拟合区间 | $a$ / AU | $e$ | $I$ |
+| --- | ---: | ---: | ---: |
+| 1800—2050 | 30.06992276 | 0.00859048 | $1.77004347^\circ$ |
+| 公元前 3000—公元 3000 | 30.06952752 | 0.00895439 | $1.77005520^\circ$ |
+
+上图沿用长时间拟合表的近似根数；后文历史比较表采用 1800—2050 表四舍五入后的 $e=0.00859$。JPL 特别说明，这些数值只是给定区间内的位置拟合参数，并不代表一组永久不变的平均根数。它们适合制图和教学，不应代替高精度星历。需要实际指向望远镜时，应使用 [JPL Horizons](https://ssd.jpl.nasa.gov/horizons/) 或 [SPICE](https://naif.jpl.nasa.gov/naif/) 的行星星历。两套根数、适用区间和标称误差见 [JPL Approximate Positions of the Planets](https://ssd.jpl.nasa.gov/planets/approx_pos.html)。
 
 ## 6. 为什么天王星的残差暗示存在一个遗漏的力
 
-若模型完整且观测没有系统误差，残差
+若模型完整且观测没有系统误差，经过角度分支处理的残差
 
 $$
-r_i=\lambda_{obs}(t_i)-\lambda_{calc}(t_i)
+r_i=\operatorname{wrap}_{(-\pi,\pi]}
+\!\left[\lambda_{obs}(t_i)-\lambda_{calc}(t_i)\right]
 $$
 
 应当围绕零随机散布。现实中，天文学家必须先处理三个层次的问题：
@@ -257,8 +278,23 @@ $$
 两式相除，并使用短半轴 $b=a\sqrt{1-e^2}$：
 
 $$
-\boxed{\delta M\approx\frac{r^2}{ab}\delta f}.
+\frac{dM}{df}=\frac{r^2}{ab}.
 $$
+
+若把近心点方向的改正另行处理，则一阶小量下真黄经改正与真近点角改正相同，平黄经改正与平近点角改正相同，于是
+
+$$
+\boxed{
+\delta\lambda_{mean}\approx
+\frac{r^2}{ab}\,\delta\lambda_{true}
+}.
+$$
+
+亚当斯原文的说法正是将真黄经改正乘以 $r^2/(ab)$，得到平黄经改正。若近心点经度也作为同一项一起变化，就不能把 $\delta M$ 与 $\delta\lambda_{mean}$ 无条件视为同一个量。
+
+![亚当斯论文原页：红框标出由真黄经改正换算为平黄经改正的因子](./07-adams-mean-longitude-source.png)
+
+> **图 7**　亚当斯 1846 年论文原页。红框内明确写出：把真黄经改正乘以 $r^2/(ab)$，即可得到平黄经改正；下方表格保留了各三年分组的历史数值。来源：J. C. Adams, “On the Perturbations of Uranus,” *Monthly Notices of the Royal Astronomical Society* 7 (1846), 149–152，[牛津学术原刊页](https://academic.oup.com/mnras/article/7/9/149/983965)，[1846 年单行本扫描](https://archive.org/details/explanationobse00Adam)。红框为本文校对时添加。
 
 1840 年的史料原值为
 
@@ -285,7 +321,7 @@ $$
 
 ![海王星对天王星摄动中的直接项与间接项](./03-direct-and-indirect-perturbation.png)
 
-共线教学例中，取 $r_U=19.2$ AU、$r_N=30.1$ AU、$m_N/M_\odot=1/19412$：
+共线教学例中，取 $r_U=19.2$ AU、$r_N=30.1$ AU，并用 DE440 的海王星**系统**质量比近似 $m_N/M_\odot=1/19412$：
 
 | 分量 | 数值 / $GM_\odot\,\mathrm{AU}^{-2}$ |
 | --- | ---: |
@@ -294,6 +330,8 @@ $$
 | 相对摄动 | $3.767287944\times10^{-7}$ |
 
 换算后约为 $2.2340\times10^{-9}\ \mathrm{m\,s^{-2}}$，只相当于太阳在 19.2 AU 处引力的 $1.3888\times10^{-4}$。它很小，但几十年持续积累后可以形成可测的经度偏差。正式计算中两颗行星的位置、夹角和距离都随时间变化，不能把上述共线量级当作常加速度使用。
+
+这里的 DE440 数值严格说是海王星及其卫星的系统 $GM$。由 JPL 给出的 $GM_\odot$ 与 $GM_{\mathrm{Neptune\ system}}$ 可得比值约 $19412.26$；教学计算取整为 19412。参见 [JPL Astrodynamic Parameters](https://ssd.jpl.nasa.gov/astro_par.html)。
 
 ## 8. 从摄动方程变成可解的参数反演
 
@@ -318,7 +356,7 @@ $$
 A_{ij}=\left.\frac{\partial\lambda_{calc}(t_i)}{\partial p_j}\right|_{\mathbf p_0}.
 $$
 
-现代程序可以同时积分变分方程得到 $A$，也可以用经过步长检验的中心差分近似。给定观测权矩阵 $W$，最小化
+现代程序可以同时积分变分方程得到 $A$，也可以用经过步长检验的中心差分近似。给定观测协方差 $C$，通常取 $W=C^{-1}$。最小化
 
 $$
 \chi^2=(\mathbf r-A\delta\mathbf p)^TW(\mathbf r-A\delta\mathbf p)
@@ -370,7 +408,7 @@ $$
 
 ## 9. 从试算轨道回到望远镜能用的天空坐标
 
-得到海王星日心位置 $\mathbf r_N(t)$ 后，先减去同一时刻的地球日心位置：
+在暂不考虑光行时的几何近似中，得到海王星日心位置 $\mathbf r_N(t)$ 后，先减去同一时刻的地球日心位置：
 
 $$
 \boldsymbol\rho=\mathbf r_N-\mathbf r_E,
@@ -407,7 +445,15 @@ $$
 \delta=\arcsin(z_q).
 $$
 
-真实星历还要迭代光行时，并按所需观测量处理岁差、章动、恒星光行差、引力偏折和测站位置。几何向量、天体测量赤经赤纬和视赤经赤纬必须分别命名。JPL Horizons 对这些输出量有清晰定义，适合用作程序的外部基准。
+真实的天体测量方向要迭代求解光行时 $\tau$，其基本几何为
+
+$$
+\boldsymbol\rho(t)=\mathbf r_N(t-\tau)-\mathbf r_E(t),
+\qquad
+\tau=\frac{\lVert\boldsymbol\rho\rVert}{c}.
+$$
+
+随后再按所需观测量处理岁差、章动、恒星光行差、引力偏折和测站位置。几何向量、天体测量赤经赤纬和视赤经赤纬必须分别命名。JPL Horizons 对这些输出量有清晰定义，适合用作程序的外部基准。
 
 ### 1846 年 9 月 23.5 日的史料复算
 
@@ -428,17 +474,21 @@ $$
 \Delta\lambda=54.75'=54'45''=0.9125^\circ.
 $$
 
+![伽勒发现报告原页：红框标出勒维耶轨道参数以及预报与观测经度](./08-galle-discovery-report-source.png)
+
+> **图 8**　1846 年柏林发现报告原页。上方红框是勒维耶用于搜索的轨道参数；下方红框并列给出 9 月 23.5 日的观测地心经度 $325^\circ52.75'$ 与预报值 $324^\circ58'$。来源：J. G. Galle, “Account of the Discovery of the Planet of Le Verrier at Berlin,” *Monthly Notices of the Royal Astronomical Society* 7 (1846), 153，[原刊页与 DOI](https://academic.oup.com/mnras/article/7/9/153/983971)。红框为本文校对时添加。
+
 `.75` 是十进制角分，不是 7.5 角秒，也不是 27.5 角秒。另一个常被引用的“52 角分”来自 1847 年 1 月 1 日的日心经度比较，日期和坐标口径都不同，不能混用。
 
-如果仅为演示而令预测黄纬 $\beta=0$，采用 $\varepsilon=23^\circ26'22''$，把 $324^\circ58'$ 转为赤道坐标，可得约
+如果仅为演示而令预测黄纬 $\beta=0$，并把历史黄经理解为日期平黄道坐标，就应使用日期平黄赤交角，而不是接近 J2000 的 $23^\circ26'21.4''$。用 IAU 2006 平黄赤交角多项式在 1846-09-23.5 求得 $\varepsilon\approx23^\circ27'33.2''$，把 $324^\circ58'$ 转为日期平赤道坐标，可得约
 
 $$
-\alpha=21^\mathrm h48^\mathrm m59.99^\mathrm s,
+\alpha=21^\mathrm h49^\mathrm m00.92^\mathrm s,
 \qquad
-\delta=-13^\circ11'59''.
+\delta=-13^\circ12'37.6''.
 $$
 
-这是按原表黄经作的现代坐标转换示例，不是伽勒原始赤经读数。项目内保存的 JPL Horizons 地心星历在 1846-09-23 12:00 UT 给出 ICRF 赤经约 $330.3880^\circ$、赤纬约 $-12.6690^\circ$；它与上面的简化值使用不同输入、参考架和观测改正，不能把两组数字直接当作误差比较。
+这是按原表黄经作的现代坐标转换示例，不是伽勒原始赤经读数；若要复原 1846 年的“视位置”，还需明确原表采用的平/真春分点并加入章动等改正。项目内保存的 JPL Horizons 地心星历在 1846-09-23 12:00 UT 给出经下行光行时改正的 ICRF 天体测量赤经约 $330.3880^\circ$、赤纬约 $-12.6690^\circ$。它与上面的简化值使用不同纬度输入和参考架，不能把两组数字直接当作误差比较。日期平黄赤交角模型见 [IERS Conventions 2010，第 5 章](https://iers-conventions.obspm.fr/conventions/content/tn36.pdf)。
 
 ## 10. 为什么位置很准，整条预测轨道却不准
 
@@ -449,10 +499,14 @@ $$
 | 半长轴 | 36.154 AU | 30.07 AU | 约高 20% |
 | 周期 | 217.387 年 | 164.791 年 | 约高 32% |
 | 偏心率 | 0.10761 | 0.00859 | 高一个数量级以上 |
-| $M_\odot/m_N$ | 9300 | 19412 | 预测质量约为现代值 2.09 倍 |
+| $M_\odot/m_N$ | 9300 | 19412（DE440 海王星系统） | 预测质量约为现代值 2.09 倍 |
 | 1846-09-23.5 地心经度 | $324^\circ58'$ | $325^\circ52.75'$ | 相差 $0.9125^\circ$ |
 
-表中偏心率沿用本项目历史比较数据的近现代平均根数口径。行星根数会随历元、参考架以及采用“平均根数”还是“密切根数”而变化，因此它与前文 JPL 长时间近似公式中的 $0.00895$ 不应被理解为互相矛盾的两个常数。
+![勒维耶论文刊本原页：红框标出326度32分的预测中心和建议搜索区间](./09-leverrier-search-region-source.png)
+
+> **图 9**　勒维耶论述预测位置的刊本结尾页。红框内以 $326^\circ32'$ 为计算中心，并建议优先检查日心经度约 $321^\circ$—$335^\circ$ 的区域；若假定更大的偏心率，搜索范围还应向外扩展。图片取自 1847 年 *Astronomische Nachrichten* 刊本，它重载了 1846 年的研究结论；参见 [DOI 记录](https://doi.org/10.1002/asna.18470250404) 与 [1846 年专著书目页](https://books.google.com/books/about/Recherches_sur_les_mouvements_de_la_plan.html?id=rgdLxZdr7WEC)。红框为本文校对时添加。
+
+表中现代偏心率采用 JPL 1800—2050 近似表的 J2000 拟合值并四舍五入。行星根数会随历元、参考架和拟合区间变化；JPL 也明确说这些近似表并非平均根数。因此它与前文长时间拟合表中的 $0.00895439$ 不是互相矛盾的两个“真常数”。
 
 ![勒维耶预测轨道与现代值，以及发现夜预报经度和实测经度](./05-prediction-versus-modern-orbit.png)
 
@@ -468,6 +522,7 @@ NASA 的现代资料给出海王星平均距离约 30 AU，公转周期约 165 �
 function [alpha, delta, rN] = predict_neptune_two_body(el, t, rE, mu, eps)
 % el = [a,e,i,Omega,omega,M0,t0]，角度全部用 rad
 % t 与 t0 的时间单位要和 mu 一致；rE、a 与 mu 的长度单位一致
+% 精确两体相对运动中 mu = G*(Msun + mN)；忽略 mN 时可取 GM_sun
 
 a = el(1); e = el(2); inc = el(3);
 Omega = el(4); omega = el(5); M0 = el(6); t0 = el(7);
@@ -511,6 +566,7 @@ end
 | 混用地心与日心坐标 | 把年度视差误当成轨道异常 | 每个向量强制记录 `origin` |
 | 混用赤道与黄道参考架 | 经度或赤经整体旋转 | 用已知向量做往返旋转测试 |
 | 使用 `atan(y/x)` | 象限错 $180^\circ$ | 全部改用 `atan2(y,x)` |
+| 角度残差未做 wrap | 跨过 $0/360^\circ$ 时出现近一圈的伪残差 | 把差值规范到 $(-\pi,\pi]$ |
 | 度、弧度、时角混用 | 数值可能差 15 倍或 57.3 倍 | 接口层统一 SI/rad，输出层再格式化 |
 | 把 UTC 直接当动力学时标 | 长时间传播出现系统偏差 | 显式转换 TT/TDB，并记录闰秒处理 |
 | 只算直接摄动项 | 日心相对加速度不闭合 | 与质心坐标积分交叉验证 |
@@ -549,13 +605,15 @@ end
 
 ## 资料与数值来源
 
-- J. C. Adams, *An Explanation of the Observed Irregularities in the Motion of Uranus*（1846），[Internet Archive 扫描汇编](https://archive.org/details/appendicestovari00greagoog)。
-- U. J. Le Verrier, *Recherches sur les mouvements d'Uranus*（1846），[Gallica 法国国家图书馆](https://gallica.bnf.fr/)。
-- J. G. Galle, 1846 年海王星发现同期报告，*Astronomische Nachrichten* 25, 49，[NASA ADS 记录](https://ui.adsabs.harvard.edu/abs/1846AN.....25...49G/abstract)。
+- J. C. Adams, “On the Perturbations of Uranus,” *Monthly Notices of the Royal Astronomical Society* 7, no. 9 (1846), 149–152, [doi:10.1093/mnras/7.9.149](https://doi.org/10.1093/mnras/7.9.149)；另见同年单行本 *An Explanation of the Observed Irregularities in the Motion of Uranus* 的 [Internet Archive 扫描](https://archive.org/details/explanationobse00Adam)。本文的均经度换算因子和三年分组残差据此核对。
+- U. J. Le Verrier, *Recherches sur les mouvements d'Uranus*（1846），[Google Books 书目与扫描入口](https://books.google.com/books/about/Recherches_sur_les_mouvements_de_la_plan.html?id=rgdLxZdr7WEC)；其同期刊本见 *Astronomische Nachrichten* 25 (1847), [doi:10.1002/asna.18470250404](https://doi.org/10.1002/asna.18470250404)。本文据刊本结论页核对 $326^\circ32'$ 的预测中心及搜索区间。
+- J. G. Galle, “Account of the Discovery of the Planet of Le Verrier at Berlin,” *Monthly Notices of the Royal Astronomical Society* 7, no. 9 (1846), 153, [doi:10.1093/mnras/7.9.153](https://doi.org/10.1093/mnras/7.9.153)。本文采用的 $325^\circ52.75'$、$324^\circ58'$ 以及勒维耶轨道参数均可在该页直接核对。
 - [JPL Horizons System Manual](https://ssd.jpl.nasa.gov/horizons/manual.html)：参考架、观测中心、几何/天体测量/视位置定义。
 - [JPL Approximate Positions of the Planets](https://ssd.jpl.nasa.gov/planets/approx_pos.html)：J2000 平黄道近似根数与适用范围。
+- [JPL Astrodynamic Parameters](https://ssd.jpl.nasa.gov/astro_par.html)：DE440 太阳与海王星系统引力参数。
+- [IERS Conventions 2010](https://iers-conventions.obspm.fr/conventions/content/tn36.pdf)：IAU 2006 岁差与日期平黄赤交角模型。
 - [NASA Neptune Facts](https://science.nasa.gov/neptune/neptune-facts/) 与 [JPL Planetary Physical Parameters](https://ssd.jpl.nasa.gov/planets/phys_par.html)：现代距离、周期和物理参数。
-- 本文图中的亚当斯残差、教学最小二乘和伽勒经度均由项目 CSV 数据直接重绘；公式与关键数值经过符号计算和自动测试复核。
+- 图 7—9 为上述 19 世纪原始文献扫描页，红框是本次技术校对时添加的定位标记；其余图中的亚当斯残差、教学最小二乘和伽勒经度均由项目 CSV 数据重绘。公式与关键数值经过符号计算和自动测试复核。
 
 ---
 
