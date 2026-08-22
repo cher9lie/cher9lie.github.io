@@ -1,6 +1,6 @@
 ---
 import { cn } from 'astro-pure/utils'
-import Pageview from '@/components/waline/Pageview.astro'
+import Pageview from '@/components/goatcounter/Pageview.astro'
 
 interface Props {
   view?: boolean
@@ -9,22 +9,18 @@ interface Props {
 }
 
 const { view, comment, class: className, ...props } = Astro.props
-
-const path = Astro.url.pathname
 ---
 
 <div class={cn('text-base text-sm text-muted-foreground', className)} {...props}>
-  <span class='waline-pageview-count' data-path={path}></span> views
+  {view && <Pageview />}
   {
     comment && (
       <>
-        {' | '}
+        {view && ' | '}
         <a href='#waline'>
-          <span class='waline-comment-count' data-path={path} /> comments
+          <span class='waline-comment-count' data-path={Astro.url.pathname} /> comments
         </a>
       </>
     )
   }
 </div>
-
-{view && !comment && <Pageview />}

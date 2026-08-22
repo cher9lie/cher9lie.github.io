@@ -1,0 +1,48 @@
+---
+import { cn } from 'astro-pure/utils'
+
+interface Props {
+  path?: string
+  class?: string
+}
+
+const { path = Astro.url.pathname, class: className, ...props } = Astro.props
+---
+
+<span
+  class={cn('hidden', className)}
+  data-goatcounter-pageview
+  data-path={path}
+  aria-live='polite'
+  {...props}></span>
+
+<script is:inline data-astro-rerun>
+  async function loadGoatCounterPageviews() {
+    const elements = document.querySelectorAll('[data-goatcounter-pageview]:not([data-loaded])')
+
+    await Promise.all(
+      Array.from(elements).map(async (element) => {
+        const path = element.getAttribute('data-path') || window.location.pathname
+        const endpoint = `https://stats.050418.xyz/counter/${encodeURIComponent(path)}.json`
+
+        try {
+          const response = await fetch(endpoint)
+          // GoatCounter returns 404 with a valid zero-count payload for a new path.
+          if (!response.ok && response.status !== 404) return
+
+          const data = await response.json()
+          if (typeof data.count !== 'string' && typeof data.count !== 'number') return
+
+          element.textContent = `${data.count} views`
+          element.classList.remove('hidden')
+          element.setAttribute('data-loaded', '')
+        } catch (error) {
+          console.warn('Failed to load GoatCounter pageviews:', error)
+        }
+      })
+    )
+  }
+
+  loadGoatCounterPageviews()
+  document.addEventListener('astro:page-load', loadGoatCounterPageviews)
+</script>
