@@ -1,0 +1,846 @@
+<section
+  class='stats-dashboard'
+  data-stats-dashboard
+  data-endpoint='https://stats.050418.xyz/public/v1/summary'
+  aria-busy='true'
+>
+  <div class='stats-toolbar'>
+    <p data-period-label>最近 30 天的聚合访问数据</p>
+    <div class='period-switcher' role='group' aria-label='统计时间范围'>
+      <button type='button' data-period='7d'>7 天</button>
+      <button type='button' data-period='30d' class='active'>30 天</button>
+      <button type='button' data-period='all'>全部</button>
+    </div>
+  </div>
+
+  <div class='metric-grid' aria-label='访问概览'>
+    <article class='metric-card'>
+      <span>页面访问</span>
+      <strong data-metric='visits'>—</strong>
+      <small>按路径去重的访问次数</small>
+    </article>
+    <article class='metric-card'>
+      <span>国家 / 地区</span>
+      <strong data-metric='countries'>—</strong>
+      <small>由匿名 GeoIP 聚合</small>
+    </article>
+    <article class='metric-card'>
+      <span>热门路径</span>
+      <strong data-metric='pages'>—</strong>
+      <small>当前范围内的热门页面</small>
+    </article>
+  </div>
+
+  <article class='panel trend-panel'>
+    <div class='panel-heading'>
+      <div>
+        <p class='eyebrow'>Traffic</p>
+        <h2>访问趋势</h2>
+      </div>
+      <p data-updated-at>正在读取…</p>
+    </div>
+    <div class='trend-chart'>
+      <svg viewBox='0 0 760 220' role='img' aria-label='每日访问趋势图' data-trend-chart></svg>
+    </div>
+  </article>
+
+  <div class='geo-layout'>
+    <article class='panel map-panel'>
+      <div class='panel-heading'>
+        <div>
+          <p class='eyebrow'>Geography</p>
+          <h2>访客地理分布</h2>
+        </div>
+        <div class='legend' aria-label='地图颜色图例'>
+          <span>少</span><i></i><span>多</span>
+        </div>
+      </div>
+      <div class='map-wrap' data-map-wrap>
+        <svg
+          viewBox='0 0 960 450'
+          role='img'
+          aria-labelledby='visitor-map-title visitor-map-desc'
+          data-world-map
+        >
+          <title id='visitor-map-title'>博客访客国家和地区分布</title>
+          <desc id='visitor-map-desc'>颜色越深表示访问次数越多，可使用鼠标或键盘选择国家。</desc>
+        </svg>
+        <div class='map-tooltip' data-map-tooltip role='status' aria-live='polite'></div>
+      </div>
+    </article>
+
+    <aside class='panel country-panel'>
+      <div class='panel-heading compact'>
+        <div>
+          <p class='eyebrow'>Top locations</p>
+          <h2>国家 / 地区</h2>
+        </div>
+      </div>
+      <ol class='ranking-list' data-country-list></ol>
+      <p class='empty-state hidden' data-country-empty>还没有足够的地理数据。</p>
+    </aside>
+  </div>
+
+  <article class='panel pages-panel'>
+    <div class='panel-heading compact'>
+      <div>
+        <p class='eyebrow'>Popular paths</p>
+        <h2>热门页面</h2>
+      </div>
+    </div>
+    <ol class='page-list' data-page-list></ol>
+    <p class='empty-state hidden' data-page-empty>当前范围还没有页面数据。</p>
+  </article>
+
+  <p class='stats-note'>
+    数据来自本站自托管的 GoatCounter，仅公开按日期、路径和国家汇总后的统计；不公开
+    IP、来源网址或单次访问记录。数字约每五分钟更新。
+  </p>
+
+  <div class='stats-error hidden' data-stats-error role='alert'>
+    <p>暂时无法读取统计数据。</p>
+    <button type='button' data-retry>重新加载</button>
+  </div>
+</section>
+
+<script>
+  import { geoEqualEarth, geoPath } from 'd3-geo'
+  import type { Feature, FeatureCollection, GeoJsonProperties, Geometry } from 'geojson'
+  import countriesISO from 'i18n-iso-countries'
+  import { feature, mesh } from 'topojson-client'
+  import type { GeometryCollection, Topology } from 'topojson-specification'
+  import worldData from 'world-atlas/countries-110m.json'
+
+  interface CountryStat {
+    code: string
+    name: string
+    visits: number
+  }
+
+  interface PageStat {
+    path: string
+    title: string
+    visits: number
+  }
+
+  interface Summary {
+    period: '7d' | '30d' | 'all'
+    start: string
+    updated_at: string
+    totals: { visits: number; countries: number; pages: number }
+    series: Array<{ date: string; visits: number }>
+    countries: CountryStat[]
+    pages: PageStat[]
+  }
+
+  const svgNS = 'http://www.w3.org/2000/svg'
+  const numberFormatter = new Intl.NumberFormat('zh-CN')
+  const dateFormatter = new Intl.DateTimeFormat('zh-CN', { month: 'short', day: 'numeric' })
+  const timeFormatter = new Intl.DateTimeFormat('zh-CN', {
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  })
+  const regionNames = new Intl.DisplayNames(['zh-CN'], { type: 'region' })
+  const topology = worldData as unknown as Topology<{ countries: GeometryCollection }>
+  const world = feature(topology, topology.objects.countries) as FeatureCollection
+  const worldBorders = mesh(topology, topology.objects.countries, (a, b) => a !== b)
+  const projection = geoEqualEarth().fitExtent(
+    [
+      [12, 12],
+      [948, 426]
+    ],
+    world
+  )
+  const pathGenerator = geoPath(projection)
+
+  function createSVG<K extends keyof SVGElementTagNameMap>(name: K) {
+    return document.createElementNS(svgNS, name)
+  }
+
+  function localizedCountry(country: CountryStat) {
+    return regionNames.of(country.code) || country.name
+  }
+
+  function numericCountryCode(alpha2: string) {
+    const numeric = countriesISO.alpha2ToNumeric(alpha2)
+    return numeric ? String(numeric).padStart(3, '0') : ''
+  }
+
+  function drawTrend(svg: SVGSVGElement, summary: Summary) {
+    svg.replaceChildren()
+    const width = 760
+    const height = 220
+    const padding = { top: 18, right: 18, bottom: 34, left: 18 }
+    const chartWidth = width - padding.left - padding.right
+    const chartHeight = height - padding.top - padding.bottom
+    const values = summary.series.length ? summary.series : [{ date: summary.start, visits: 0 }]
+    const max = Math.max(1, ...values.map((item) => item.visits))
+
+    for (let i = 0; i < 4; i += 1) {
+      const y = padding.top + (chartHeight / 3) * i
+      const grid = createSVG('line')
+      grid.setAttribute('x1', String(padding.left))
+      grid.setAttribute('x2', String(width - padding.right))
+      grid.setAttribute('y1', String(y))
+      grid.setAttribute('y2', String(y))
+      grid.setAttribute('class', 'trend-grid-line')
+      svg.append(grid)
+    }
+
+    const points = values.map((item, index) => {
+      const x =
+        padding.left +
+        (values.length === 1 ? chartWidth / 2 : (chartWidth * index) / (values.length - 1))
+      const y = padding.top + chartHeight - (item.visits / max) * chartHeight
+      return { x, y, ...item }
+    })
+
+    const lineData = points
+      .map(
+        (point, index) => `${index === 0 ? 'M' : 'L'} ${point.x.toFixed(2)} ${point.y.toFixed(2)}`
+      )
+      .join(' ')
+    const areaData = `${lineData} L ${points.at(-1)?.x ?? padding.left} ${padding.top + chartHeight} L ${points[0].x} ${padding.top + chartHeight} Z`
+
+    const area = createSVG('path')
+    area.setAttribute('d', areaData)
+    area.setAttribute('class', 'trend-area')
+    svg.append(area)
+
+    const line = createSVG('path')
+    line.setAttribute('d', lineData)
+    line.setAttribute('class', 'trend-line')
+    svg.append(line)
+
+    for (const point of points) {
+      if (point.visits < 1) continue
+      const dot = createSVG('circle')
+      dot.setAttribute('cx', String(point.x))
+      dot.setAttribute('cy', String(point.y))
+      dot.setAttribute('r', '3.5')
+      dot.setAttribute('class', 'trend-dot')
+      const title = createSVG('title')
+      title.textContent = `${dateFormatter.format(new Date(`${point.date}T00:00:00Z`))}：${numberFormatter.format(point.visits)} 次访问`
+      dot.append(title)
+      svg.append(dot)
+    }
+
+    const labels = [points[0], points.at(-1)].filter(Boolean) as typeof points
+    labels.forEach((point, index) => {
+      const label = createSVG('text')
+      label.textContent = dateFormatter.format(new Date(`${point.date}T00:00:00Z`))
+      label.setAttribute('x', String(point.x))
+      label.setAttribute('y', String(height - 8))
+      label.setAttribute('text-anchor', index === 0 ? 'start' : 'end')
+      label.setAttribute('class', 'trend-label')
+      svg.append(label)
+    })
+  }
+
+  function drawMap(root: HTMLElement, summary: Summary) {
+    const svg = root.querySelector<SVGSVGElement>('[data-world-map]')
+    const wrap = root.querySelector<HTMLElement>('[data-map-wrap]')
+    const tooltip = root.querySelector<HTMLElement>('[data-map-tooltip]')
+    if (!svg || !wrap || !tooltip) return
+    svg.querySelectorAll('g, path[data-border]').forEach((element) => element.remove())
+
+    const byID = new Map(
+      summary.countries.map((country) => [numericCountryCode(country.code), country] as const)
+    )
+    const max = Math.max(1, ...summary.countries.map((country) => country.visits))
+    const group = createSVG('g')
+    group.setAttribute('aria-label', '国家和地区')
+
+    const selectCountry = (country: CountryStat) => {
+      root.querySelectorAll('[data-country-code]').forEach((element) => {
+        element.classList.toggle(
+          'active',
+          element.getAttribute('data-country-code') === country.code
+        )
+      })
+    }
+
+    const showTooltip = (event: PointerEvent, country: CountryStat) => {
+      const bounds = wrap.getBoundingClientRect()
+      tooltip.textContent = `${localizedCountry(country)} · ${numberFormatter.format(country.visits)} 次访问`
+      tooltip.style.left = `${event.clientX - bounds.left + 10}px`
+      tooltip.style.top = `${event.clientY - bounds.top + 10}px`
+      tooltip.classList.add('visible')
+    }
+
+    for (const item of world.features as Array<Feature<Geometry, GeoJsonProperties>>) {
+      const id = String(item.id ?? '').padStart(3, '0')
+      if (id === '010') continue
+      const shape = createSVG('path')
+      const country = byID.get(id)
+      shape.setAttribute('d', pathGenerator(item) || '')
+      shape.setAttribute('class', country ? 'country-shape has-data' : 'country-shape')
+      if (country) {
+        shape.style.setProperty(
+          '--country-opacity',
+          String(0.28 + 0.72 * Math.sqrt(country.visits / max))
+        )
+        shape.setAttribute('data-country-code', country.code)
+        shape.setAttribute('tabindex', '0')
+        shape.setAttribute('role', 'button')
+        shape.setAttribute(
+          'aria-label',
+          `${localizedCountry(country)}，${numberFormatter.format(country.visits)} 次访问`
+        )
+        shape.addEventListener('pointerenter', (event) => showTooltip(event, country))
+        shape.addEventListener('pointermove', (event) => showTooltip(event, country))
+        shape.addEventListener('pointerleave', () => tooltip.classList.remove('visible'))
+        shape.addEventListener('click', () => selectCountry(country))
+        shape.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault()
+            selectCountry(country)
+          }
+        })
+      }
+      group.append(shape)
+    }
+    svg.prepend(group)
+
+    const borders = createSVG('path')
+    borders.setAttribute('d', pathGenerator(worldBorders) || '')
+    borders.setAttribute('class', 'country-borders')
+    borders.setAttribute('data-border', '')
+    svg.append(borders)
+
+    root.querySelectorAll<HTMLButtonElement>('[data-country-code]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const country = summary.countries.find((item) => item.code === button.dataset.countryCode)
+        if (country) selectCountry(country)
+      })
+    })
+  }
+
+  function renderCountryList(root: HTMLElement, summary: Summary) {
+    const list = root.querySelector<HTMLOListElement>('[data-country-list]')
+    const empty = root.querySelector<HTMLElement>('[data-country-empty]')
+    if (!list || !empty) return
+    list.replaceChildren()
+    empty.classList.toggle('hidden', summary.countries.length > 0)
+    const total = Math.max(1, summary.totals.visits)
+
+    summary.countries.slice(0, 8).forEach((country, index) => {
+      const item = document.createElement('li')
+      const button = document.createElement('button')
+      button.type = 'button'
+      button.dataset.countryCode = country.code
+      button.innerHTML = `<span class='rank-number'>${String(index + 1).padStart(2, '0')}</span><span class='rank-name'></span><span class='rank-value'></span>`
+      const name = button.querySelector<HTMLElement>('.rank-name')
+      const value = button.querySelector<HTMLElement>('.rank-value')
+      if (name) name.textContent = localizedCountry(country)
+      if (value) {
+        value.textContent = `${numberFormatter.format(country.visits)} · ${((country.visits / total) * 100).toFixed(0)}%`
+      }
+      item.append(button)
+      list.append(item)
+    })
+  }
+
+  function renderPageList(root: HTMLElement, summary: Summary) {
+    const list = root.querySelector<HTMLOListElement>('[data-page-list]')
+    const empty = root.querySelector<HTMLElement>('[data-page-empty]')
+    if (!list || !empty) return
+    list.replaceChildren()
+    empty.classList.toggle('hidden', summary.pages.length > 0)
+
+    summary.pages.forEach((page, index) => {
+      const item = document.createElement('li')
+      const link = document.createElement('a')
+      link.href = page.path
+      const number = document.createElement('span')
+      number.className = 'page-number'
+      number.textContent = String(index + 1).padStart(2, '0')
+      const text = document.createElement('span')
+      text.className = 'page-name'
+      text.textContent = page.title || page.path
+      const value = document.createElement('strong')
+      value.textContent = numberFormatter.format(page.visits)
+      link.append(number, text, value)
+      item.append(link)
+      list.append(item)
+    })
+  }
+
+  function render(root: HTMLElement, summary: Summary) {
+    for (const key of ['visits', 'countries', 'pages'] as const) {
+      const element = root.querySelector<HTMLElement>(`[data-metric='${key}']`)
+      if (element) element.textContent = numberFormatter.format(summary.totals[key])
+    }
+
+    const labels = {
+      '7d': '最近 7 天的聚合访问数据',
+      '30d': '最近 30 天的聚合访问数据',
+      all: '自启用统计以来的聚合访问数据'
+    }
+    const label = root.querySelector<HTMLElement>('[data-period-label]')
+    const updated = root.querySelector<HTMLElement>('[data-updated-at]')
+    if (label) label.textContent = labels[summary.period]
+    if (updated)
+      updated.textContent = `更新于 ${timeFormatter.format(new Date(summary.updated_at))}`
+
+    renderCountryList(root, summary)
+    renderPageList(root, summary)
+    const chart = root.querySelector<SVGSVGElement>('[data-trend-chart]')
+    if (chart) drawTrend(chart, summary)
+    drawMap(root, summary)
+  }
+
+  async function loadDashboard(root: HTMLElement, period = '30d') {
+    const errorBox = root.querySelector<HTMLElement>('[data-stats-error]')
+    root.setAttribute('aria-busy', 'true')
+    errorBox?.classList.add('hidden')
+    try {
+      const endpoint = new URL(root.dataset.endpoint || '', window.location.href)
+      endpoint.searchParams.set('period', period)
+      const response = await fetch(endpoint)
+      if (!response.ok) throw new Error(`Statistics API returned ${response.status}`)
+      const summary = (await response.json()) as Summary
+      render(root, summary)
+      root.querySelectorAll<HTMLButtonElement>('[data-period]').forEach((button) => {
+        button.classList.toggle('active', button.dataset.period === summary.period)
+      })
+    } catch (error) {
+      console.error('Failed to load public site statistics:', error)
+      errorBox?.classList.remove('hidden')
+    } finally {
+      root.setAttribute('aria-busy', 'false')
+    }
+  }
+
+  function initStatsDashboards() {
+    document
+      .querySelectorAll<HTMLElement>('[data-stats-dashboard]:not([data-ready])')
+      .forEach((root) => {
+        root.dataset.ready = ''
+        root.querySelectorAll<HTMLButtonElement>('[data-period]').forEach((button) => {
+          button.addEventListener('click', () =>
+            loadDashboard(root, button.dataset.period || '30d')
+          )
+        })
+        root.querySelector<HTMLButtonElement>('[data-retry]')?.addEventListener('click', () => {
+          const active = root.querySelector<HTMLButtonElement>('[data-period].active')
+          loadDashboard(root, active?.dataset.period || '30d')
+        })
+        loadDashboard(root)
+      })
+  }
+
+  initStatsDashboards()
+  document.addEventListener('astro:page-load', initStatsDashboards)
+</script>
+
+<style>
+  .stats-dashboard {
+    position: relative;
+    margin-top: 1.5rem;
+  }
+
+  .stats-toolbar,
+  .panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .stats-toolbar {
+    margin-bottom: 1rem;
+  }
+
+  .stats-toolbar > p,
+  .panel-heading > p {
+    margin: 0;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.82rem;
+  }
+
+  .period-switcher {
+    display: inline-flex;
+    padding: 0.2rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.75rem;
+    background: hsl(var(--muted) / 0.45);
+  }
+
+  .period-switcher button,
+  .stats-error button {
+    border: 0;
+    border-radius: 0.55rem;
+    background: transparent;
+    color: hsl(var(--muted-foreground));
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.78rem;
+  }
+
+  .period-switcher button {
+    padding: 0.38rem 0.68rem;
+  }
+
+  .period-switcher button.active {
+    background: hsl(var(--background));
+    box-shadow: 0 1px 3px hsl(var(--foreground) / 0.08);
+    color: hsl(var(--foreground));
+  }
+
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .metric-card,
+  .panel {
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--card) / 0.55);
+  }
+
+  .metric-card {
+    display: flex;
+    min-height: 8.2rem;
+    flex-direction: column;
+    padding: 1.1rem 1.15rem;
+    border-radius: 1rem;
+  }
+
+  .metric-card span,
+  .metric-card small,
+  .eyebrow,
+  .stats-note,
+  .empty-state {
+    color: hsl(var(--muted-foreground));
+  }
+
+  .metric-card span {
+    font-size: 0.8rem;
+  }
+
+  .metric-card strong {
+    margin-top: auto;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    letter-spacing: -0.055em;
+    line-height: 1;
+  }
+
+  .metric-card small {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .panel {
+    padding: 1.15rem;
+    border-radius: 1rem;
+  }
+
+  .trend-panel,
+  .geo-layout,
+  .pages-panel {
+    margin-top: 0.75rem;
+  }
+
+  .panel-heading h2,
+  .panel-heading p {
+    margin: 0;
+  }
+
+  .panel-heading h2 {
+    margin-top: 0.12rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .trend-chart {
+    margin-top: 0.85rem;
+  }
+
+  .trend-chart svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  :global(.trend-grid-line) {
+    stroke: hsl(var(--border));
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+  }
+
+  :global(.trend-area) {
+    fill: hsl(var(--primary) / 0.1);
+  }
+
+  :global(.trend-line) {
+    fill: none;
+    stroke: hsl(var(--primary));
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.2;
+    vector-effect: non-scaling-stroke;
+  }
+
+  :global(.trend-dot) {
+    fill: hsl(var(--background));
+    stroke: hsl(var(--primary));
+    stroke-width: 2;
+    vector-effect: non-scaling-stroke;
+  }
+
+  :global(.trend-label) {
+    fill: hsl(var(--muted-foreground));
+    font-size: 11px;
+  }
+
+  .geo-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.35fr);
+    gap: 0.75rem;
+  }
+
+  .legend {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.68rem;
+  }
+
+  .legend i {
+    width: 4.5rem;
+    height: 0.4rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, hsl(var(--primary) / 0.22), hsl(var(--primary)));
+  }
+
+  .map-wrap {
+    position: relative;
+    margin-top: 0.5rem;
+  }
+
+  .map-wrap svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  :global(.country-shape) {
+    fill: hsl(var(--muted));
+    stroke: hsl(var(--background));
+    stroke-width: 0.6;
+    transition:
+      fill 150ms ease,
+      opacity 150ms ease;
+    vector-effect: non-scaling-stroke;
+  }
+
+  :global(.country-shape.has-data) {
+    fill: hsl(var(--primary));
+    cursor: pointer;
+    opacity: var(--country-opacity, 0.5);
+  }
+
+  :global(.country-shape.has-data:hover),
+  :global(.country-shape.has-data:focus-visible),
+  :global(.country-shape.has-data.active) {
+    fill: hsl(var(--foreground));
+    opacity: 1;
+    outline: none;
+  }
+
+  :global(.country-borders) {
+    fill: none;
+    stroke: hsl(var(--background));
+    stroke-width: 0.6;
+    pointer-events: none;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .map-tooltip {
+    position: absolute;
+    z-index: 2;
+    max-width: 15rem;
+    padding: 0.45rem 0.6rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.55rem;
+    opacity: 0;
+    background: hsl(var(--background) / 0.96);
+    box-shadow: 0 0.6rem 1.8rem hsl(var(--foreground) / 0.12);
+    color: hsl(var(--foreground));
+    font-size: 0.75rem;
+    pointer-events: none;
+    transition: opacity 120ms ease;
+  }
+
+  .map-tooltip.visible {
+    opacity: 1;
+  }
+
+  .ranking-list,
+  .page-list {
+    margin: 0.7rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ranking-list :global(li + li),
+  .page-list :global(li + li) {
+    border-top: 1px solid hsl(var(--border));
+  }
+
+  .ranking-list :global(button),
+  .page-list :global(a) {
+    display: grid;
+    width: 100%;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 0.1rem;
+    border: 0;
+    background: transparent;
+    color: hsl(var(--foreground));
+    font: inherit;
+    font-size: 0.78rem;
+    text-align: start;
+  }
+
+  .ranking-list :global(button) {
+    grid-template-columns: 1.8rem minmax(0, 1fr) auto;
+    cursor: pointer;
+  }
+
+  .ranking-list :global(button:hover),
+  .ranking-list :global(button.active),
+  .page-list :global(a:hover) {
+    color: hsl(var(--primary));
+  }
+
+  :global(.rank-number),
+  :global(.page-number) {
+    color: hsl(var(--muted-foreground));
+    font-variant-numeric: tabular-nums;
+  }
+
+  :global(.rank-name),
+  :global(.page-name) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  :global(.rank-value) {
+    color: hsl(var(--muted-foreground));
+    font-variant-numeric: tabular-nums;
+  }
+
+  .page-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.5rem;
+  }
+
+  .page-list :global(a) {
+    grid-template-columns: 1.8rem minmax(0, 1fr) auto;
+    text-decoration: none;
+  }
+
+  .page-list :global(strong) {
+    font-variant-numeric: tabular-nums;
+    font-weight: 550;
+  }
+
+  .stats-note {
+    margin: 0.8rem 0 0;
+    font-size: 0.72rem;
+    line-height: 1.6;
+  }
+
+  .empty-state {
+    margin: 1rem 0 0;
+    font-size: 0.78rem;
+  }
+
+  .stats-error {
+    position: absolute;
+    inset: 3.5rem 0 auto;
+    z-index: 5;
+    padding: 2rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: 1rem;
+    background: hsl(var(--background) / 0.96);
+    text-align: center;
+  }
+
+  .stats-error p {
+    margin: 0 0 0.75rem;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .stats-error button {
+    padding: 0.45rem 0.75rem;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @media (max-width: 760px) {
+    .geo-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .page-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .stats-toolbar {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .metric-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .metric-card {
+      min-height: 6.4rem;
+    }
+
+    .metric-card strong {
+      margin-top: 0.8rem;
+    }
+
+    .panel {
+      padding: 0.9rem;
+    }
+
+    .panel-heading:not(.compact) {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.country-shape),
+    .map-tooltip {
+      transition: none;
+    }
+  }
+</style>

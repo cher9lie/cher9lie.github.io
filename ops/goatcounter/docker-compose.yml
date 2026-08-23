@@ -10,5 +10,22 @@ services:
     volumes:
       - goatcounter-data:/home/goatcounter/goatcounter-data
 
+  public-api:
+    build:
+      context: ./public-api
+    container_name: goatcounter-public-api
+    restart: unless-stopped
+    depends_on:
+      - goatcounter
+    env_file:
+      - /opt/goatcounter/public-api.env
+    environment:
+      GOATCOUNTER_BASE_URL: http://goatcounter:8080
+      GOATCOUNTER_HOST: stats.050418.xyz
+      STATS_ALLOWED_ORIGINS: https://050418.xyz,https://www.050418.xyz
+      STATS_START: '2026-08-22T00:00:00Z'
+    ports:
+      - '127.0.0.1:18088:8080'
+
 volumes:
   goatcounter-data:

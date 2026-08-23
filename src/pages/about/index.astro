@@ -3,6 +3,7 @@ import { Collapse, Spoiler, Timeline } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
 import Substats from '@/components/about/Substats.astro'
 import ToolSection from '@/components/about/ToolSection.astro'
+import StatsTeaser from '@/components/stats/StatsTeaser.astro'
 
 const headings = [
   { depth: 2, slug: 'hobbies', text: 'Hobbies' },
@@ -245,8 +246,7 @@ const headings = [
     <!-- <li>Resources speedup: <a href='https://cdn.cbd.int/' target='_blank'>CBD CDN</a></li> -->
     <li>Comment system: <a href='https://waline.js.org' target='_blank'>Waline</a></li>
     <li>
-      Visits: <a href='https://supabase.com/' target='_blank'>Supabase</a> +
-      <a href='https://waline.js.org/' target='_blank'>Waline</a>
+      Visits: self-hosted <a href='https://www.goatcounter.com/' target='_blank'>GoatCounter</a>
     </li>
     <li>
       Other statistics: <a href='https://github.com/spencerwooo/substats' target='_blank'
@@ -254,4 +254,5 @@ const headings = [
       >
     </li>
   </ul>
+  <StatsTeaser />
 </PageLayout>

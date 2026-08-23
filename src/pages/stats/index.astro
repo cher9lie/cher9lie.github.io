@@ -1,0 +1,11 @@
+---
+import PageLayout from '@/layouts/CommonPage.astro'
+import StatsDashboard from '@/components/stats/StatsDashboard.astro'
+---
+
+<PageLayout title='Site Statistics'>
+  <p class='text-muted-foreground'>
+    一份克制、公开的博客访问概览。这里展示匿名聚合后的访问趋势、热门页面和国家分布，不展示任何单个访客的信息。
+  </p>
+  <StatsDashboard />
+</PageLayout>

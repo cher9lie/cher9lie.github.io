@@ -1,0 +1,165 @@
+<aside
+  id='visitor-statistics'
+  class='stats-teaser'
+  data-stats-teaser
+  data-endpoint='https://stats.050418.xyz/public/v1/summary?period=30d'
+  aria-busy='true'
+>
+  <div class='stats-teaser-heading'>
+    <div>
+      <strong>Visitor statistics</strong>
+      <span>最近 30 天的匿名聚合数据</span>
+    </div>
+    <a href='/stats'>查看完整统计 <span aria-hidden='true'>→</span></a>
+  </div>
+  <div class='stats-teaser-metrics'>
+    <div class='stats-teaser-item'>
+      <strong data-stat='visits'>—</strong>
+      <span>页面访问</span>
+    </div>
+    <div class='stats-teaser-item'>
+      <strong data-stat='countries'>—</strong>
+      <span>国家 / 地区</span>
+    </div>
+    <div class='stats-teaser-item'>
+      <strong data-stat='pages'>—</strong>
+      <span>热门路径</span>
+    </div>
+  </div>
+</aside>
+
+<script>
+  interface Summary {
+    totals: { visits: number; countries: number; pages: number }
+  }
+
+  const formatter = new Intl.NumberFormat('zh-CN')
+
+  async function loadStatsTeasers() {
+    const teasers = document.querySelectorAll<HTMLElement>('[data-stats-teaser]:not([data-loaded])')
+    await Promise.all(
+      Array.from(teasers).map(async (teaser) => {
+        try {
+          const response = await fetch(teaser.dataset.endpoint || '')
+          if (!response.ok) return
+          const summary = (await response.json()) as Summary
+
+          for (const key of ['visits', 'countries', 'pages'] as const) {
+            const element = teaser.querySelector<HTMLElement>(`[data-stat='${key}']`)
+            if (element) element.textContent = formatter.format(summary.totals[key])
+          }
+          teaser.dataset.loaded = ''
+        } catch (error) {
+          console.warn('Failed to load public site statistics:', error)
+        } finally {
+          teaser.setAttribute('aria-busy', 'false')
+        }
+      })
+    )
+  }
+
+  loadStatsTeasers()
+  document.addEventListener('astro:page-load', loadStatsTeasers)
+</script>
+
+<style>
+  .stats-teaser {
+    overflow: hidden;
+    margin-top: 2rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: 1rem;
+    background: hsl(var(--card) / 0.45);
+  }
+
+  .stats-teaser-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+
+  .stats-teaser-heading > div {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+  }
+
+  .stats-teaser-heading strong {
+    color: hsl(var(--foreground));
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .stats-teaser-heading > div > span {
+    color: hsl(var(--muted-foreground));
+    font-size: 0.7rem;
+  }
+
+  .stats-teaser-heading a {
+    flex: none;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.72rem;
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .stats-teaser-heading a:hover {
+    color: hsl(var(--primary));
+  }
+
+  .stats-teaser-heading a span {
+    color: inherit;
+  }
+
+  .stats-teaser-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .stats-teaser-item {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 1rem 0.5rem;
+    text-align: center;
+  }
+
+  .stats-teaser-item + .stats-teaser-item {
+    border-inline-start: 1px solid hsl(var(--border));
+  }
+
+  .stats-teaser-item strong {
+    font-size: clamp(1.15rem, 3vw, 1.55rem);
+    font-variant-numeric: tabular-nums;
+    font-weight: 650;
+    letter-spacing: -0.03em;
+  }
+
+  .stats-teaser-item span {
+    overflow: hidden;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.75rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 430px) {
+    .stats-teaser-heading {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .stats-teaser-item {
+      padding-inline: 0.25rem;
+    }
+
+    .stats-teaser-item span {
+      font-size: 0.68rem;
+    }
+  }
+</style>

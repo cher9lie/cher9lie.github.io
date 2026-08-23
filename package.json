@@ -28,14 +28,20 @@
     "@waline/client": "^3.8.0",
     "astro": "^5.16.0",
     "astro-pure": "1.3.7",
+    "d3-geo": "^3.1.1",
+    "i18n-iso-countries": "^7.14.0",
     "katex": "^0.16.25",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
     "sharp": "^0.34.5",
-    "typescript": "^5.9.3"
+    "topojson-client": "^3.1.0",
+    "typescript": "^5.9.3",
+    "world-atlas": "^2.0.2"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
+    "@types/d3-geo": "^3.1.1",
+    "@types/topojson-client": "^3.1.5",
     "@typescript-eslint/parser": "^8.47.0",
     "eslint": "^9.39.1",
     "eslint-plugin-astro": "^1.5.0",
