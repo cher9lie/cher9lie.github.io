@@ -3,11 +3,7 @@ title: 'ENVI 立体像对提取 DEM：从 RPC 影像到三维地形'
 description: '使用 ENVI DEM Extraction Wizard 处理带 RPC 的卫星立体像对，并在 ArcGIS Pro 中检查 DEM 和叠加影像。'
 publishDate: 2026-07-30
 tags:
-  - envi
   - remote-sensing
-  - dem
-  - stereo
-  - arcgis-pro
 language: 'Chinese'
 heroImage: { src: './10-arcgis-draped-image.png', alt: '在 ArcGIS Pro 中将全色影像贴合到 DEM 地形表面' }
 draft: false

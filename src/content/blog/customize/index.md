@@ -3,9 +3,7 @@ title: Personalized Customization Guide
 publishDate: 2024-07-27
 description: 'astro-theme-pure Personalized Customization Guide'
 tags:
-  - Waline
-  - Vercel
-  - Supabase
+  - Astro
 heroImage: { src: './thumbnail.jpg', color: '#64574D' }
 language: 'English'
 ---

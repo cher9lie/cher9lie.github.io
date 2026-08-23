@@ -5,10 +5,6 @@ updatedDate: 2026-08-20
 description: '从参考坐标系、视线几何、开普勒传播和摄动方程出发，完整解释如何由天王星残差反演未知行星，并把试算轨道变成可供望远镜验证的赤经赤纬。'
 tags:
   - astronomy
-  - orbital-mechanics
-  - neptune
-  - least-squares
-  - matlab
 language: 'Chinese'
 heroImage: { src: './thumbnail.png', alt: '海王星轨道、天王星残差和历史预测误差组成的计算示意图', color: '#3157C8' }
 draft: false

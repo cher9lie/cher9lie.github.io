@@ -3,11 +3,7 @@ title: 'DBCloud 与 DPGrid 入门：从航片到 DEM、DOM 和 DLG'
 description: '以一组无人机航片为例，完整讲解 DBCloud 登录、DPGrid 建库、空三平差、DEM/DOM 生产与 DLG 立体测图。'
 publishDate: 2026-07-30
 tags:
-  - photogrammetry
-  - dbcloud
-  - dpgrid
-  - dem
-  - dom
+  - remote-sensing
 language: 'Chinese'
 heroImage: { src: './21-dem-edited.png', alt: 'DPGrid 中叠加等高线检查正射影像与 DEM' }
 draft: false
