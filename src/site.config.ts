@@ -72,7 +72,7 @@ export const theme: ThemeUserConfig = {
       },
       // Privacy Policy link
       {
-        title: 'Site Policy',
+        title: '网站政策',
         link: '/terms/list',
         pos: 2 // position set to 2 will be appended to copyright line
       }
@@ -178,22 +178,22 @@ export const integ: IntegrationUserConfig = {
 }
 
 export const terms: CardListData = {
-  title: 'Terms content',
+  title: '网站政策 / Site Policies',
   list: [
     {
-      title: 'Privacy Policy',
+      title: '隐私政策 / Privacy Policy',
       link: '/terms/privacy-policy'
     },
     {
-      title: 'Terms and Conditions',
+      title: '使用规则 / Terms of Use',
       link: '/terms/terms-and-conditions'
     },
     {
-      title: 'Copyright',
+      title: '版权政策 / Copyright Policy',
       link: '/terms/copyright'
     },
     {
-      title: 'Disclaimer',
+      title: '免责声明 / Disclaimer',
       link: '/terms/disclaimer'
     }
   ]
