@@ -1,0 +1,413 @@
+<div class='home-globe' data-home-globe aria-hidden='true'>
+  <canvas data-home-globe-canvas></canvas>
+</div>
+
+<script>
+  import { solarVector, type Vector3 } from '../../lib/globe/solar'
+
+  type GlobePoint = {
+    world: Vector3
+  }
+
+  type Projected = {
+    x: number
+    y: number
+    depth: number
+  }
+
+  type NavigatorWithHints = Navigator & {
+    deviceMemory?: number
+    connection?: { saveData?: boolean }
+  }
+
+  const root = document.querySelector<HTMLElement>('[data-home-globe]')!
+  const canvas = root.querySelector<HTMLCanvasElement>('[data-home-globe-canvas]')!
+  const context = canvas.getContext('2d', { alpha: true })!
+  const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+  const DEG = Math.PI / 180
+  const navigatorHints = navigator as NavigatorWithHints
+  const saveData = navigatorHints.connection?.saveData === true
+  const memory = navigatorHints.deviceMemory ?? 4
+  const cores = navigator.hardwareConcurrency ?? 4
+  const highPerformance = !saveData && memory >= 8 && cores >= 8
+  const lowPerformance = saveData || memory <= 2 || cores <= 2
+  const pointStride = highPerformance ? 1 : lowPerformance ? 4 : 2
+  const targetFps = highPerformance ? 30 : lowPerformance ? 16 : 24
+  const frameInterval = 1000 / targetFps
+
+  let width = 0
+  let height = 0
+  let ratio = 1
+  let centerX = 0
+  let centerY = 0
+  let radius = 320
+  let yaw = ((Date.now() % 120_000) / 120_000) * Math.PI * 2
+  const EARTH_AXIAL_TILT = 23.44 * DEG
+  let pitch = EARTH_AXIAL_TILT
+  let sun = solarVector()
+  let frame = 0
+  let lastFrame = 0
+  let lastSolarUpdate = 0
+  let visible = true
+  let destroyed = false
+  let dark = document.documentElement.classList.contains('dark')
+  let palette: string[] = []
+  let glowColor = ''
+  const pointer = { x: -9999, y: -9999, active: false, strength: 0 }
+  const groups = Array.from({ length: 18 }, () => [] as number[])
+  const glowPoints: number[] = []
+
+  function decodePoints(data: string, pointCount: number): GlobePoint[] {
+    const binary = atob(data)
+    const bytes = new Uint8Array(binary.length)
+    for (let index = 0; index < binary.length; index++) bytes[index] = binary.charCodeAt(index)
+    const view = new DataView(bytes.buffer)
+    const points: GlobePoint[] = []
+
+    for (let index = 0; index < pointCount; index++) {
+      const longitude = (view.getInt16(index * 4, true) / 100) * DEG
+      const latitude = (view.getInt16(index * 4 + 2, true) / 100) * DEG
+      const cosPhi = Math.cos(latitude)
+      points.push({
+        world: [cosPhi * Math.cos(longitude), Math.sin(latitude), cosPhi * Math.sin(longitude)],
+      })
+    }
+    return points
+  }
+
+  let landPoints: GlobePoint[] = []
+
+  function mix(a: number, b: number, amount: number) {
+    return Math.round(a + (b - a) * amount)
+  }
+
+  function updatePalette() {
+    dark = document.documentElement.classList.contains('dark')
+    const night = dark ? [54, 80, 112] : [43, 67, 96]
+    const day = dark ? [145, 190, 232] : [58, 126, 190]
+    const baseAlpha = dark ? 0.36 : 0.34
+    palette = Array.from({ length: groups.length }, (_, index) => {
+      const amount = index / (groups.length - 1)
+      const red = mix(night[0], day[0], amount)
+      const green = mix(night[1], day[1], amount)
+      const blue = mix(night[2], day[2], amount)
+      const alpha = baseAlpha * (0.5 + amount * 0.5)
+      return `rgba(${red}, ${green}, ${blue}, ${alpha})`
+    })
+    glowColor = dark ? 'rgba(177, 211, 242, 0.08)' : 'rgba(66, 137, 201, 0.09)'
+  }
+
+  function resize() {
+    const bounds = root.getBoundingClientRect()
+    width = Math.max(320, bounds.width)
+    height = Math.max(560, bounds.height)
+    const cap = highPerformance ? 1.75 : lowPerformance ? 1 : 1.35
+    ratio = Math.min(window.devicePixelRatio || 1, cap)
+    canvas.width = Math.round(width * ratio)
+    canvas.height = Math.round(height * ratio)
+    canvas.style.width = `${width}px`
+    canvas.style.height = `${height}px`
+    context.setTransform(ratio, 0, 0, ratio, 0, 0)
+
+    if (width < 720) {
+      const viewportWidth = Math.min(width, window.innerWidth)
+      radius = Math.min(viewportWidth * 0.465, height * 0.335)
+      centerX = viewportWidth * 0.5
+      centerY = height * 0.54
+    } else {
+      radius = Math.min(width * 0.33, height * 0.46, 470)
+      centerX = Math.min(width - radius - 22, width * 0.72)
+      centerY = height * 0.5
+    }
+  }
+
+  function project(world: Vector3): Projected {
+    const cosYaw = Math.cos(yaw)
+    const sinYaw = Math.sin(yaw)
+    const screenX = world[2] * cosYaw - world[0] * sinYaw
+    const initialDepth = world[0] * cosYaw + world[2] * sinYaw
+    const vertical = -world[1]
+    const cosPitch = Math.cos(pitch)
+    const sinPitch = Math.sin(pitch)
+    const screenY = vertical * cosPitch + initialDepth * sinPitch
+    const depth = initialDepth * cosPitch - vertical * sinPitch
+    return {
+      x: centerX + screenX * radius,
+      y: centerY + screenY * radius,
+      depth,
+    }
+  }
+
+  function vector(longitude: number, latitude: number): Vector3 {
+    const lambda = longitude * DEG
+    const phi = latitude * DEG
+    const cosPhi = Math.cos(phi)
+    return [cosPhi * Math.cos(lambda), Math.sin(phi), cosPhi * Math.sin(lambda)]
+  }
+
+  function smoothstep(edgeA: number, edgeB: number, value: number) {
+    const amount = Math.max(0, Math.min(1, (value - edgeA) / (edgeB - edgeA)))
+    return amount * amount * (3 - 2 * amount)
+  }
+
+  function drawLine(points: Vector3[], alpha: number) {
+    let drawing = false
+    context.beginPath()
+    for (const world of points) {
+      const projected = project(world)
+      if (projected.depth <= 0.008) {
+        drawing = false
+        continue
+      }
+      if (!drawing) {
+        context.moveTo(projected.x, projected.y)
+        drawing = true
+      } else {
+        context.lineTo(projected.x, projected.y)
+      }
+    }
+    context.strokeStyle = dark
+      ? `rgba(123, 162, 201, ${alpha})`
+      : `rgba(43, 86, 128, ${alpha * 1.55})`
+    context.stroke()
+  }
+
+  const meridians = Array.from({ length: 24 }, (_, index) => {
+    const longitude = -180 + index * 15
+    return Array.from({ length: 61 }, (__, step) => vector(longitude, -90 + step * 3))
+  })
+  const parallels = Array.from({ length: 11 }, (_, index) => {
+    const latitude = -75 + index * 15
+    return Array.from({ length: 121 }, (__, step) => vector(-180 + step * 3, latitude))
+  })
+
+  function drawGlobeBase() {
+    const glow = context.createRadialGradient(
+      centerX - radius * 0.22,
+      centerY - radius * 0.28,
+      radius * 0.08,
+      centerX,
+      centerY,
+      radius
+    )
+    glow.addColorStop(0, dark ? 'rgba(73, 113, 154, 0.055)' : 'rgba(55, 115, 173, 0.045)')
+    glow.addColorStop(1, dark ? 'rgba(9, 15, 25, 0.015)' : 'rgba(61, 103, 145, 0)')
+    context.beginPath()
+    context.arc(centerX, centerY, radius, 0, Math.PI * 2)
+    context.fillStyle = glow
+    context.fill()
+    context.lineWidth = 0.7
+    context.strokeStyle = dark ? 'rgba(128, 166, 204, 0.12)' : 'rgba(43, 86, 128, 0.14)'
+    context.stroke()
+
+    context.lineWidth = 0.55
+    const lineStride = highPerformance ? 1 : 2
+    for (let index = 0; index < meridians.length; index += lineStride) drawLine(meridians[index], 0.055)
+    for (let index = 0; index < parallels.length; index += lineStride) drawLine(parallels[index], 0.055)
+  }
+
+  function drawLand() {
+    for (const group of groups) group.length = 0
+    glowPoints.length = 0
+    const interactionRadius = width < 720 ? 74 : 104
+
+    for (let index = 0; index < landPoints.length; index += pointStride) {
+      const point = landPoints[index]
+      const projected = project(point.world)
+      if (projected.depth <= 0.008) continue
+
+      let x = projected.x
+      let y = projected.y
+      let interaction = 0
+      if (pointer.active && pointer.strength > 0.002) {
+        const dx = x - pointer.x
+        const dy = y - pointer.y
+        const distance = Math.hypot(dx, dy)
+        if (distance < interactionRadius) {
+          interaction = smoothstep(interactionRadius, 0, distance) * pointer.strength
+          const displacement = interaction * interaction * (width < 720 ? 1.5 : 2.25)
+          const divisor = distance || 1
+          x += (dx / divisor) * displacement
+          y += (dy / divisor) * displacement
+        }
+      }
+
+      const solarLevel =
+        point.world[0] * sun[0] + point.world[1] * sun[1] + point.world[2] * sun[2]
+      const daylight = smoothstep(-0.105, 0.105, solarLevel)
+      const limb = smoothstep(0.008, 0.18, projected.depth)
+      const visualLevel = Math.min(1, (0.2 + daylight * 0.73) * (0.45 + limb * 0.55) + interaction * 0.16)
+      const groupIndex = Math.min(groups.length - 1, Math.floor(visualLevel * groups.length))
+      const pointRadius =
+        (highPerformance ? 0.72 : 0.8) + projected.depth * 0.24 + interaction * 0.12
+      groups[groupIndex].push(x, y, pointRadius)
+
+      if (interaction > 0.2) glowPoints.push(x, y, pointRadius, interaction)
+    }
+
+    for (let groupIndex = 0; groupIndex < groups.length; groupIndex++) {
+      const group = groups[groupIndex]
+      if (!group.length) continue
+      context.beginPath()
+      for (let index = 0; index < group.length; index += 3) {
+        const x = group[index]
+        const y = group[index + 1]
+        const pointRadius = group[index + 2]
+        context.moveTo(x + pointRadius, y)
+        context.arc(x, y, pointRadius, 0, Math.PI * 2)
+      }
+      context.fillStyle = palette[groupIndex]
+      context.fill()
+    }
+
+    if (glowPoints.length) {
+      context.beginPath()
+      for (let index = 0; index < glowPoints.length; index += 4) {
+        const x = glowPoints[index]
+        const y = glowPoints[index + 1]
+        const pointRadius = glowPoints[index + 2] + glowPoints[index + 3] * 2.2
+        context.moveTo(x + pointRadius, y)
+        context.arc(x, y, pointRadius, 0, Math.PI * 2)
+      }
+      context.fillStyle = glowColor
+      context.fill()
+    }
+  }
+
+  function render(now: number) {
+    if (destroyed) return
+    frame = requestAnimationFrame(render)
+    if (!visible || document.hidden || now - lastFrame < frameInterval) return
+    const delta = Math.min(80, now - lastFrame || frameInterval)
+    lastFrame = now
+
+    if (!motionQuery.matches) {
+      yaw = (yaw + (delta * Math.PI * 2) / 120_000) % (Math.PI * 2)
+      pitch = EARTH_AXIAL_TILT
+    }
+    pointer.strength += ((pointer.active ? 1 : 0) - pointer.strength) * 0.12
+    if (now - lastSolarUpdate > 60_000) {
+      sun = solarVector()
+      lastSolarUpdate = now
+    }
+
+    context.clearRect(0, 0, width, height)
+    drawGlobeBase()
+    drawLand()
+  }
+
+  function onPointerMove(event: PointerEvent) {
+    const bounds = root.getBoundingClientRect()
+    pointer.x = event.clientX - bounds.left
+    pointer.y = event.clientY - bounds.top
+    pointer.active =
+      event.clientX >= bounds.left &&
+      event.clientX <= bounds.right &&
+      event.clientY >= bounds.top &&
+      event.clientY <= bounds.bottom
+  }
+
+  function onPointerLeave() {
+    pointer.active = false
+  }
+
+  let resizeTimer = 0
+  function onResize() {
+    window.clearTimeout(resizeTimer)
+    resizeTimer = window.setTimeout(resize, 100)
+  }
+
+  const themeObserver = new MutationObserver(updatePalette)
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+  const visibilityObserver = new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting
+  })
+  visibilityObserver.observe(root)
+
+  function destroy() {
+    destroyed = true
+    cancelAnimationFrame(frame)
+    window.removeEventListener('pointermove', onPointerMove)
+    document.removeEventListener('pointerleave', onPointerLeave)
+    window.removeEventListener('resize', onResize)
+    themeObserver.disconnect()
+    visibilityObserver.disconnect()
+  }
+
+  document.addEventListener('astro:before-swap', destroy, { once: true })
+
+  async function start() {
+    const { LAND_POINT_COUNT, LAND_POINTS_BASE64 } = await import('../../lib/globe/land-points')
+    if (destroyed) return
+    landPoints = decodePoints(LAND_POINTS_BASE64, LAND_POINT_COUNT)
+    updatePalette()
+    resize()
+    window.addEventListener('pointermove', onPointerMove, { passive: true })
+    document.addEventListener('pointerleave', onPointerLeave)
+    window.addEventListener('resize', onResize, { passive: true })
+    frame = requestAnimationFrame(render)
+  }
+
+  const scheduleStart = window.requestIdleCallback
+    ? (callback: () => void) => window.requestIdleCallback(callback, { timeout: 700 })
+    : (callback: () => void) => window.setTimeout(callback, 100)
+  scheduleStart(() => void start())
+</script>
+
+<style>
+  .home-globe {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: min(940px, 100svh);
+    min-height: 620px;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0.92;
+    mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
+  }
+
+  .home-globe::before {
+    position: absolute;
+    inset: 0;
+    content: '';
+    background: radial-gradient(
+      circle at 72% 43%,
+      hsl(var(--primary) / 0.055),
+      transparent min(42vw, 560px)
+    );
+  }
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  :global(html.dark) .home-globe {
+    opacity: 1;
+  }
+
+  @media (max-width: 719px) {
+    .home-globe {
+      height: min(760px, 88svh);
+      min-height: 610px;
+      opacity: 0.78;
+      mask-image: linear-gradient(to bottom, #000 0%, #000 64%, transparent 96%);
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 64%, transparent 96%);
+    }
+
+    .home-globe::before {
+      background: radial-gradient(circle at 50% 48%, hsl(var(--primary) / 0.05), transparent 72vw);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-globe {
+      opacity: 0.72;
+    }
+  }
+</style>
