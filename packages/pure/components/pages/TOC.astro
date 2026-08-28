@@ -8,15 +8,16 @@ interface Props {
   headings: MarkdownHeading[]
   class?: string
   id?: string
+  title?: string
 }
 
-const { headings, class: className, ...props } = Astro.props
+const { headings, class: className, title = 'TABLE OF CONTENTS', ...props } = Astro.props
 
 const toc = generateToc(headings)
 ---
 
 <toc-heading class={className} {...props}>
-  <h2 class='font-semibold'>TABLE OF CONTENTS</h2>
+  <h2 class='font-semibold'>{title}</h2>
   <ul class='mt-4 text-card-foreground'>
     {toc.map((heading) => <TOCHeading heading={heading} />)}
   </ul>

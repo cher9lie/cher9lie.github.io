@@ -10,14 +10,26 @@ interface Props {
   meta: SiteMeta
   highlightColor?: string
   back?: string
+  reading?: boolean
 }
 
-const { meta, highlightColor, back = '/', ...props } = Astro.props
+const { meta, highlightColor, back = '/', reading = false, ...props } = Astro.props
+const hasLeftSidebar = Astro.slots.has('left-sidebar')
 ---
 
 <PageLayout {meta} {highlightColor} {...props}>
   <Button title='Back' href={back} variant='back' />
-  <main class='mt-6 items-start gap-x-10 md:flex'>
+  <main class={cn('mt-6 items-start gap-x-10 md:flex', reading && 'reading-layout')}>
+    {
+      hasLeftSidebar && (
+        <aside
+          class='reading-left-sidebar top-20 hidden min-w-48 overflow-y-auto xl:sticky xl:block'
+          style='max-height:calc(100vh - 7rem);'
+        >
+          <slot name='left-sidebar' />
+        </aside>
+      )
+    }
     {/* Sidebar */}
     <aside
       class='animate top-20 min-w-48 basis-60 overflow-y-scroll max-md:hidden z-40 fixed md:sticky md:order-2 lg:shrink-0 max-md:border max-md:px-4 max-md:py-3 max-md:bg-muted max-md:rounded-xl'
@@ -35,7 +47,7 @@ const { meta, highlightColor, back = '/', ...props } = Astro.props
 
     <article class='min-w-0 grow'>
       {/* Content header */}
-      <div id='content-header' class='animate'>
+      <div id='content-header' class={cn('animate', reading && 'reading-header')}>
         <slot name='header' />
       </div>
 
@@ -43,7 +55,8 @@ const { meta, highlightColor, back = '/', ...props } = Astro.props
       <div
         id='content'
         class={cn(
-          'max-w-none animate mt-8 md:min-w-[45ch] overflow-x-hidden',
+          'max-w-none animate mt-8 md:min-w-[45ch]',
+          reading ? 'reading-prose' : 'overflow-x-hidden',
           integ.typography.class
         )}
       >
@@ -52,7 +65,7 @@ const { meta, highlightColor, back = '/', ...props } = Astro.props
     </article>
   </main>
 
-  <div class='bottom mt-6 items-start gap-x-10 md:flex'>
+  <div class={cn('bottom mt-6 items-start gap-x-10 md:flex', reading && 'reading-bottom-layout')}>
     {/* Bottom */}
     <div class='flex-1 text-muted-foreground md:min-w-[50ch]'>
       <slot name='bottom' />
@@ -66,7 +79,10 @@ const { meta, highlightColor, back = '/', ...props } = Astro.props
     <button
       slot='other-icons'
       aria-label='Toggle sidebar'
-      class='size-10 flex items-center justify-center rounded-full border-2 border-transparent bg-muted text-muted-foreground duration-300 hover:border-border/75 md:hidden sm:size-12'
+      class={cn(
+        'size-10 flex items-center justify-center rounded-full border-2 border-transparent bg-muted text-muted-foreground duration-300 hover:border-border/75 sm:size-12',
+        reading ? 'xl:hidden' : 'md:hidden'
+      )}
       id='sidebar-btn'
     >
       <Icon name='list' />
@@ -101,8 +117,31 @@ const { meta, highlightColor, back = '/', ...props } = Astro.props
   })
 </script>
 <style>
+  @keyframes fade-in-side {
+    0% {
+      transform: translateX(50%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
   @media (min-width: 769px) {
-    #sidebar-shade {
+    main:not(.reading-layout) #sidebar-shade {
+      display: none !important;
+    }
+  }
+  @media (min-width: 1280px) {
+    .reading-layout #sidebar-shade {
       display: none !important;
     }
   }
@@ -112,24 +151,6 @@ const { meta, highlightColor, back = '/', ...props } = Astro.props
       opacity: 1;
     }
 
-    @keyframes fade-in-side {
-      0% {
-        transform: translateX(50%);
-        opacity: 0;
-      }
-      100% {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-    @keyframes fade-in {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
     aside {
       animation: 300ms fade-in-side !important;
       animation-fill-mode: forwards;
@@ -150,6 +171,32 @@ const { meta, highlightColor, back = '/', ...props } = Astro.props
   @media (max-width: 640px) {
     aside {
       min-width: 55vw !important;
+    }
+  }
+  @media (min-width: 770px) and (max-width: 1279px) {
+    .reading-layout #sidebar:not(.show) {
+      display: none !important;
+    }
+    .reading-layout #sidebar.show {
+      display: block !important;
+      opacity: 1;
+    }
+    .reading-layout #sidebar {
+      animation: 300ms fade-in-side !important;
+      animation-fill-mode: forwards;
+      position: fixed !important;
+      right: 0;
+      top: 0 !important;
+      z-index: 40;
+      width: min(22rem, 75vw);
+      height: 100vh !important;
+      max-width: 75vw;
+      padding: 1.5rem 1.25rem !important;
+      border: 1px solid hsl(var(--border) / 1);
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+      background: hsl(var(--background) / 0.97);
+      backdrop-filter: blur(18px);
     }
   }
 </style>

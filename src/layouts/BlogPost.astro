@@ -4,6 +4,7 @@ import type { CollectionEntry } from 'astro:content'
 
 // Plugin styles
 import 'katex/dist/katex.min.css'
+import '@/assets/styles/reading.css'
 
 import config from 'virtual:config'
 
@@ -49,8 +50,9 @@ const primaryColor = data.heroImage?.color ?? 'hsl(var(--primary) / var(--un-tex
   meta={{ articleDate, description, ogImage: socialImage, title }}
   highlightColor={primaryColor}
   back='/blog'
+  reading
 >
-  {!!headings.length && <TOC {headings} slot='sidebar' />}
+  {!!headings.length && <TOC {headings} title='目录' slot='sidebar' />}
 
   <Hero {data} {remarkPluginFrontmatter} slot='header'>
     <Fragment slot='description'>
