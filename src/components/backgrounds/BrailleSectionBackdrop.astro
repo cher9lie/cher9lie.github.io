@@ -1,0 +1,210 @@
+---
+type Kind = 'blog' | 'docs' | 'projects' | 'links' | 'about' | 'network'
+
+interface Props {
+  kind: Kind
+}
+
+const { kind } = Astro.props
+const width = 64
+const height = 40
+const dots = Array.from({ length: width * height }, () => false)
+
+function setDot(x: number, y: number, weight = 0) {
+  const centerX = Math.round(x)
+  const centerY = Math.round(y)
+  for (let offsetY = -weight; offsetY <= weight; offsetY++) {
+    for (let offsetX = -weight; offsetX <= weight; offsetX++) {
+      const px = centerX + offsetX
+      const py = centerY + offsetY
+      if (px >= 0 && px < width && py >= 0 && py < height) dots[py * width + px] = true
+    }
+  }
+}
+
+function line(x0: number, y0: number, x1: number, y1: number, weight = 0) {
+  const steps = Math.max(Math.abs(x1 - x0), Math.abs(y1 - y0)) * 2
+  for (let step = 0; step <= steps; step++) {
+    const amount = steps ? step / steps : 0
+    setDot(x0 + (x1 - x0) * amount, y0 + (y1 - y0) * amount, weight)
+  }
+}
+
+function polyline(points: Array<[number, number]>, weight = 0) {
+  for (let index = 1; index < points.length; index++) {
+    line(points[index - 1][0], points[index - 1][1], points[index][0], points[index][1], weight)
+  }
+}
+
+function ellipse(cx: number, cy: number, rx: number, ry: number, start = 0, end = Math.PI * 2) {
+  const steps = 120
+  for (let step = 0; step <= steps; step++) {
+    const angle = start + ((end - start) * step) / steps
+    setDot(cx + Math.cos(angle) * rx, cy + Math.sin(angle) * ry)
+  }
+}
+
+function node(x: number, y: number, radius = 3) {
+  ellipse(x, y, radius, radius)
+  setDot(x, y)
+}
+
+const drawings: Record<Kind, () => void> = {
+  blog() {
+    polyline([[14, 5], [43, 5], [50, 12], [50, 35], [14, 35], [14, 5]])
+    polyline([[43, 5], [43, 12], [50, 12]])
+    line(21, 19, 42, 19)
+    line(21, 27, 36, 27)
+  },
+  docs() {
+    polyline([[31, 11], [25, 7], [11, 8], [11, 32], [25, 31], [31, 35], [31, 11]])
+    polyline([[33, 11], [39, 7], [53, 8], [53, 32], [39, 31], [33, 35], [33, 11]])
+    line(16, 19, 25, 18)
+    line(39, 18, 48, 19)
+  },
+  projects() {
+    polyline([[25, 7], [11, 20], [25, 33]])
+    polyline([[39, 7], [53, 20], [39, 33]])
+    line(37, 6, 27, 34)
+  },
+  links() {
+    ellipse(22, 20, 14, 9)
+    ellipse(42, 20, 14, 9)
+  },
+  about() {
+    ellipse(32, 12, 9, 9)
+    ellipse(32, 40, 22, 17, Math.PI, Math.PI * 2)
+  },
+  network() {
+    node(32, 20, 6)
+    const satellites: Array<[number, number]> = [[15, 9], [49, 9], [32, 34]]
+    for (const [x, y] of satellites) {
+      line(32, 20, x, y)
+      node(x, y, 4)
+    }
+  }
+}
+
+drawings[kind]()
+
+const brailleBits = [
+  [0, 3],
+  [1, 4],
+  [2, 5],
+  [6, 7]
+]
+
+const rows: string[] = []
+for (let cellY = 0; cellY < height; cellY += 4) {
+  let row = ''
+  for (let cellX = 0; cellX < width; cellX += 2) {
+    let code = 0
+    for (let dotY = 0; dotY < 4; dotY++) {
+      for (let dotX = 0; dotX < 2; dotX++) {
+        if (dots[(cellY + dotY) * width + cellX + dotX]) code |= 1 << brailleBits[dotY][dotX]
+      }
+    }
+    row += String.fromCodePoint(0x2800 + code)
+  }
+  rows.push(row.replace(/⠀+$/u, ''))
+}
+
+const pattern = rows.join('\n')
+const asciiMarks: Record<Kind, string> = {
+  blog: '',
+  docs: '',
+  projects: '',
+  links: '--',
+  about: '',
+  network: '+'
+}
+---
+
+<div class={`braille-backdrop braille-${kind}`} aria-hidden='true'>
+  <pre>{pattern}</pre>
+  {asciiMarks[kind] && <span class='ascii-mark'>{asciiMarks[kind]}</span>}
+</div>
+
+<style>
+  .braille-backdrop {
+    position: absolute;
+    z-index: 0;
+    top: 4.75rem;
+    right: max(18px, calc((100vw - 70rem) / 2 + 18px));
+    width: min(64vw, 800px);
+    overflow: hidden;
+    color: hsl(var(--primary));
+    opacity: 0.135;
+    pointer-events: none;
+    user-select: none;
+    isolation: isolate;
+    mask-image: radial-gradient(ellipse at 56% 42%, #000 30%, rgb(0 0 0 / 0.82) 56%, transparent 90%);
+    -webkit-mask-image: radial-gradient(ellipse at 56% 42%, #000 30%, rgb(0 0 0 / 0.82) 56%, transparent 90%);
+  }
+
+  .braille-backdrop::before {
+    position: absolute;
+    z-index: 0;
+    inset: 10% 8% 18% 18%;
+    content: '';
+    background: radial-gradient(ellipse at 54% 42%, hsl(var(--primary) / 0.22), transparent 66%);
+    filter: blur(34px);
+  }
+
+  pre {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    font-family: 'Cascadia Mono', 'Segoe UI Symbol', 'Noto Sans Symbols 2', monospace;
+    font-size: clamp(24px, 2.7vw, 39px);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: 0.015em;
+    white-space: pre;
+    color: transparent;
+    background: radial-gradient(ellipse at 52% 38%, hsl(var(--primary)), hsl(var(--primary) / 0.72) 58%, hsl(var(--primary) / 0.2) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    filter: drop-shadow(0 12px 28px hsl(var(--primary) / 0.18));
+  }
+
+  .ascii-mark {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Cascadia Mono', Consolas, monospace;
+    font-size: clamp(20px, 1.8vw, 26px);
+    letter-spacing: 0.18em;
+    z-index: 2;
+    opacity: 0.62;
+    white-space: nowrap;
+  }
+
+  :global(html.dark) .braille-backdrop {
+    opacity: 0.175;
+  }
+
+  @media (max-width: 720px) {
+    .braille-backdrop {
+      top: 4.75rem;
+      right: 0;
+      width: 100vw;
+      padding-left: 18vw;
+      box-sizing: border-box;
+      opacity: 0.08;
+    }
+
+    pre {
+      font-size: clamp(18px, 5.2vw, 24px);
+    }
+
+    .ascii-mark {
+      font-size: 12px;
+    }
+
+    :global(html.dark) .braille-backdrop {
+      opacity: 0.11;
+    }
+  }
+</style>

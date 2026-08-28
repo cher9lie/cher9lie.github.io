@@ -2,6 +2,7 @@
 import { Footer, Header, ThemeProvider } from 'astro-pure/components/basic'
 import type { SiteMeta } from 'astro-pure/types'
 import BaseHead from '@/components/BaseHead.astro'
+import BrailleSectionBackdrop from '@/components/backgrounds/BrailleSectionBackdrop.astro'
 import config from '@/site-config'
 
 // Import the global.css file here so that it is included on
@@ -19,6 +20,24 @@ const {
   highlightColor,
   ...props
 } = Astro.props
+
+type BrailleKind = 'blog' | 'docs' | 'projects' | 'links' | 'about' | 'network'
+
+const pathname = Astro.url.pathname
+const brailleKind: BrailleKind | undefined =
+  pathname.startsWith('/blog') || pathname.startsWith('/archives') || pathname.startsWith('/tags')
+    ? 'blog'
+    : pathname.startsWith('/docs')
+      ? 'docs'
+      : pathname.startsWith('/projects')
+        ? 'projects'
+        : pathname.startsWith('/links')
+          ? 'links'
+          : pathname.startsWith('/about')
+            ? 'about'
+            : pathname.startsWith('/dn42')
+              ? 'network'
+              : undefined
 ---
 
 <html lang={config.locale.lang}>
@@ -42,8 +61,9 @@ const {
         />
       )
     }
+    {brailleKind && <BrailleSectionBackdrop kind={brailleKind} />}
     <div
-      class='w-full max-w-[70rem] px-4 sm:px-7 lg:px-10 min-h-[100dvh] flex flex-col justify-between'
+      class='relative z-10 w-full max-w-[70rem] px-4 sm:px-7 lg:px-10 min-h-[100dvh] flex flex-col justify-between'
     >
       <Header />
       <div class='flex-1 w-full'>

@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets'
-
 import { Collapse } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
 import ProjectSection from '@/components/projects/ProjectSection.astro'
@@ -15,11 +13,14 @@ const headings = [
 <PageLayout title='Projects' {headings} view>
   <p>Github Activities:</p>
   <p>
-    <Image
+    <img
       src='https://ghchart.rshah.org/659eb9/cher9lie'
       alt='github activities'
-      inferSize
+      width='663'
+      height='104'
+      class='h-auto max-w-full'
       loading='lazy'
+      decoding='async'
     />
   </p>
   <p>If you would like to collaborate on a project, feel free to contact me.</p>
