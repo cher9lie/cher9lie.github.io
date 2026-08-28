@@ -115,8 +115,12 @@
       centerX = viewportWidth * 0.5
       centerY = height * 0.54
     } else {
-      radius = Math.min(width * 0.33, height * 0.46, 470)
-      centerX = Math.min(width - radius - 22, width * 0.72)
+      const rootFontSize =
+        Number.parseFloat(getComputedStyle(document.documentElement).fontSize) || 16
+      const contentWidth = Math.min(width, rootFontSize * 70)
+      const contentLeft = (width - contentWidth) * 0.5
+      radius = Math.min(contentWidth * 0.33, height * 0.46, 470)
+      centerX = contentLeft + Math.min(contentWidth - radius - 22, contentWidth * 0.72)
       centerY = height * 0.5
     }
   }
@@ -359,13 +363,14 @@
     position: absolute;
     z-index: 0;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    width: 100vw;
     height: min(940px, 100svh);
     min-height: 620px;
     overflow: hidden;
     pointer-events: none;
     opacity: 0.92;
+    transform: translateX(-50%);
     mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
   }
