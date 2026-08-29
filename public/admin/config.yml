@@ -6,6 +6,17 @@ backend:
   repo: cher9lie/cher9lie.github.io
   branch: main
   base_url: https://oauth.050418.xyz
+  commit_messages:
+    create: '通过 Decap 新建{{collection}}“{{slug}}”'
+    update: '通过 Decap 更新{{collection}}“{{slug}}”'
+    delete: '通过 Decap 删除{{collection}}“{{slug}}”'
+    uploadMedia: '通过 Decap 上传“{{path}}”'
+    deleteMedia: '通过 Decap 删除媒体“{{path}}”'
+    openAuthoring: '{{message}}'
+
+# 在管理界面中提供返回网站和查看内容的入口
+site_url: https://050418.xyz
+display_url: https://050418.xyz
 
 # 界面语言
 locale: zh
@@ -23,6 +34,7 @@ collections:
   - name: blog
     label: 博客文章
     label_singular: 文章
+    description: '适合日常撰写和修改 Markdown 文章；复杂 MDX 请使用 code.050418.xyz。'
     folder: src/content/blog
     create: true
     # 每篇文章创建独立子目录：src/content/blog/my-post/index.md
@@ -33,6 +45,11 @@ collections:
     public_folder: "./"
     # 按发布日期降序排列
     sortable_fields: ["publishDate", "title"]
+    preview_path: "blog/{{slug}}"
+    view_filters:
+      - label: 草稿
+        field: draft
+        pattern: true
     view_groups:
       - label: 语言
         field: language
@@ -41,6 +58,9 @@ collections:
         name: title
         widget: string
         hint: "最多 60 个字符"
+        pattern:
+          - '^.{1,60}$'
+          - "标题应为 1–60 个字符"
 
       - label: 发布日期
         name: publishDate
@@ -63,6 +83,9 @@ collections:
         name: description
         widget: string
         hint: "最多 160 个字符，用于 SEO 和文章列表展示"
+        pattern:
+          - '^.{1,160}$'
+          - "摘要应为 1–160 个字符"
 
       - label: 标签
         name: tags
@@ -92,6 +115,11 @@ collections:
             widget: image
             required: false
             hint: "建议命名为 thumbnail.jpg"
+          - label: 图片替代文本
+            name: alt
+            widget: string
+            required: false
+            hint: "简要说明图片内容，供无障碍阅读和图片加载失败时使用"
           - label: 背景主色调
             name: color
             widget: string
@@ -104,8 +132,8 @@ collections:
       - label: 草稿
         name: draft
         widget: boolean
-        default: false
-        hint: "草稿不会在博客列表中显示"
+        default: true
+        hint: "新文章默认是草稿；确认内容无误后关闭此开关才会公开显示"
 
       - label: 允许评论
         name: comment
@@ -116,3 +144,78 @@ collections:
         name: body
         widget: markdown
         hint: "支持 Markdown 语法"
+
+  # ─── 普通 Markdown 文档 ───────────────────────────────────
+  # 当前 Decap 版本无法安全遍历现有的混合 .md/.mdx 子目录，因此这里只列出
+  # 已有的普通 Markdown 文件。新建文档和带组件的 MDX 使用 code-server。
+  - name: docs_markdown
+    label: 文档（Markdown）
+    description: '可安全编辑现有普通 .md；新建文档或修改 .mdx 请使用 code.050418.xyz。'
+    files:
+      - name: setup_configuration
+        label: 设置 / 配置
+        file: src/content/docs/setup/configuration.md
+        preview_path: docs/setup/configuration
+        fields: &docs_fields
+          - label: 标题
+            name: title
+            widget: string
+            hint: "最多 60 个字符"
+            pattern:
+              - '^.{1,60}$'
+              - "标题应为 1–60 个字符"
+          - label: 摘要描述
+            name: description
+            widget: string
+            hint: "最多 160 个字符"
+            pattern:
+              - '^.{1,160}$'
+              - "摘要应为 1–160 个字符"
+          - label: 排序
+            name: order
+            widget: number
+            value_type: int
+            min: 0
+            default: 999
+            hint: "数字越小，在同一分组中越靠前"
+          - label: 发布日期
+            name: publishDate
+            widget: datetime
+            format: "YYYY-MM-DD"
+            date_format: "YYYY-MM-DD"
+            time_format: false
+            required: false
+          - label: 更新日期
+            name: updatedDate
+            widget: datetime
+            format: "YYYY-MM-DD"
+            date_format: "YYYY-MM-DD"
+            time_format: false
+            required: false
+          - label: 标签
+            name: tags
+            widget: list
+            required: false
+            default: []
+            hint: "回车添加，标签会被统一转为小写"
+          - label: 草稿
+            name: draft
+            widget: boolean
+            default: false
+            hint: "开启后不会在正式站点显示"
+          - label: 正文内容
+            name: body
+            widget: markdown
+            hint: "仅支持普通 Markdown；需要 Astro 组件时请改用 MDX 和 code-server"
+
+      - name: advanced_faq
+        label: 高级 / 常见问题
+        file: src/content/docs/advanced/faq.md
+        preview_path: docs/advanced/faq
+        fields: *docs_fields
+
+      - name: integrations_unocss
+        label: 集成 / UnoCSS
+        file: src/content/docs/integrations/unocss.md
+        preview_path: docs/integrations/unocss
+        fields: *docs_fields
