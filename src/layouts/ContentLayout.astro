@@ -18,7 +18,7 @@ const hasLeftSidebar = Astro.slots.has('left-sidebar')
 ---
 
 <PageLayout {meta} {highlightColor} {...props}>
-  <Button title='Back' href={back} variant='back' />
+  <Button title='返回' href={back} variant='back' />
   <main class={cn('mt-6 items-start gap-x-10 md:flex', reading && 'reading-layout')}>
     {
       hasLeftSidebar && (

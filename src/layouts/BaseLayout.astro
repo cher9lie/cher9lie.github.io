@@ -1,8 +1,8 @@
 ---
 import { Footer, Header, ThemeProvider } from 'astro-pure/components/basic'
 import type { SiteMeta } from 'astro-pure/types'
-import BaseHead from '@/components/BaseHead.astro'
 import BrailleSectionBackdrop from '@/components/backgrounds/BrailleSectionBackdrop.astro'
+import BaseHead from '@/components/BaseHead.astro'
 import config from '@/site-config'
 
 // Import the global.css file here so that it is included on
@@ -85,7 +85,7 @@ const brailleKind: BrailleKind | undefined =
       }
     </style>
 
-    {/* Apple 风格滚动入场动画 */}
+    {/* Subtle entrance for sections that explicitly opt in. */}
     <script>
       function initScrollReveal() {
         const observer = new IntersectionObserver(
@@ -100,22 +100,11 @@ const brailleKind: BrailleKind | undefined =
           { threshold: 0.06, rootMargin: '0px 0px -24px 0px' }
         )
 
-        // 首页各 Section 区块逐个入场（错开 60ms）
-        const contentSections = document.querySelectorAll('#content > *')
-        contentSections.forEach((el, i) => {
+        const revealItems = document.querySelectorAll<HTMLElement>('[data-reveal]')
+        revealItems.forEach((el, i) => {
           el.classList.add('reveal')
-          ;(el as HTMLElement).style.setProperty('--reveal-delay', `${i * 60}ms`)
+          el.style.setProperty('--reveal-delay', `${Math.min(i, 5) * 45}ms`)
           observer.observe(el)
-        })
-
-        // 博文列表的每一条 li 项（错开 50ms）
-        const listItems = document.querySelectorAll('ul.flex.flex-col > li')
-        listItems.forEach((el, i) => {
-          if (!el.classList.contains('reveal')) {
-            el.classList.add('reveal')
-            ;(el as HTMLElement).style.setProperty('--reveal-delay', `${i * 50}ms`)
-            observer.observe(el)
-          }
         })
       }
 

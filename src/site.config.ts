@@ -49,12 +49,12 @@ export const theme: ThemeUserConfig = {
   /** Configure the header of your site. */
   header: {
     menu: [
-      { title: 'Blog', link: '/blog' },
-      { title: 'Docs', link: '/docs' },
-      { title: 'Projects', link: '/projects' },
-      { title: 'Links', link: '/links' },
-      { title: 'About', link: '/about' },
-      { title: 'DN42', link: '/dn42' }
+      { title: '文章', link: '/blog' },
+      { title: '文档', link: '/docs' },
+      { title: '项目', link: '/projects' },
+      { title: '友链', link: '/links' },
+      { title: '关于', link: '/about' },
+      { title: '网络', link: '/dn42' }
     ]
   },
 

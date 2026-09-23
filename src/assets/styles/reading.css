@@ -1,10 +1,11 @@
 /* Reading system: scoped to blog posts and documentation pages. */
 :root {
   --font-reading-ui:
-    var(--font-satoshi), 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', system-ui, sans-serif;
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei',
+    'Noto Sans CJK SC', system-ui, sans-serif;
   --font-reading-body:
-    var(--font-satoshi), 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', 'Source Han Sans SC',
-    sans-serif;
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei',
+    'Noto Sans CJK SC', 'Source Han Sans SC', sans-serif;
   --font-reading-mono:
     'Cascadia Code', 'SFMono-Regular', 'JetBrains Mono', Consolas, 'Liberation Mono', monospace;
   --reading-measure: 42.5rem;
@@ -35,7 +36,7 @@
   font-size: clamp(1.875rem, 1.55rem + 1.3vw, 2.5rem);
   font-weight: 600;
   line-height: 1.22;
-  letter-spacing: 0;
+  letter-spacing: -0.025em;
   text-wrap: balance;
 }
 
@@ -65,7 +66,7 @@
 .reading-prose.prose {
   width: 100%;
   max-width: none;
-  color: hsl(var(--foreground) / 0.84);
+  color: hsl(var(--foreground) / 0.88);
   font-family: var(--font-reading-body);
   font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
   font-weight: 400;

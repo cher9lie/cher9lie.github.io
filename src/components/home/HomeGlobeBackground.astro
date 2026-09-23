@@ -69,7 +69,7 @@
       const latitude = (view.getInt16(index * 4 + 2, true) / 100) * DEG
       const cosPhi = Math.cos(latitude)
       points.push({
-        world: [cosPhi * Math.cos(longitude), Math.sin(latitude), cosPhi * Math.sin(longitude)],
+        world: [cosPhi * Math.cos(longitude), Math.sin(latitude), cosPhi * Math.sin(longitude)]
       })
     }
     return points
@@ -138,7 +138,7 @@
     return {
       x: centerX + screenX * radius,
       y: centerY + screenY * radius,
-      depth,
+      depth
     }
   }
 
@@ -206,8 +206,10 @@
 
     context.lineWidth = 0.55
     const lineStride = highPerformance ? 1 : 2
-    for (let index = 0; index < meridians.length; index += lineStride) drawLine(meridians[index], 0.055)
-    for (let index = 0; index < parallels.length; index += lineStride) drawLine(parallels[index], 0.055)
+    for (let index = 0; index < meridians.length; index += lineStride)
+      drawLine(meridians[index], 0.055)
+    for (let index = 0; index < parallels.length; index += lineStride)
+      drawLine(parallels[index], 0.055)
   }
 
   function drawLand() {
@@ -236,11 +238,13 @@
         }
       }
 
-      const solarLevel =
-        point.world[0] * sun[0] + point.world[1] * sun[1] + point.world[2] * sun[2]
+      const solarLevel = point.world[0] * sun[0] + point.world[1] * sun[1] + point.world[2] * sun[2]
       const daylight = smoothstep(-0.105, 0.105, solarLevel)
       const limb = smoothstep(0.008, 0.18, projected.depth)
-      const visualLevel = Math.min(1, (0.2 + daylight * 0.73) * (0.45 + limb * 0.55) + interaction * 0.16)
+      const visualLevel = Math.min(
+        1,
+        (0.2 + daylight * 0.73) * (0.45 + limb * 0.55) + interaction * 0.16
+      )
       const groupIndex = Math.min(groups.length - 1, Math.floor(visualLevel * groups.length))
       const pointRadius =
         (highPerformance ? 0.72 : 0.8) + projected.depth * 0.24 + interaction * 0.12
@@ -363,14 +367,13 @@
     position: absolute;
     z-index: 0;
     top: 0;
-    left: 50%;
-    width: 100vw;
+    left: 0;
+    width: 100%;
     height: min(940px, 100svh);
     min-height: 620px;
     overflow: hidden;
     pointer-events: none;
-    opacity: 0.92;
-    transform: translateX(-50%);
+    opacity: 0.88;
     mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
   }
@@ -393,14 +396,14 @@
   }
 
   :global(html.dark) .home-globe {
-    opacity: 1;
+    opacity: 0.94;
   }
 
   @media (max-width: 719px) {
     .home-globe {
       height: min(760px, 88svh);
       min-height: 610px;
-      opacity: 0.78;
+      opacity: 0.68;
       mask-image: linear-gradient(to bottom, #000 0%, #000 64%, transparent 96%);
       -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 64%, transparent 96%);
     }
@@ -412,7 +415,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .home-globe {
-      opacity: 0.72;
+      opacity: 0.65;
     }
   }
 </style>

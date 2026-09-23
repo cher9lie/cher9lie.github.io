@@ -17,9 +17,9 @@ const { as: Tag = 'a', class: className, title, href, variant = 'button', ...pro
 
 <Tag
   class={cn(
-    'group inline-flex items-center gap-x-1 rounded-lg bg-muted border px-2 py-1 text-sm text-muted-foreground transition-all hover:bg-primary-foreground no-underline',
+    'group inline-flex min-h-9 items-center justify-center gap-x-1.5 rounded-lg border border-border/80 bg-muted/45 px-3 py-1.5 text-sm text-muted-foreground no-underline transition-colors duration-200 hover:bg-muted hover:text-foreground',
     !href && 'cursor-default',
-    variant === 'pill' && 'rounded-xl',
+    variant === 'pill' && 'min-h-7 rounded-full px-2.5 py-1 text-xs',
     className
   )}
   href={href}
