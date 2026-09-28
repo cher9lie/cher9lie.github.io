@@ -63,6 +63,11 @@ body {
   min-width: 320px;
   overflow-x: clip;
   letter-spacing: -0.006em;
+  font-variant-numeric: proportional-nums;
+}
+
+:where(code, kbd, samp, time, .tabular-nums) {
+  font-variant-numeric: tabular-nums;
 }
 
 /* Global */

@@ -4,6 +4,7 @@ import { Image } from 'astro:assets'
 import { PostPreview } from 'astro-pure/components/pages'
 import { getBlogCollection, sortMDByDate } from 'astro-pure/server'
 import PageLayout from '@/layouts/BaseLayout.astro'
+import Wordmark from '@/components/brand/Wordmark.astro'
 import HomeGlobeBackground from '@/components/home/HomeGlobeBackground.astro'
 import config from '@/site-config'
 
@@ -29,7 +30,9 @@ if (!images[imagePath]) throw new Error(`Cannot find homepage image: ${imagePath
         fetchpriority='high'
       />
       <div>
-        <h1 id='home-title'>{config.author}</h1>
+        <h1 id='home-title' aria-label={config.author}>
+          <Wordmark class='home-wordmark' />
+        </h1>
         <p class='fields'>地理信息 · 软件 · 网络</p>
         <p class='lede'>一些技术文章、项目记录与长期笔记。</p>
         <nav class='intro-links' aria-label='个人链接'>
@@ -107,6 +110,11 @@ if (!images[imagePath]) throw new Error(`Cannot find homepage image: ${imagePath
     font-weight: 650;
     letter-spacing: -0.04em;
     line-height: 1.05;
+  }
+
+  :global(.home-wordmark) {
+    --wordmark-size: clamp(2rem, 4vw, 2.75rem);
+    --wordmark-weight: 650;
   }
 
   .fields {

@@ -1,0 +1,37 @@
+---
+import { cn } from 'astro-pure/utils'
+
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
+---
+
+<span class={cn('brand-wordmark', className)} aria-hidden='true'>
+  <span>cher</span><span class='brand-nine'>9</span><span>lie</span>
+</span>
+
+<style>
+  .brand-wordmark {
+    display: inline-flex;
+    align-items: baseline;
+    color: hsl(var(--foreground));
+    font-family: var(--font-interface);
+    font-size: var(--wordmark-size, 1rem);
+    font-weight: var(--wordmark-weight, 650);
+    font-variation-settings: 'wght' var(--wordmark-weight, 650);
+    letter-spacing: -0.045em;
+    line-height: 1;
+  }
+
+  .brand-nine {
+    margin-inline: 0.085em 0.035em;
+    color: hsl(var(--primary));
+    font-family: var(--font-pixel);
+    font-size: 0.64em;
+    font-weight: 400;
+    letter-spacing: 0;
+    transform: translateY(-0.48em);
+  }
+</style>

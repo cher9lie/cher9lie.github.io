@@ -1,6 +1,7 @@
 ---
 import config from 'virtual:config'
 
+import Wordmark from '../../../../src/components/brand/Wordmark.astro'
 import { Svg } from '../user'
 
 const pathname = Astro.url.pathname
@@ -20,7 +21,7 @@ const menuIcon = import('../../../../src/assets/icons/lucide/menu.svg?raw')
     href='/'
     aria-label={`${config.author} 首页`}
   >
-    <span>{config.author}</span>
+    <Wordmark />
   </a>
 
   <div class='flex items-center gap-x-2'>
@@ -174,6 +175,10 @@ const menuIcon = import('../../../../src/assets/icons/lucide/menu.svg?raw')
     transition:
       color 180ms ease,
       background-color 180ms ease;
+  }
+
+  .brand-link {
+    --wordmark-size: 1.02rem;
   }
   .nav-link:hover,
   .nav-link.is-active {

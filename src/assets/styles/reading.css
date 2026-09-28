@@ -1,13 +1,8 @@
 /* Reading system: scoped to blog posts and documentation pages. */
 :root {
-  --font-reading-ui:
-    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei',
-    'Noto Sans CJK SC', system-ui, sans-serif;
-  --font-reading-body:
-    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei',
-    'Noto Sans CJK SC', 'Source Han Sans SC', sans-serif;
-  --font-reading-mono:
-    'Cascadia Code', 'SFMono-Regular', 'JetBrains Mono', Consolas, 'Liberation Mono', monospace;
+  --font-reading-ui: var(--font-interface);
+  --font-reading-body: var(--font-interface);
+  --font-reading-mono: var(--font-mono);
   --reading-measure: 42.5rem;
   --reading-wide: 56rem;
 }
