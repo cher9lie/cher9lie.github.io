@@ -13,7 +13,7 @@ const menuIcon = import('../../../../src/assets/icons/lucide/menu.svg?raw')
 ---
 
 <header-component
-  class='group sticky top-3 z-50 max-md:z-30 mb-12 flex min-h-12 items-center justify-between rounded-2xl border border-transparent px-1.5 sm:top-4'
+  class='group sticky top-0 z-50 max-md:z-30 mb-12 flex min-h-14 items-center justify-between border-b border-transparent bg-background/0 px-0'
 >
   <a
     class='brand-link z-30 flex min-h-11 items-center px-2 text-[0.95rem] font-semibold tracking-tight'
@@ -27,7 +27,7 @@ const menuIcon = import('../../../../src/assets/icons/lucide/menu.svg?raw')
     {/* Menu links */}
     <div
       id='headerExpandContent'
-      class='end-0 start-0 top-14 grid border border-transparent group-[.expanded]:opacity-100 max-sm:absolute max-sm:opacity-0 max-sm:group-[.expanded]:rounded-2xl max-sm:group-[.expanded]:border-border max-sm:group-[.expanded]:px-3 max-sm:group-[.expanded]:py-2 sm:grid-rows-1'
+      class='end-0 start-0 top-14 grid border-y border-transparent group-[.expanded]:opacity-100 max-sm:absolute max-sm:opacity-0 max-sm:group-[.expanded]:px-4 max-sm:group-[.expanded]:py-3 sm:grid-rows-1'
     >
       <div class='flex flex-col items-center justify-center overflow-hidden sm:flex-row'>
         {
@@ -35,7 +35,7 @@ const menuIcon = import('../../../../src/assets/icons/lucide/menu.svg?raw')
             <a
               href={item.link}
               class:list={[
-                'nav-link w-full flex-none grow py-2.5 text-right text-sm sm:w-fit sm:px-3 sm:text-center',
+                'nav-link w-full flex-none grow py-2.5 text-left text-sm sm:w-fit sm:px-3 sm:text-center',
                 isActive(item.link) && 'is-active'
               ]}
               aria-current={isActive(item.link) ? 'page' : undefined}
@@ -146,25 +146,17 @@ const menuIcon = import('../../../../src/assets/icons/lucide/menu.svg?raw')
   header-component {
     transition:
       transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
-      margin-inline 260ms cubic-bezier(0.22, 1, 0.36, 1),
       border-color 180ms ease,
-      background-color 180ms ease,
-      box-shadow 180ms ease;
+      background-color 180ms ease;
 
     &.not-top {
-      border-color: hsl(var(--border) / 0.78);
-      background: hsl(var(--background) / 0.76);
-      -webkit-backdrop-filter: saturate(165%) blur(20px);
-      backdrop-filter: saturate(165%) blur(20px);
-      box-shadow: 0 8px 28px hsl(var(--shadow-color) / 0.06);
+      border-color: hsl(var(--border) / 0.7);
+      background: hsl(var(--background) / 0.9);
+      -webkit-backdrop-filter: saturate(140%) blur(14px);
+      backdrop-filter: saturate(140%) blur(14px);
     }
     &[data-show='false']:not(.expanded) {
       transform: translateY(-5rem);
-    }
-  }
-  @media (min-width: 800px) {
-    header-component.not-top {
-      margin-inline: 6%;
     }
   }
   @media (min-width: 640px) {
@@ -173,7 +165,7 @@ const menuIcon = import('../../../../src/assets/icons/lucide/menu.svg?raw')
     }
   }
   :global(.dark) header-component.not-top {
-    background: hsl(var(--background) / 0.72);
+    background: hsl(var(--background) / 0.86);
   }
 
   .nav-link {
@@ -203,18 +195,14 @@ const menuIcon = import('../../../../src/assets/icons/lucide/menu.svg?raw')
     height: 2.75rem;
     align-items: center;
     justify-content: center;
-    border: 1px solid transparent;
-    border-radius: 50%;
     color: hsl(var(--muted-foreground));
     transition:
       color 180ms ease,
-      background-color 180ms ease,
-      border-color 180ms ease;
+      transform 180ms ease;
   }
   .icon-button:hover {
-    border-color: hsl(var(--border) / 0.8);
     color: hsl(var(--foreground));
-    background: hsl(var(--muted) / 0.86);
+    transform: translateY(-1px);
   }
 
   :global(.ui-icon) {
@@ -234,17 +222,10 @@ const menuIcon = import('../../../../src/assets/icons/lucide/menu.svg?raw')
     }
     .expanded #headerExpandContent {
       grid-template-rows: 1fr;
-      background: hsl(var(--background) / 0.94);
-      -webkit-backdrop-filter: saturate(160%) blur(20px);
-      backdrop-filter: saturate(160%) blur(20px);
-      box-shadow: 0 18px 44px hsl(var(--shadow-color) / 0.14);
-    }
-    .expanded.not-top #headerExpandContent {
-      box-shadow:
-        rgb(255, 255, 255) 0px 0px 0px 0px,
-        rgba(24, 24, 27, 0.08) 0px 0px 0px 1px,
-        rgba(39, 39, 42, 0.08) 0px 10px 15px -3px,
-        rgba(39, 39, 42, 0.08) 0px 4px 6px -4px;
+      border-color: hsl(var(--border) / 0.72);
+      background: hsl(var(--background) / 0.97);
+      -webkit-backdrop-filter: saturate(140%) blur(14px);
+      backdrop-filter: saturate(140%) blur(14px);
     }
 
     /* header component after */

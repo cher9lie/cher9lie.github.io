@@ -41,12 +41,12 @@ const getAvatarSrc = (friend: friend) =>
 ---
 
 {title && <h2 id={friendList.id_name}>{title}</h2>}
-<div class='grid gap-3.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3' {...props}>
+<div class='grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3' {...props}>
   {
     friendList.link_list.length > 0 ? (
       shuffle(friendList.link_list).map((frd: friend) => (
         <a href={frd.link} target='_blank' class='no-underline'>
-          <div class='group relative h-full overflow-hidden rounded-2xl border bg-background px-2.5 py-1.5 transition-colors hover:bg-muted sm:px-4 sm:py-2'>
+          <div class='group relative h-full overflow-hidden border-b border-border/75 py-4 transition-colors hover:border-foreground/50'>
             <div class='relative z-10 flex h-full items-center gap-3'>
               {/* avatar */}
               <div class='relative h-14 w-14 min-w-14 overflow-hidden rounded-full'>
@@ -66,7 +66,7 @@ const getAvatarSrc = (friend: friend) =>
                       height='32'
                       viewBox='0 0 24 24'
                       fill='none'
-                      stroke-width='2.5'
+                      stroke-width='1.75'
                       stroke-linecap='round'
                       stroke-linejoin='round'
                       class='me-2 stroke-background'
@@ -92,22 +92,6 @@ const getAvatarSrc = (friend: friend) =>
                 <p class='my-0 line-clamp-1 text-xs text-muted-foreground'>{frd.intro}</p>
               </div>
             </div>
-            {/* avatar bg */}
-            <Image
-              class='absolute -start-2 top-0 z-0 my-0 h-full w-2/3 bg-white object-cover opacity-15'
-              src={getAvatarSrc(frd)}
-              height={80}
-              width={80}
-              alt='avatar bg'
-              loading='lazy'
-              style={{
-                maskImage: 'linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)',
-                msMaskImage:
-                  '-ms-linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)',
-                WebkitMaskImage:
-                  '-webkit-linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)'
-              }}
-            />
           </div>
         </a>
       ))

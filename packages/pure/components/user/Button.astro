@@ -17,9 +17,13 @@ const { as: Tag = 'a', class: className, title, href, variant = 'button', ...pro
 
 <Tag
   class={cn(
-    'group inline-flex min-h-9 items-center justify-center gap-x-1.5 rounded-lg border border-border/80 bg-muted/45 px-3 py-1.5 text-sm text-muted-foreground no-underline transition-colors duration-200 hover:bg-muted hover:text-foreground',
+    'group inline-flex min-h-8 items-center justify-center gap-x-1.5 border-b border-transparent px-0 py-1 text-sm text-muted-foreground no-underline transition-colors duration-200 hover:border-foreground/35 hover:text-foreground',
     !href && 'cursor-default',
-    variant === 'pill' && 'min-h-7 rounded-full px-2.5 py-1 text-xs',
+    Tag === 'button' &&
+      variant === 'button' &&
+      'cursor-pointer border-foreground/25 px-3 hover:border-foreground',
+    variant === 'pill' &&
+      'min-h-7 py-0.5 text-xs tracking-wide hover:border-primary/45 hover:text-primary',
     className
   )}
   href={href}
@@ -35,7 +39,7 @@ const { as: Tag = 'a', class: className, title, href, variant = 'button', ...pro
           height='16'
           viewBox='0 0 24 24'
           fill='none'
-          stroke-width='2.5'
+          stroke-width='1.75'
           stroke-linecap='round'
           stroke-linejoin='round'
           class='stroke-muted-foreground group-hover:stroke-primary'
@@ -67,7 +71,7 @@ const { as: Tag = 'a', class: className, title, href, variant = 'button', ...pro
           height='16'
           viewBox='0 0 24 24'
           fill='none'
-          stroke-width='2.5'
+          stroke-width='1.75'
           stroke-linecap='round'
           stroke-linejoin='round'
           class='stroke-muted-foreground group-hover:stroke-primary'

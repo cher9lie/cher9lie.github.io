@@ -31,12 +31,7 @@ const shares = {
 } as const
 ---
 
-<div
-  class={cn(
-    'relative flex flex-col gap-y-2 rounded-xl border px-3 sm:px-4 py-2 sm:py-3',
-    className
-  )}
->
+<div class={cn('relative flex flex-col gap-y-2 border-y border-border/75 py-3', className)}>
   <Icon class='absolute end-4 top-4 size-20 opacity-10' name='copyright' />
 
   {/* title & link */}
@@ -77,14 +72,14 @@ const shares = {
       <button
         id='copy-link'
         aria-label='Copy link'
-        class='group rounded-full bg-muted p-1 text-muted-foreground transition-colors hover:text-primary sm:p-1.5'
+        class='group p-1 text-muted-foreground transition-colors hover:text-primary sm:p-1.5'
       >
         <Icon class='size-5' name='link' />
       </button>
       <button
         id='get-qrcode'
         aria-label='Get QR code'
-        class='group rounded-full bg-muted p-1 text-muted-foreground transition-colors hover:text-primary sm:p-1.5'
+        class='group p-1 text-muted-foreground transition-colors hover:text-primary sm:p-1.5'
       >
         <Icon class='size-5' name='qrcode' />
       </button>
@@ -95,7 +90,7 @@ const shares = {
             target='_blank'
             id={`share-${share}`}
             aria-label={`Share to ${share}`}
-            class='group rounded-full bg-muted p-1 text-muted-foreground transition-colors hover:text-primary sm:p-1.5'
+            class='group p-1 text-muted-foreground transition-colors hover:text-primary sm:p-1.5'
           >
             <Icon class='size-5' name={share} />
           </a>
@@ -103,7 +98,7 @@ const shares = {
       }
     </div>
     <QRCode
-      class='absolute z-10 -mt-2 box-content max-h-0 max-w-44 overflow-hidden rounded-xl border bg-muted p-4 opacity-0 transition-all duration-300 ease-in-out'
+      class='absolute z-10 -mt-2 box-content max-h-0 max-w-44 overflow-hidden border bg-background p-4 opacity-0 transition-all duration-300 ease-in-out'
     />
   </div>
 </div>

@@ -36,7 +36,7 @@ async function fetchCount(item: SubstatsItem) {
 await Promise.all(stats.map(fetchCount))
 ---
 
-<div class='grid grid-cols-1 gap-3 rounded-xl border p-2 sm:grid-cols-2 sm:p-3'>
+<div class='grid grid-cols-1 gap-x-8 border-t border-border/75 sm:grid-cols-2'>
   {
     stats.map(({ link, platform, icon, color, count, text }) => (
       <a
@@ -45,7 +45,7 @@ await Promise.all(stats.map(fetchCount))
         target='_blank'
         rel='noopener noreferrer'
       >
-        <div class='flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 transition-all hover:border-border hover:bg-muted'>
+        <div class='flex items-center gap-3 border-b border-border/75 py-3 transition-colors group-hover:border-foreground/45'>
           {icon && <Icon name={icon as iconsType} color={color} />}
           <div class='flex-1 text-foreground transition-colors group-hover:text-primary'>
             {platform}
