@@ -36,6 +36,8 @@ comment: true
 
 <strong>波段</strong>不是一个无限窄的波长，而是传感器接收的一段波长范围。<strong>光谱响应函数</strong>描述仪器在这段范围内对不同波长的相对敏感程度；中心波长只是一种概括。<strong>半高全宽（FWHM）</strong>是响应曲线达到峰值一半时的宽度，常用于描述带宽。做物理校正时，仅凭“这是第 4 波段”并不能确定这些信息。
 
+这些响应曲线可以实际下载：[Copernicus 的 MSI 文档目录](https://sentiwiki.copernicus.eu/web/s2-documents)保存了各版文件，其中 [2024 年 4.0 版 XLSX](https://sentiwiki.copernicus.eu/__attachments/a_ece6183b6698587e7ecd9804974bece3d82e39e151aa5aeca9d8fd95e1f1558c/COPE-GSEG-EOPG-TN-15-0007%20-%20Sentinel-2%20Spectral%20Response%20Functions%202024%20-%204.0.xlsx)包含 Sentinel‑2A、2B、2C 的逐波长响应。目录还提供后续版本；应按平台和处理版本选择，不能把最新文件无条件套在历史产品上。
+
 ### 1.2 像元与四种分辨率
 
 影像通常是由行、列和波段组成的<strong>栅格</strong>。<strong>像元</strong>是网格上的一个采样单元，其数值代表一个地面空间足迹内、某个波段接收到的信号。一个像元里可能同时有树、土壤和道路，这叫<strong>混合像元</strong>。它不会因为做了大气校正，就自动拆成三种纯地物。
@@ -99,7 +101,31 @@ $$
 
 W 是功率单位瓦特；$\mathrm{m^{-2}}$ 对应单位投影面积；sr 是<strong>球面度</strong>，即立体角单位，用来区分不同方向；$\mathrm{\mu m^{-1}}$ 表示单位波长间隔。它并不是“像元有多亮”的无单位评分。
 
+更严格地说，令 $\Phi$ 为辐射功率、$A$ 为面积、$\Omega$ 为立体角、$\theta$ 为光线与表面法线的夹角，则<strong>光谱辐亮度</strong>定义为
+
+$$
+L_\lambda=\frac{\mathrm d^3\Phi}{\cos\theta\,\mathrm dA\,\mathrm d\Omega\,\mathrm d\lambda}.
+$$
+
+这里的 $\mathrm d$ 表示取很小的面积、方向范围和波长间隔；$\cos\theta\,\mathrm dA$ 是垂直于光线的投影面积。这一定义解释了为什么辐亮度的单位同时包含面积、方向和波长。[NIST《辐射传感器定标推荐规范》§1.2.1、§1.3](https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf#page=13)给出辐亮度与光谱密度的定义。
+
 <strong>辐照度</strong>（irradiance，$E$）描述落到表面单位面积上的辐射功率。它把入射方向的贡献积分起来，所以不像辐亮度那样保留 $\mathrm{sr^{-1}}$。两者名字相近，但一个强调方向上的信号，一个强调表面收到的能量。
+
+在同一波长处，二者的关系为
+
+$$
+E_\lambda=\int_{\Omega^+}L_{\lambda,i}(\theta_i,\varphi_i)\cos\theta_i\,\mathrm d\Omega_i.
+$$
+
+$\Omega^+$ 是表面上方的入射半球；下标 $i$ 表示入射，$\varphi_i$ 是方位角，$\mathrm d\Omega_i=\sin\theta_i\,\mathrm d\theta_i\,\mathrm d\varphi_i$。积分的意思是把所有入射方向的贡献相加，斜着照到表面的光按余弦权重计入。于是 $E_\lambda$ 的单位是 $\mathrm{W\,m^{-2}\,\mu m^{-1}}$。[NIST 的辐射量定义与传输关系](https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf#page=15)可用来核对这两类量。
+
+实际波段接收的是一段光谱。若 $R_b(\lambda)$ 表示第 $b$ 个波段的相对响应，可以定义响应加权的平均光谱辐亮度：
+
+$$
+\overline L_b=\frac{\int L_\lambda(\lambda)R_b(\lambda)\,\mathrm d\lambda}{\int R_b(\lambda)\,\mathrm d\lambda}.
+$$
+
+它说明波段值并不等于中心波长处的单点值。这个式子是解释用的归一化定义，具体产品仍须遵循自己的定标约定；涉及辐亮度与太阳辐照度时，也必须使用相容的波段响应。[NIST 光谱辐亮度定标手册](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nbsspecialpublication250-1.pdf)说明了响应函数如何进入测量积分。
 
 ### 2.3 反射率与方向性
 
@@ -108,6 +134,25 @@ W 是功率单位瓦特；$\mathrm{m^{-2}}$ 对应单位投影面积；sr 是<st
 卫星只从有限方向观察，不会收集表面向所有方向反射的能量。因此遥感产品中的“反射率”还带有观测方向和模型约定。常用的简化是假设表面为<strong>朗伯体</strong>：反射辐亮度不随观察方向改变，此时有 $L=E\rho/\pi$。真实树冠、水面、雪地和坡面通常不完全符合这一假设。
 
 <strong>BRDF（双向反射分布函数）</strong>描述反射如何随入射方向和观察方向变化。大气校正后，同一片森林在不同太阳、传感器角度下仍可能有不同测值，原因之一就在这里。
+
+在给定波长、入射方向与出射方向下，它的定义为
+
+$$
+f_r(\theta_i,\varphi_i;\theta_r,\varphi_r;\lambda)
+=\frac{\mathrm dL_{\lambda,r}}{\mathrm dE_{\lambda,i}}.
+$$
+
+下标 $r$ 表示反射；分子是该入射贡献产生的反射辐亮度，分母是相应入射辐照度。BRDF 的单位为 $\mathrm{sr^{-1}}$，所以<strong>BRDF 本身不是无量纲反射率</strong>。[NIST 的 BRDF 定义](https://pages.nist.gov/ScatterMIST/docs/Introduction.htm)给出相应的功率、角度与立体角关系。
+
+对于从一个方向入射的光，向整个出射半球反射的比例称为<strong>方向—半球反射率</strong>：
+
+$$
+\rho_{dh}(\theta_i,\varphi_i;\lambda)
+=\int_{\Omega^+}f_r(\theta_i,\varphi_i;\theta_r,\varphi_r;\lambda)
+\cos\theta_r\,\mathrm d\Omega_r.
+$$
+
+若表面是朗伯体，$f_r=\rho_{dh}/\pi$，因为半球上的 $\int\cos\theta_r\,\mathrm d\Omega_r=\pi$；这正是前面 $L=E\rho/\pi$ 的来由。[NIST 朗伯反射模型](https://pages.nist.gov/SCATMECH/docs/lambert.htm)采用这一关系。在定向照明约定下，常定义<strong>双向反射因子</strong> $\mathrm{BRF}=\pi f_r$，表示表面比同照明下理想白色朗伯面在该方向亮多少。方向性明显时，它可以超过 1，而被动表面向全部方向反射的总功率比例不能超过 1；解释卫星产品异常值时，要先区分这些量。
 
 ## 3. TOA 与 BOA：同叫反射率，位置不同
 
@@ -157,6 +202,22 @@ $L_{path}$ 是路径辐亮度；$T_{\uparrow}$ 是地表至传感器的上行透
 *图 2：AI 生成的邻近效应示意。橙色折线表示亮岸信号在大气中散射后进入传感器，淡蓝线表示水体方向的信号。为了易读，散射位置和卫星被放大；线条不代表可见激光，也不代表散射强度的计算结果。*
 
 <strong>气溶胶光学厚度</strong>（AOT，也常称 AOD）是沿大气柱积分的消光程度，是无量纲量，必须同时说明波长。数值越大，直接穿过该柱的光通常衰减越强。它不是空气质量指数，也不是地面颗粒物浓度。
+
+用 $\beta_{ext,a}(\lambda,z)$ 表示高度 $z$ 处气溶胶的<strong>消光系数</strong>，即吸收与散射使直射光衰减的强度，垂直柱的 AOT 定义为
+
+$$
+\tau_a(\lambda)=\int_{z_0}^{z_{top}}\beta_{ext,a}(\lambda,z)\,\mathrm dz.
+$$
+
+$z_0$、$z_{top}$ 分别为柱的下界和上界；若系数用 $\mathrm{km^{-1}}$，高度就用 km，积分后没有单位。[NOAA 对分层消光与光学厚度的说明](https://gml.noaa.gov/grad/agasp2.html)可核对这一含义。
+
+对于没有散射补入的直射束，Beer–Lambert 衰减关系给出
+
+$$
+T_{dir}(\lambda)=e^{-\tau_{path}(\lambda)}.
+$$
+
+这里 $\tau_{path}$ 是沿实际光路的<strong>总</strong>消光光学厚度。若只研究气溶胶这一项，在平行平面大气近似下，其斜程光学厚度为 $\tau_{path,a}\approx\tau_a/\cos\theta$，$\theta$ 是光路天顶角；接近地平线时，这个简单近似不可靠。例如垂直气溶胶 AOT 为 0.2，仅该项对应的直射透过率为 $e^{-0.2}\approx0.819$。真实大气还含气体吸收、分子散射，地表也接收散射光，因而<strong>不能把 $e^{-\tau_a}$ 直接当作完整大气校正系数</strong>。[NOAA SURFRAD 的 AOD 与 Beer 定律说明](https://www.gml.noaa.gov/grad/surfrad/aod/)解释了直射束测量中这些贡献的分离。
 
 <strong>能见度</strong>以距离表达近地面大气对目标辨识的影响，常用于模型的气溶胶负载参数化。它和整层大气的 AOT 不可直接当作同一个量。
 
@@ -255,6 +316,15 @@ $$
 
 但真实大气对不同波长的影响不同，且路径辐射带来<strong>加性贡献</strong>。即便两个波段都加同一个 $c$，分母也增加 $2c$，比值就改变了。
 
+把这个过程写全，令 $N$、$R$ 分别为近红外与红光反射率，则
+
+$$
+\mathrm{NDVI}'=\frac{(N+c)-(R+c)}{(N+c)+(R+c)}
+=\frac{N-R}{N+R+2c}.
+$$
+
+在 $N>R\ge0$、$c>0$ 的教学条件下，分子不变、分母增大，因此 NDVI 降低。实际大气贡献通常并非两个波段相同，这里只是隔离“共同加性项”的影响；它是本文的代数推演，不是校正算法。NDVI 的基础定义可核对 [USGS 官方说明](https://www.usgs.gov/landsat-missions/landsat-normalized-difference-vegetation-index)。
+
 做一个教学例子：地表红光反射率为 0.10、近红外为 0.50，NDVI 约为 0.667。若观测受到不同的加性贡献，红光变成 0.16、近红外变成 0.52，则 NDVI 约为 0.529。这个例子只解释比值为什么不免疫，不代表某景影像的大气参数。
 
 文件编码的 offset 也会破坏“直接用 DN 算比值”的做法。只有两个波段同尺度、<strong>无加性偏移</strong>且特殊值已排除等条件满足时，共同乘法缩放才能抵消。跨时间、跨传感器定量比较应使用相容产品、正确解码和质量控制；不能仅用“NDVI 是比值”跳过这些步骤。
@@ -273,6 +343,14 @@ L=\frac{A\rho}{1-\rho_eS}
 $$
 
 这里 $L$ 为传感器辐亮度，$\rho$ 为目标像元反射率，$\rho_e$ 为周围区域的平均反射率；$L_a$ 为路径辐亮度，$S$ 为大气的球面反照率，$A,B$ 是与大气、几何有关的系数。球面反照率在这里描述大气将来自下方的辐射再向下散射的能力；分母体现地表与大气间的多次反射。第二项表达周围地物的贡献。[FLAASH 科学背景](https://www.nv5geospatialsoftware.com/docs/backgroundflaash.html)讨论了这个近似的假设。
+
+如果模型系数与周围反射率 $\rho_e$ 已经估计出来，且 $A\ne0$、$1-\rho_eS\ne0$，上式可整理为
+
+$$
+\rho=\frac{(L-L_a)(1-\rho_eS)-B\rho_e}{A}.
+$$
+
+这个代数式让“反演”更具体：先扣除路径辐射，再处理多次反射与周围贡献，最后恢复目标反射率。它不代表 FLAASH 只做一次这样的运算；原算法还需用 MODTRAN 求系数、估计水汽和区域平均反射率等。系数、$\rho_e$ 或单位不正确，都能使结果偏离地表性质。
 
 不需要先会推导这个式子才能运行工具，但应理解：反演依赖假设。普通 FLAASH 采用反射太阳光谱范围内的模型，不是万能的热红外温度校正工具，也不能保证在每一种水体、气溶胶和地形条件下“精度最高”。
 
@@ -312,6 +390,14 @@ Sentinel‑2 的 B9 位于约 945 nm 的水汽吸收区域，设计带宽约 20 
 对具体 ENVI 版本，只有确认 MSI 波段定义、自定义参考／吸收配置和相应方法有效时，才使用其支持的水汽反演。<strong>更稳妥的默认并不是强行选 Yes。</strong>Water Retrieval 为 No 时仍使用模型中的水汽柱，不是忽略水汽吸收。Sen2Cor 能利用 MSI 信息估计水汽，也不代表 FLAASH 在任意配置下采用了同一算法。
 
 另一个容易混淆的选项是 <strong>MODTRAN 光谱分辨率</strong>。它以 $\mathrm{cm^{-1}}$ 表示模型在波数坐标上的计算精细程度；波数是波长的倒数。这与传感器的 nm 带宽、地面像元的 m 大小都不同。把模型算得更细会增加计算量，不能补回 MSI 没有观测到的窄波段信息。邻近效应开关也是模型设置，应根据场景与验证结果选择，不是去除混合像元的按钮。
+
+这里采用光谱学中的波数 $\widetilde\nu$，不是含 $2\pi$ 的角波数；单位换算为
+
+$$
+\widetilde\nu\,[\mathrm{cm^{-1}}]=\frac{10^4}{\lambda\,[\mu\mathrm m]}.
+$$
+
+例如 $1\ \mu\mathrm m$ 对应 $10000\ \mathrm{cm^{-1}}$，$2\ \mu\mathrm m$ 对应 $5000\ \mathrm{cm^{-1}}$。因倒数关系，相同的波数间隔在不同波长处不对应相同的 nm 间隔。[FLAASH 官方文档](https://www.nv5geospatialsoftware.com/docs/FLAASH.html)列出 MODTRAN Resolution 的波数单位与选项。
 
 ### 9.4 辐亮度单位与 Input Scale
 
@@ -516,6 +602,10 @@ for filename in ["B04.tif", "B08.tif", "SCL.tif", "granule_metadata.xml"]:
 | 材料 | 本文用它核对什么 | 原文件／官方页面 |
 | --- | --- | --- |
 | Sentinel‑2 产品规范 15.0，2024‑04‑30 | L1C 物理量与量化字段，第 397 页；L2A 元数据，第 439 页 | [PDF 下载](https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0) |
+| NIST Handbook 152 与光谱辐亮度定标手册 | 辐亮度、辐照度、光谱密度与响应积分 | [Handbook 152 PDF](https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf) · [光谱定标 PDF](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nbsspecialpublication250-1.pdf) |
+| NIST MIST／SCATMECH | BRDF 的量纲、方向性与朗伯反射模型 | [BRDF 定义](https://pages.nist.gov/ScatterMIST/docs/Introduction.htm) · [朗伯模型](https://pages.nist.gov/SCATMECH/docs/lambert.htm) |
+| Copernicus MSI 光谱响应文件 | 真实逐波长响应、卫星平台及文件版本 | [官方文件目录](https://sentiwiki.copernicus.eu/web/s2-documents) · [4.0 版 XLSX 下载](https://sentiwiki.copernicus.eu/__attachments/a_ece6183b6698587e7ecd9804974bece3d82e39e151aa5aeca9d8fd95e1f1558c/COPE-GSEG-EOPG-TN-15-0007%20-%20Sentinel-2%20Spectral%20Response%20Functions%202024%20-%204.0.xlsx) |
+| NOAA 消光与 SURFRAD AOD 说明 | 气溶胶垂直柱积分、直射衰减及其他大气贡献 | [消光说明](https://gml.noaa.gov/grad/agasp2.html) · [SURFRAD AOD](https://www.gml.noaa.gov/grad/surfrad/aod/) |
 | Sentinel‑2 L2A 产品定义 4.9，2021‑11‑15 | BOA、分类、AOT／水汽及 B10，第 13–14 页 | [PDF 下载](https://step.esa.int/thirdparties/sen2cor/2.10.0/docs/S2-PDGS-MPC-L2A-PDD-V14.9-v4.9.pdf) |
 | ENVI Atmospheric Correction Module User’s Guide，经典版 | BIL／BIP 与输入条件，第 12 页；单位，第 20 页；水汽条件，第 22 页 | [PDF 下载](https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf) |
 | 当前 ENVI FLAASH 文档，页面版本 6.3 | 现代界面、自动定标、Input Scale、水汽与波段要求 | [操作文档](https://www.nv5geospatialsoftware.com/docs/FLAASH.html) |

@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-05",
+  "article": "src/content/blog/flaash-atmospheric-correction-concepts/index.md",
+  "reviewer": "Codex; three sequential self-editing passes",
+  "passes": [
+    {
+      "pass": 1,
+      "focus": "Scientific definitions and mathematical assumptions",
+      "checked": [
+        "Spectral radiance has projected-area, solid-angle and wavelength factors; irradiance integrates incident radiance with cosine weighting",
+        "Band-weighted mean is explicitly a normalized explanatory definition, not a universal file decoding rule",
+        "BRDF has inverse-steradian units; directional-hemispherical reflectance integrates outgoing directions",
+        "BRF = pi times BRDF is stated for directional illumination; Lambertian hemispherical cosine integral is pi",
+        "AOT integrates aerosol extinction vertically; Beer-Lambert direct-beam attenuation uses total path optical depth",
+        "Slant aerosol depth approximation assumes plane-parallel atmosphere and excludes near-horizon use",
+        "NDVI additive-bias equation is labeled an algebraic example, distinct from atmospheric inversion",
+        "FLAASH inverse expression requires fixed estimated environmental reflectance and nonzero denominators",
+        "Spectroscopic wavenumber is distinguished from angular wavenumber"
+      ],
+      "numerical_checks": {
+        "flaash_inverse": "A=2, B=0.4, S=0.1, rho_e=0.3, L_a=0.1, L=617/970 gives rho=1/5 exactly using rational arithmetic",
+        "ndvi": "N=0.5, R=0.1 gives 2/3; adding c=0.1 to both gives 1/2 exactly",
+        "radiance_unit_factor": 0.1,
+        "exp_minus_0_2": 0.8187307530779818
+      }
+    },
+    {
+      "pass": 2,
+      "focus": "Readability, definitions and traceable sources",
+      "checked": [
+        "New symbols are defined next to equations, with units and applicable assumptions",
+        "Definitions continue the existing pixel-to-physical-quantity-to-model explanation",
+        "Direct source links accompany the relevant paragraphs, with downloadable NIST PDFs and MSI response XLSX",
+        "Historical response version is explicitly identified and not presented as applicable to every processing baseline",
+        "No new claims of an ENVI correction experiment or independent reviewers"
+      ],
+      "correction": "Made directional illumination explicit for the BRF relation"
+    },
+    {
+      "pass": 3,
+      "focus": "Rendered equations, file availability and publishing scope",
+      "checked": [
+        "Full npm build completed successfully",
+        "Astro diagnostics: 140 files, zero errors, warnings or hints",
+        "21 display equations in rendered HTML match Markdown display-equation count; zero KaTeX error spans",
+        "All eight newly cited source URLs appear in built HTML and return HTTP 200",
+        "Both NIST files have PDF signatures; MSI response XLSX has ZIP-container signature",
+        "Download byte counts and hashes saved in formula-reference-checks.json",
+        "Only the revised article and its formula verification materials included in the commit"
+      ],
+      "limitations": [
+        "No ENVI processing or radiometric accuracy experiment performed",
+        "New formula rendering verified in generated HTML; no new mobile viewport inspection"
+      ]
+    }
+  ]
+}
