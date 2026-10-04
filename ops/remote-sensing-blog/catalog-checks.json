@@ -1,0 +1,27 @@
+[
+  {
+    "url": "https://catalogue.dataspace.copernicus.eu/odata/v1/Products%282a5995bb-dafc-4e69-b1ba-5b10aab579bc%29",
+    "status": 200,
+    "bytes": 1835
+  },
+  {
+    "url": "https://catalogue.dataspace.copernicus.eu/odata/v1/Products%281ddbbbb3-f0c0-4380-98df-b57a0becc0c7%29",
+    "status": 200,
+    "bytes": 1903
+  },
+  {
+    "url": "https://download.dataspace.copernicus.eu/odata/v1/Products%282a5995bb-dafc-4e69-b1ba-5b10aab579bc%29/Nodes%28S2A_MSIL1C_20200915T101031_N0500_R022_T33TVM_20230415T174104.SAFE%29/Nodes%28GRANULE%29/Nodes%28L1C_T33TVM_A027332_20200915T101550%29/Nodes%28IMG_DATA%29/Nodes",
+    "status": 200,
+    "bytes": 6012
+  },
+  {
+    "url": "https://download.dataspace.copernicus.eu/odata/v1/Products%282a5995bb-dafc-4e69-b1ba-5b10aab579bc%29/Nodes%28S2A_MSIL1C_20200915T101031_N0500_R022_T33TVM_20230415T174104.SAFE%29/Nodes%28GRANULE%29/Nodes%28L1C_T33TVM_A027332_20200915T101550%29/Nodes",
+    "status": 200,
+    "bytes": 1382
+  },
+  {
+    "url": "https://download.dataspace.copernicus.eu/odata/v1/Products%282a5995bb-dafc-4e69-b1ba-5b10aab579bc%29/Nodes%28S2A_MSIL1C_20200915T101031_N0500_R022_T33TVM_20230415T174104.SAFE%29/Nodes",
+    "status": 200,
+    "bytes": 2499
+  }
+]

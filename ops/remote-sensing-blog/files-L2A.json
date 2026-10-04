@@ -1,0 +1,493 @@
+{
+  "@odata.mediaContentType": "application/octet-stream",
+  "Id": "1ddbbbb3-f0c0-4380-98df-b57a0becc0c7",
+  "Name": "S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE",
+  "ContentType": "application/octet-stream",
+  "ContentLength": 396257929,
+  "OriginDate": "2023-08-14T07:11:18.691000Z",
+  "PublicationDate": "2023-08-14T07:21:39.461186Z",
+  "ModificationDate": "2026-09-16T11:02:07.618719Z",
+  "Online": true,
+  "EvictionDate": "9999-12-31T23:59:59.999999Z",
+  "S3Path": "/eodata/Sentinel-2/MSI/L2A_N0500/2020/09/15/S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE",
+  "Checksum": [
+    {
+      "Value": "73a0f10938afd556602a790bd51551dc",
+      "Algorithm": "MD5",
+      "ChecksumDate": "2026-07-18T10:41:20.657465Z"
+    },
+    {
+      "Value": "73a5c9b2faf70d3338d9daf181bbada1e24faacbf5dd37a42e6cef9aa95e0554",
+      "Algorithm": "BLAKE3",
+      "ChecksumDate": "2026-07-18T10:41:21.369107Z"
+    }
+  ],
+  "ContentDate": {
+    "Start": "2020-09-15T10:10:31.025000Z",
+    "End": "2020-09-15T10:10:31.025000Z"
+  },
+  "Footprint": "geography'SRID=4326;POLYGON ((14.315601627468988 46.94942701499894, 13.68543924708906 46.946162221065514, 13.70899987025029 45.958258688896564, 13.889894084713303 45.95918080308389, 13.94747637726357 46.09165558953083, 14.007337716629769 46.23750300687105, 14.071119813937798 46.38231256289745, 14.133638244625512 46.52742603300412, 14.196363596572246 46.67256798766231, 14.258554323800515 46.81780364045949, 14.315601627468988 46.94942701499894))'",
+  "GeoFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          14.315601627468988,
+          46.94942701499894
+        ],
+        [
+          13.68543924708906,
+          46.946162221065514
+        ],
+        [
+          13.70899987025029,
+          45.958258688896564
+        ],
+        [
+          13.889894084713303,
+          45.95918080308389
+        ],
+        [
+          13.94747637726357,
+          46.09165558953083
+        ],
+        [
+          14.007337716629769,
+          46.23750300687105
+        ],
+        [
+          14.071119813937798,
+          46.38231256289745
+        ],
+        [
+          14.133638244625512,
+          46.52742603300412
+        ],
+        [
+          14.196363596572246,
+          46.67256798766231
+        ],
+        [
+          14.258554323800515,
+          46.81780364045949
+        ],
+        [
+          14.315601627468988,
+          46.94942701499894
+        ]
+      ]
+    ]
+  },
+  "Attributes": [
+    {
+      "@odata.type": "#OData.CSC.StringAttribute",
+      "Name": "origin",
+      "Value": "ESA",
+      "ValueType": "String"
+    },
+    {
+      "@odata.type": "#OData.CSC.StringAttribute",
+      "Name": "tileId",
+      "Value": "33TVM",
+      "ValueType": "String"
+    },
+    {
+      "@odata.type": "#OData.CSC.DoubleAttribute",
+      "Name": "cloudCover",
+      "Value": 7.109072,
+      "ValueType": "Double"
+    },
+    {
+      "@odata.type": "#OData.CSC.StringAttribute",
+      "Name": "datastripId",
+      "Value": "S2A_OPER_MSI_L2A_DS_S2RP_20230416T031135_S20200915T101550_N05.00",
+      "ValueType": "String"
+    },
+    {
+      "@odata.type": "#OData.CSC.IntegerAttribute",
+      "Name": "orbitNumber",
+      "Value": 27332,
+      "ValueType": "Integer"
+    },
+    {
+      "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+      "Name": "processingDate",
+      "Value": "2023-04-16T03:11:35.000000Z",
+      "ValueType": "DateTimeOffset"
+    },
+    {
+      "@odata.type": "#OData.CSC.StringAttribute",
+      "Name": "productGroupId",
+      "Value": "GS2A_20200915T101031_027332_N05.00",
+      "ValueType": "String"
+    },
+    {
+      "@odata.type": "#OData.CSC.StringAttribute",
+      "Name": "operationalMode",
+      "Value": "INS-NOBS",
+      "ValueType": "String"
+    },
+    {
+      "@odata.type": "#OData.CSC.StringAttribute",
+      "Name": "processingLevel",
+      "Value": "S2MSI2A",
+      "ValueType": "String"
+    },
+    {
+      "@odata.type": "#OData.CSC.StringAttribute",
+      "Name": "processorVersion",
+      "Value": "05.00",
+      "ValueType": "String"
+    },
+    {
+      "@odata.type": "#OData.CSC.StringAttribute",
+      "Name": "granuleIdentifier",
+      "Value": "S2A_OPER_MSI_L2A_TL_S2RP_20230416T031135_A027332_T33TVM_N05.00",
+      "ValueType": "String"
+    },
+    {
+      "@odata.type": "#OData.CSC.StringAttribute",
+      "Name": "platformShortName",
+      "Value": "SENTINEL-2",
+      "ValueType": "String"
+    },
+    {
+      "@odata.type": "#OData.CSC.StringAttribute",
+      "Name": "instrumentShortName",
+      "Value": "MSI",
+      "ValueType": "String"
+    },
+    {
+      "@odata.type": "#OData.CSC.IntegerAttribute",
+      "Name": "relativeOrbitNumber",
+      "Value": 22,
+      "ValueType": "Integer"
+    },
+    {
+      "@odata.type": "#OData.CSC.StringAttribute",
+      "Name": "platformSerialIdentifier",
+      "Value": "A",
+      "ValueType": "String"
+    },
+    {
+      "@odata.type": "#OData.CSC.StringAttribute",
+      "Name": "productType",
+      "Value": "S2MSI2A",
+      "ValueType": "String"
+    },
+    {
+      "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+      "Name": "beginningDateTime",
+      "Value": "2020-09-15T10:10:31.025000Z",
+      "ValueType": "DateTimeOffset"
+    },
+    {
+      "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+      "Name": "endingDateTime",
+      "Value": "2020-09-15T10:10:31.025000Z",
+      "ValueType": "DateTimeOffset"
+    }
+  ],
+  "files": [
+    {
+      "name": "banner_3.png",
+      "bytes": 44797,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(HTML)/Nodes(banner_3.png)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(HTML)/Nodes"
+    },
+    {
+      "name": "star_bg.jpg",
+      "bytes": 1890,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(HTML)/Nodes(star_bg.jpg)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(HTML)/Nodes"
+    },
+    {
+      "name": "UserProduct_index.html",
+      "bytes": 8601,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(HTML)/Nodes(UserProduct_index.html)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(HTML)/Nodes"
+    },
+    {
+      "name": "UserProduct_index.xsl",
+      "bytes": 10034,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(HTML)/Nodes(UserProduct_index.xsl)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(HTML)/Nodes"
+    },
+    {
+      "name": "banner_1.png",
+      "bytes": 42377,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(HTML)/Nodes(banner_1.png)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(HTML)/Nodes"
+    },
+    {
+      "name": "banner_2.png",
+      "bytes": 58643,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(HTML)/Nodes(banner_2.png)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(HTML)/Nodes"
+    },
+    {
+      "name": "INSPIRE.xml",
+      "bytes": 18869,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(INSPIRE.xml)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes"
+    },
+    {
+      "name": "MTD_MSIL2A.xml",
+      "bytes": 55207,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(MTD_MSIL2A.xml)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes"
+    },
+    {
+      "name": "S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135-ql.jpg",
+      "bytes": 15723,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135-ql.jpg)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes"
+    },
+    {
+      "name": "manifest.safe",
+      "bytes": 69117,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(manifest.safe)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes"
+    },
+    {
+      "name": "S2_PDI_Level-2A_Datastrip_Metadata.xsd",
+      "bytes": 1370,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(rep_info)/Nodes(S2_PDI_Level-2A_Datastrip_Metadata.xsd)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(rep_info)/Nodes"
+    },
+    {
+      "name": "S2_PDI_Level-2A_Tile_Metadata.xsd",
+      "bytes": 929,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(rep_info)/Nodes(S2_PDI_Level-2A_Tile_Metadata.xsd)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(rep_info)/Nodes"
+    },
+    {
+      "name": "S2_User_Product_Level-2A_Metadata.xsd",
+      "bytes": 1039,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(rep_info)/Nodes(S2_User_Product_Level-2A_Metadata.xsd)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(rep_info)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B11_60m.jp2",
+      "bytes": 1531580,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes(T33TVM_20200915T101031_B11_60m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B01_60m.jp2",
+      "bytes": 1186625,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes(T33TVM_20200915T101031_B01_60m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B03_60m.jp2",
+      "bytes": 1362896,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes(T33TVM_20200915T101031_B03_60m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B05_60m.jp2",
+      "bytes": 1444132,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes(T33TVM_20200915T101031_B05_60m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B06_60m.jp2",
+      "bytes": 1564816,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes(T33TVM_20200915T101031_B06_60m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B07_60m.jp2",
+      "bytes": 1589236,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes(T33TVM_20200915T101031_B07_60m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_AOT_60m.jp2",
+      "bytes": 253642,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes(T33TVM_20200915T101031_AOT_60m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B09_60m.jp2",
+      "bytes": 1565040,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes(T33TVM_20200915T101031_B09_60m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B12_60m.jp2",
+      "bytes": 1455088,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes(T33TVM_20200915T101031_B12_60m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B02_60m.jp2",
+      "bytes": 1301928,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes(T33TVM_20200915T101031_B02_60m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_WVP_60m.jp2",
+      "bytes": 1325259,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes(T33TVM_20200915T101031_WVP_60m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B04_60m.jp2",
+      "bytes": 1353501,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes(T33TVM_20200915T101031_B04_60m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B8A_60m.jp2",
+      "bytes": 1603886,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes(T33TVM_20200915T101031_B8A_60m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_SCL_60m.jp2",
+      "bytes": 169736,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes(T33TVM_20200915T101031_SCL_60m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_TCI_60m.jp2",
+      "bytes": 1720491,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes(T33TVM_20200915T101031_TCI_60m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R60m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B03_10m.jp2",
+      "bytes": 34310723,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R10m)/Nodes(T33TVM_20200915T101031_B03_10m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R10m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B04_10m.jp2",
+      "bytes": 33051094,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R10m)/Nodes(T33TVM_20200915T101031_B04_10m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R10m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B08_10m.jp2",
+      "bytes": 42688837,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R10m)/Nodes(T33TVM_20200915T101031_B08_10m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R10m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_TCI_10m.jp2",
+      "bytes": 51363202,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R10m)/Nodes(T33TVM_20200915T101031_TCI_10m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R10m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_WVP_10m.jp2",
+      "bytes": 29161376,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R10m)/Nodes(T33TVM_20200915T101031_WVP_10m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R10m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_AOT_10m.jp2",
+      "bytes": 1008798,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R10m)/Nodes(T33TVM_20200915T101031_AOT_10m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R10m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B02_10m.jp2",
+      "bytes": 32504431,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R10m)/Nodes(T33TVM_20200915T101031_B02_10m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R10m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B01_20m.jp2",
+      "bytes": 5996401,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes(T33TVM_20200915T101031_B01_20m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B12_20m.jp2",
+      "bytes": 10014152,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes(T33TVM_20200915T101031_B12_20m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_TCI_20m.jp2",
+      "bytes": 13747161,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes(T33TVM_20200915T101031_TCI_20m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B02_20m.jp2",
+      "bytes": 9386239,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes(T33TVM_20200915T101031_B02_20m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B03_20m.jp2",
+      "bytes": 9979896,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes(T33TVM_20200915T101031_B03_20m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B05_20m.jp2",
+      "bytes": 10336826,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes(T33TVM_20200915T101031_B05_20m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B07_20m.jp2",
+      "bytes": 11762857,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes(T33TVM_20200915T101031_B07_20m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_SCL_20m.jp2",
+      "bytes": 666342,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes(T33TVM_20200915T101031_SCL_20m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_WVP_20m.jp2",
+      "bytes": 9188017,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes(T33TVM_20200915T101031_WVP_20m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_AOT_20m.jp2",
+      "bytes": 839044,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes(T33TVM_20200915T101031_AOT_20m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B8A_20m.jp2",
+      "bytes": 11847581,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes(T33TVM_20200915T101031_B8A_20m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B04_20m.jp2",
+      "bytes": 9784926,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes(T33TVM_20200915T101031_B04_20m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B06_20m.jp2",
+      "bytes": 11530004,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes(T33TVM_20200915T101031_B06_20m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes"
+    },
+    {
+      "name": "T33TVM_20200915T101031_B11_20m.jp2",
+      "bytes": 10643700,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes(T33TVM_20200915T101031_B11_20m.jp2)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(IMG_DATA)/Nodes(R20m)/Nodes"
+    },
+    {
+      "name": "MTD_TL.xml",
+      "bytes": 194266,
+      "download": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes(MTD_TL.xml)/$value",
+      "nodes": "https://download.dataspace.copernicus.eu/odata/v1/Products(1ddbbbb3-f0c0-4380-98df-b57a0becc0c7)/Nodes(S2A_MSIL2A_20200915T101031_N0500_R022_T33TVM_20230416T031135.SAFE)/Nodes(GRANULE)/Nodes(L2A_T33TVM_A027332_20200915T101550)/Nodes"
+    }
+  ]
+}

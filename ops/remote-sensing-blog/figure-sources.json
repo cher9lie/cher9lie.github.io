@@ -1,0 +1,106 @@
+[
+  {
+    "file": "manual-flaash-units.png",
+    "source": "envi-flaash",
+    "pdf_page": 20,
+    "regions": [
+      [
+        "卫星高度：km",
+        [
+          185.920474,
+          198.35090000000002,
+          285.17390600000004,
+          211.33090000000004
+        ]
+      ],
+      [
+        "平均地面高程：km",
+        [
+          185.979766,
+          243.35090000000002,
+          296.33946800000007,
+          256.33090000000004
+        ]
+      ],
+      [
+        "像元大小：m",
+        [
+          185.920474,
+          275.3909,
+          250.99865600000004,
+          288.3709
+        ]
+      ]
+    ],
+    "method": "original PDF rendering, cropped excerpts, red outlines; original words unchanged"
+  },
+  {
+    "file": "manual-flaash-interleave.png",
+    "source": "envi-flaash",
+    "pdf_page": 12,
+    "regions": [
+      [
+        "旧手册列出的格式：BIL 或 BIP",
+        [
+          129.09999999999997,
+          345.72235400000005,
+          430.943216,
+          358.702354
+        ]
+      ]
+    ],
+    "method": "original PDF rendering, cropped excerpts, red outlines; original words unchanged"
+  },
+  {
+    "file": "manual-sentinel-l1c.png",
+    "source": "s2-psd",
+    "pdf_page": 397,
+    "regions": [
+      [
+        "L1C 像元的物理意义：大气顶反射率",
+        [
+          56.164,
+          404.56839999999994,
+          539.10192,
+          430.2084
+        ]
+      ],
+      [
+        "解码涉及比例系数和偏移量；括号解释见正文",
+        [
+          56.164,
+          467.82839999999993,
+          452.51448,
+          480.86839999999995
+        ]
+      ]
+    ],
+    "method": "original PDF rendering, cropped excerpts, red outlines; original words unchanged"
+  },
+  {
+    "file": "manual-sentinel-l2a.png",
+    "source": "s2-l2a",
+    "pdf_page": 13,
+    "regions": [
+      [
+        "L2A 提供地表（BOA）反射率",
+        [
+          245.77571999999998,
+          397.95171999999997,
+          374.33344,
+          409.91171999999995
+        ]
+      ],
+      [
+        "排除 B10 的理由：它不提供地表信息",
+        [
+          224.79,
+          425.93172,
+          510.39699999999993,
+          451.8117199999999
+        ]
+      ]
+    ],
+    "method": "original PDF rendering, cropped excerpts, red outlines; original words unchanged"
+  }
+]

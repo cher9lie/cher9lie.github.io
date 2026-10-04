@@ -1,0 +1,20 @@
+[
+  {
+    "name": "envi-flaash",
+    "url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+    "bytes": 350333,
+    "sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988"
+  },
+  {
+    "name": "s2-psd",
+    "url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+    "bytes": 8987249,
+    "sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db"
+  },
+  {
+    "name": "s2-l2a",
+    "url": "https://step.esa.int/thirdparties/sen2cor/2.10.0/docs/S2-PDGS-MPC-L2A-PDD-V14.9-v4.9.pdf",
+    "bytes": 871860,
+    "sha256": "cd9fe14e0ef44d90f05b41b766fbfa5188af5a6d99ac552b323bbad3e3518460"
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "article": "src/content/blog/flaash-atmospheric-correction-concepts/index.md",
+  "date": "2026-10-05",
+  "reviewer": "Codex; three sequential self-editing passes, not three independent reviewers",
+  "passes": [
+    {
+      "pass": 1,
+      "focus": "Scientific definitions, equations, software versions, real data",
+      "checked": ["DN versus integer-encoded reflectance", "S2 L1C orthorectified TOA versus L2A BOA", "processing-baseline offsets and NoData", "radiance conversion and factor 0.1", "FLAASH scale is a divisor", "pixel size in meters, heights in kilometers", "B9 alone does not establish water retrieval compatibility", "NDVI only cancels shared multiplicative scaling", "interleave requirements differ by ENVI version", "public PB 02.14 and official PB 05.00 are separate processing versions"],
+      "corrections": ["Distinguished directional reflectance from hemispherical energy ratio", "Added water-leaving radiance, Rrs units and thermal emissivity definitions", "Corrected thumbnail NoData to white blank area using actual downloaded image", "Included actual XML acquisition time and mean sun angles", "Excluded unsupported universal accuracy claims"]
+    },
+    {
+      "pass": 2,
+      "focus": "Readability and conceptual continuity, following the Neptune post's source-first style",
+      "checked": ["Start with one pixel value, then physical quantities, atmosphere, products, operations and files", "Define acronyms at first relevant use", "Every formula's variables explained", "Separate AI illustrations, authentic manual crops, instructional numbers and observed metadata", "Captions include source, version, page and download links", "Download authentication and version differences explicit"],
+      "corrections": ["Added definitions of MSI, ENVI, MGRS, UTC/GMT, absorption/reference bands and model wavenumber resolution", "Replaced ambiguous Chinese-adjacent Markdown bold with explicit strong tags after inspecting rendered page", "Fixed download-table typography"]
+    },
+    {
+      "pass": 3,
+      "focus": "Rendered page, evidence and release readiness",
+      "checked": ["Inspected all four PDF crops and both AI-generated illustrations", "Inspected desktop article header, TOC and official data table in the in-app browser", "Eight body figures resolve locally and have descriptive alt text", "Rendered KaTeX has no error spans", "Five official native file downloads retained in rendered HTML", "Eleven public TIFF links returned HTTP 206 with TIFF header", "Metadata and true data preview downloaded successfully", "Full npm build and Astro check passed (zero diagnostics)", "Only article and its research/figure materials to be staged; unrelated working-tree changes excluded"],
+      "limitations": ["No ENVI correction experiment performed or represented as performed", "CDSE SAFE nodes and product records checked anonymously; authenticated whole-product downloads not attempted", "TIFF addresses checked with range requests, not full scene scientific validation", "Desktop layout inspected; no claim of mobile viewport testing", "CI deployment result recorded by the publishing workflow rather than assumed from local build"]
+    }
+  ]
+}
