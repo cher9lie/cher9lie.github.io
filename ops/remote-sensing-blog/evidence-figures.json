@@ -1,0 +1,1797 @@
+[
+  {
+    "id": "01",
+    "title": "遥感、被动／主动观测与电磁波",
+    "file": "evidence-01.png",
+    "regions": [
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 5,
+        "label": "遥感：不接触地表，记录反射或发射能量",
+        "box": [
+          109.49999999999994,
+          302.652,
+          501.17999999999995,
+          345.162
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "\"Remote sensing is the science (and to some extent, art) of acquiring\ninformation about the Earth's surface without actually being in contact\nwith it. This is done by sensing and recording reflected or emitted energy"
+      },
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 19,
+        "label": "被动观测：利用自然存在的能量",
+        "box": [
+          79.5,
+          208.9854000000002,
+          305.85024000000004,
+          251.73720000000026
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "wavelengths. Remote sensing systems which\nmeasure energy that is naturally available are\ncalled passive sensors. Passive sensors can"
+      },
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 19,
+        "label": "主动观测：仪器提供照明能量",
+        "box": [
+          240.72240000000005,
+          364.32960000000026,
+          521.0132400000003,
+          394.11900000000026
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "Active sensors, on the other hand, provide their own\nenergy source for illumination. The sensor emits radiation"
+      },
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 8,
+        "label": "波长：相邻波峰之间的距离",
+        "box": [
+          79.5,
+          78.77879999999993,
+          507.47759999999977,
+          108.83819999999997
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "The wavelength is the length of one wave cycle, which can be measured as the distance\nbetween successive wave crests. Wavelength is usually represented by the Greek letter"
+      }
+    ],
+    "sha256": "2ad9b546d7583fdd1e049d40f94ac10ce021afeca9d2fc491839c00cae5087a5",
+    "width": 1320,
+    "height": 974
+  },
+  {
+    "id": "02",
+    "title": "像元、空间分辨率与采样不能混为一谈",
+    "file": "evidence-02.png",
+    "regions": [
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 20,
+        "label": "栅格：数字图像的行、列和像元",
+        "box": [
+          339.0,
+          500.082,
+          519.8232,
+          563.262
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "digital format by subdividing the\nimage into small equal-sized and\nshaped areas, called picture\nelements or pixels, and"
+      },
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 39,
+        "label": "IFOV：传感器的瞬时角视场",
+        "box": [
+          252.72120000000007,
+          337.22640000000007,
+          534.7767600000001,
+          394.10460000000006
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "The IFOV is the angular cone of visibility of the sensor (A)\nand determines the area on the Earth's surface which is\n\"seen\" from a given altitude at one particular moment in\ntime (B). The size of the area viewed is determined by"
+      },
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 39,
+        "label": "像元间距与空间分辨率并非可互换的词",
+        "box": [
+          79.49999999999997,
+          592.3187,
+          511.2359999999997,
+          606.5693000000001
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "between pixel size and spatial resolution - they are not interchangeable. If a sensor has a"
+      }
+    ],
+    "sha256": "600ac74b046cd14b8ea12823e1033eb65422948785e9e6d745831eead592c434",
+    "width": 1320,
+    "height": 848
+  },
+  {
+    "id": "03",
+    "title": "四种分辨率中的光谱、辐射与时间",
+    "file": "evidence-03.png",
+    "regions": [
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 41,
+        "label": "光谱分辨率：区分精细波长区间",
+        "box": [
+          79.49519999999995,
+          443.0034,
+          518.9704800000005,
+          471.5046
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "separate them. Thus, we would require a sensor with higher spectral resolution. Spectral\nresolution describes the ability of a sensor to define fine wavelength intervals. The finer the"
+      },
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 43,
+        "label": "8 位量化的例子：256 个等级，数值为 0–255",
+        "box": [
+          79.49879999999996,
+          474.32579999999996,
+          516.5937600000002,
+          502.827
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "8\nenergy recorded. Thus, if a sensor used 8 bits to record the data, there would be 2 =256\ndigital values available, ranging from 0 to 255. However, if only 4 bits were used, then only"
+      },
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 42,
+        "label": "高光谱的特征：大量很窄的光谱波段",
+        "box": [
+          79.48919999999998,
+          208.32240000000013,
+          533.9246400000002,
+          236.85060000000016
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "hyperspectral sensors, detect hundreds of very narrow spectral bands throughout the visible,\nnear-infrared, and mid-infrared portions of the electromagnetic spectrum. Their very high"
+      },
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 44,
+        "label": "实际时间采样还取决于传感器能力、扫描覆盖和纬度",
+        "box": [
+          79.49999999999997,
+          251.73720000000026,
+          526.64544,
+          281.3484000000003
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "periods from one to five days. Thus, the actual temporal resolution of a sensor depends on a\nvariety of factors, including the satellite/sensor capabilities, the swath overlap, and latitude."
+      }
+    ],
+    "sha256": "accb3a5f871cce02cb63dfacdb14d105de8d3b6e729090d8a6b5b7c3b3e39096",
+    "width": 1320,
+    "height": 857
+  },
+  {
+    "id": "04",
+    "title": "MSI 的 12 位量化、辐射准确度与 SNR",
+    "file": "evidence-04.png",
+    "regions": [
+      {
+        "source": "s2-handbook",
+        "pdf_page": 53,
+        "label": "原文将量化位数、准确度与信噪比分别说明",
+        "box": [
+          71,
+          99,
+          522,
+          168
+        ],
+        "highlights": [],
+        "source_url": "https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook",
+        "source_sha256": "a57ed7fa07c768e0b86538e43a4b35547d806fff09dfa70be6d5cbea614c6c99",
+        "extracted_text": "Radiometric resolution is routinely expressed as a bit number, typically in the range of 8 to\n16 bits. The radiometric resolution of the MSI instrument is 12 bit, enabling the image to be\nacquired over a range of 0 to 4 095 potential light intensity values. The radiometric accuracy\nis less than 5% (goal 3%). Radiometric resolution is also dependent upon the Signal to Noise\nRatio (SNR) of the detector."
+      }
+    ],
+    "sha256": "e0c1e9abec5ee0294890b60a351581327d5ee01de10a9c5b9d13c6ea0d3e1218",
+    "width": 1320,
+    "height": 441
+  },
+  {
+    "id": "05",
+    "title": "10 m 波段：中心波长、带宽与参考信噪比",
+    "file": "evidence-05.png",
+    "regions": [
+      {
+        "source": "s2-handbook",
+        "pdf_page": 53,
+        "label": "表 3：B2、B3、B4、B8 的任务设计指标",
+        "box": [
+          80,
+          180,
+          525,
+          402
+        ],
+        "highlights": [
+          [
+            154,
+            214,
+            334,
+            397
+          ],
+          [
+            448,
+            215,
+            524,
+            397
+          ]
+        ],
+        "source_url": "https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook",
+        "source_sha256": "a57ed7fa07c768e0b86538e43a4b35547d806fff09dfa70be6d5cbea614c6c99",
+        "extracted_text": "Table 3:10 m Spatial Resolution Bands and associated Signal to Noise ratio (SNR)\nLref\nCentral\nBand Bandwidth (reference\nwavelength SNR @ Lref\nnumber (nm) radiance)\n(nm)\n(W m−2 sr−1 μm−1)\n2 490 65 128 154\n3 560 35 128 168\n4 665 30 108 142\n8 842 115 103 172"
+      }
+    ],
+    "sha256": "c211267761946182ebb86212e4a5ffb41396f08f663f32892ce08c1dd0401539",
+    "width": 1320,
+    "height": 859
+  },
+  {
+    "id": "06",
+    "title": "20 m 波段：红边、窄近红外与短波红外",
+    "file": "evidence-06.png",
+    "regions": [
+      {
+        "source": "s2-handbook",
+        "pdf_page": 53,
+        "label": "表 4：历史记号 8b；本文以现行 B8A 对应说明",
+        "box": [
+          80,
+          415,
+          525,
+          697
+        ],
+        "highlights": [
+          [
+            154,
+            447,
+            334,
+            692
+          ],
+          [
+            82,
+            610,
+            334,
+            635
+          ]
+        ],
+        "source_url": "https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook",
+        "source_sha256": "a57ed7fa07c768e0b86538e43a4b35547d806fff09dfa70be6d5cbea614c6c99",
+        "extracted_text": "Table 4:20 metre Spatial Resolution Bands and associated Signal to Noise ratio (SNR)\nLref\nCentral\nBand Bandwidth (reference\nwavelength SNR @ Lref\nnumber (nm) radiance)\n(nm)\n(W m−2 sr−1 μm−1)\n5 705 15 74.5 117\n6 740 15 68 89\n7 783 20 67 105\n8b 865 20 52.5 72\n11 1 610 90 4 100\n12 2 190 180 1.5 100"
+      }
+    ],
+    "sha256": "41482f19fdcbb2b14db3b81e50f33b1f77f5ab18e0fa459313f045ac81b8c5cf",
+    "width": 1320,
+    "height": 1022
+  },
+  {
+    "id": "07",
+    "title": "60 m 波段与原生采样分组",
+    "file": "evidence-07.png",
+    "regions": [
+      {
+        "source": "s2-handbook",
+        "pdf_page": 54,
+        "label": "表 5：B1、B9、B10 的设计波长与带宽",
+        "box": [
+          80,
+          95,
+          528,
+          276
+        ],
+        "highlights": [
+          [
+            154,
+            129,
+            334,
+            269
+          ]
+        ],
+        "source_url": "https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook",
+        "source_sha256": "a57ed7fa07c768e0b86538e43a4b35547d806fff09dfa70be6d5cbea614c6c99",
+        "extracted_text": "Table 5:60 metre Spatial Resolution Bands and associated Signal to Noise ratio (SNR)\nCentral\nBand Bandwidth Lref\nwavelength SNR @ Lref\nnumber (nm) (W m−2 sr−1 μm−1)\n(nm)\n1 443 20 129 129\n9 945 20 9 114\n10 1 375 30 6 50"
+      },
+      {
+        "source": "s2-psd",
+        "pdf_page": 49,
+        "label": "产品规范 15.0：10／20／60 m 的分组仍分别为 4／6／3 个波段",
+        "box": [
+          64,
+          146,
+          528,
+          297
+        ],
+        "highlights": [
+          [
+            66,
+            150,
+            119,
+            297
+          ],
+          [
+            448,
+            150,
+            523,
+            297
+          ]
+        ],
+        "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+        "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+        "extracted_text": "SSD Number of Number of Number of Number of Bands\npackets detectors bands CCSDS\n(strips) per packets\ndetector and\nband\n10 m 144 12 4 6912 B2, B8, B3,\nB4,\n20 m 72 12 6 5184 B5, B6, B7,\nB8a, B11,\nB12\n60 m 24 12 3 864 B1, B9, B10"
+      }
+    ],
+    "sha256": "bace5b08483222c9523ec75ca03a2f530e08232e0ceccfa0028ec1a81c70f899",
+    "width": 1320,
+    "height": 1233
+  },
+  {
+    "id": "08",
+    "title": "光谱信息需要读取文件里的实际字段",
+    "file": "evidence-08.png",
+    "regions": [
+      {
+        "source": "s2-psd",
+        "pdf_page": 439,
+        "label": "表 101：采样间距、波长范围、中心与响应采样步长",
+        "box": [
+          35,
+          312,
+          523,
+          432
+        ],
+        "highlights": [
+          [
+            36,
+            314,
+            324,
+            432
+          ]
+        ],
+        "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+        "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+        "extracted_text": "RPreofldeucctat_nIcmea_gCeo_nCvhearsraiocnte/Sriosltaicrs_/ISrrpaedciatrnacl_eI_nLfoisrtm/SaOtiLonA_RL_isIRt/RSpAeDcItAraNl_C E\nInformation/RESOLUTION\nProduct_Image_Characteristics/Spectral_Information_List/Spectral_\nInformation/Wavelenght/MIN\nProduct_Image_Characteristics/Spectral_Information_List/Spectral_\nInformation/ Wavelenght/MAX\nSpectral filter information\nProduct_Image_Characteristics/Spectral_Information_List/Spectral_\nInformation/ Wavelenght/CENTRAL\nProduct_Image_Characteristics/Spectral_Information_List/Spectral_\nInformation/Spectral_Response/STEP\nProduct_Image_Characteristics/Spectral_Information_List/Spectral_"
+      },
+      {
+        "source": "modis-temperature",
+        "pdf_page": 10,
+        "label": "式 (7)：用传感器响应函数对光谱辐亮度加权",
+        "box": [
+          52,
+          184,
+          559,
+          304
+        ],
+        "highlights": [
+          [
+            61,
+            185,
+            180,
+            266
+          ]
+        ],
+        "source_url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod11.pdf",
+        "source_sha256": "09d2ac7c27d2067d67c73b127556f88086acd89d7cab6803b81b16b4b12107fd",
+        "extracted_text": "l\n2\n(cid:242) Y (l )L › (l ,0)dl\n___\nL\n›\n=\n__l 1_______________\n, (7)\nl\n2\n(cid:242)\nY (l )dl\nl\n1\nL › (l ,0)isthevectorofupwardspectralradiances atthetopoftheatmosphereandY isthesensorresponsefunction, forthe\nwavelength bandwhoselowerandupperboundariesare[l ,l ].\n1 2"
+      }
+    ],
+    "sha256": "64440e27a239824a9aefab8ab601c94d4f2f16326207ce3e05e9644796f878e8",
+    "width": 1320,
+    "height": 935
+  },
+  {
+    "id": "09",
+    "title": "重采样改变网格，也可能改变数值",
+    "file": "evidence-09.png",
+    "regions": [
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 152,
+        "label": "最近邻：选取原图中最近的像元",
+        "box": [
+          79,
+          350.5,
+          535,
+          424
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "resampling: nearest neighbour, bilinear interpolation, and cubic convolution. Nearest\nneighbour resampling uses the digital value from the pixel in the original image which is\nnearest to the new pixel location in the corrected image. This is the simplest method and does\nnot alter the original values, but may result in some pixel values being duplicated while others\nare lost. This method also tends to result in a disjointed or blocky image appearance."
+      },
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 152,
+        "label": "双线性：由四个邻近像元加权",
+        "box": [
+          289,
+          435,
+          530,
+          581
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "Bilinear interpolation resampling takes a\nweighted average of four pixels in the original\nimage nearest to the new pixel location. The\naveraging process alters the original pixel values\nand creates entirely new digital values in the\noutput image. This may be undesirable if further\nprocessing and analysis, such as classification\nbased on spectral response, is to be done. If this\nis the case, resampling may best be done after\nthe classification process. Cubic convolution\nresampling goes even further to calculate a"
+      },
+      {
+        "source": "sen2cor-atbd",
+        "pdf_page": 11,
+        "label": "算法脚注：连续波段与 SCL 分类采用不同重采样规则",
+        "box": [
+          96,
+          713,
+          514,
+          757
+        ],
+        "highlights": [],
+        "source_url": "https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf",
+        "source_sha256": "fca403d6ea3cf9bc4c1fa4f22e435e43027cb26b95a66d58380297b76dc86379",
+        "extracted_text": "2 For the down sampling (i.e. from 10 m to 20 m resolution) a method based on block means is used\nwhereas for up sampling (i.e. from 60 m to 20 m resolution) a cubic spline method is used. SCL\nmap is resized from 20m to 60m with an order of 0 for spline interpolation, in order to keep the\nclassification values."
+      },
+      {
+        "source": "sen2cor-atbd",
+        "pdf_page": 15,
+        "label": "10 m 产品不等于在 10 m 网格独立反演 AOT 和 WV",
+        "box": [
+          96,
+          135,
+          514,
+          285
+        ],
+        "highlights": [],
+        "source_url": "https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf",
+        "source_sha256": "fca403d6ea3cf9bc4c1fa4f22e435e43027cb26b95a66d58380297b76dc86379",
+        "extracted_text": "This processing involves four bands (B02, B03, B04, B08, i.e., blue, green, red,\nspectrally broad NIR-band). Inputs are the previously calculated SCL (20 m), AOT\n(20 m) and WV (20 m) which have to be resampled to get SCL (10 m), AOT (10 m)\nand WV (10 m). Also the DEM provided by the user for processing in rugged terrain\nis internally resampled to 10 m. No AOT and WV retrieval are performed at 10 m\nspatial resolution. Scene-average water vapour is used during the surface\nreflectance retrieval as only B08 is affected a little by WV absorption and the water\nvapour influence is very small. WV column in the LUT nearest to scene-average\nWV specifies the LUT file name used for processing. Example: the scene-average\nvalue is 1.4 cm, and LUTs are provided for water vapour columns of 0.4, 1.0, 2.0,\n2.9, 4.0, and 5.0 cm. Then the LUT file name corresponding to 1.0 cm is specified\nin the input parameter file."
+      }
+    ],
+    "sha256": "c9a69ba260591c67e38b4faceed243c7f500b9583282521c8a4e9b07bf4f4ba3",
+    "width": 1320,
+    "height": 1736
+  },
+  {
+    "id": "10",
+    "title": "DN 与 NoData：先辨认有效信号的编码",
+    "file": "evidence-10.png",
+    "regions": [
+      {
+        "source": "s2-psd",
+        "pdf_page": 397,
+        "label": "0 是 NoData；1–65535 是可解码信号的编码范围",
+        "box": [
+          55,
+          492,
+          541,
+          519
+        ],
+        "highlights": [],
+        "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+        "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+        "extracted_text": "Note that the reflectance meaningful values go from “1” to “65535” as \"0\" is reserved for the\nNO_DATA."
+      },
+      {
+        "source": "s2-psd",
+        "pdf_page": 397,
+        "label": "偏移量用于避免截断负值",
+        "box": [
+          55,
+          518,
+          541,
+          546
+        ],
+        "highlights": [],
+        "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+        "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+        "extracted_text": "RADIO_ADD_OFFSET is added up to the image radiometry to prevent from truncation of negative\npixel values."
+      }
+    ],
+    "sha256": "bd3ef4e450a68b032ecad2e09aff3f292f5ff63e2b6726e4375eeb277b258862",
+    "width": 1320,
+    "height": 489
+  },
+  {
+    "id": "11",
+    "title": "辐亮度、辐照度与光谱密度的原始定义",
+    "file": "evidence-11.png",
+    "regions": [
+      {
+        "source": "nist-radiometry",
+        "pdf_page": 13,
+        "label": "PDF 第 13 页／书内第 3 页：辐亮度与投影面积、立体角",
+        "box": [
+          40,
+          457,
+          526,
+          534
+        ],
+        "highlights": [],
+        "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf",
+        "source_sha256": "061db652aa2e34f74972a665407f3272de136c4c510438c226187117da67c500",
+        "extracted_text": "lim \\d) t\\2d)\n(3)"
+      },
+      {
+        "source": "nist-radiometry",
+        "pdf_page": 16,
+        "label": "PDF 第 16 页／书内第 6 页：单位面积的辐照度",
+        "box": [
+          192,
+          210,
+          531,
+          280
+        ],
+        "highlights": [],
+        "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf",
+        "source_sha256": "061db652aa2e34f74972a665407f3272de136c4c510438c226187117da67c500",
+        "extracted_text": "lim A0 d&\n” a7 ~ d\\a '\nc c"
+      },
+      {
+        "source": "nist-radiometry",
+        "pdf_page": 17,
+        "label": "PDF 第 17 页／书内第 7 页：对波长求导的光谱密度",
+        "box": [
+          178,
+          149,
+          531,
+          214
+        ],
+        "highlights": [],
+        "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf",
+        "source_sha256": "061db652aa2e34f74972a665407f3272de136c4c510438c226187117da67c500",
+        "extracted_text": "lim r A0-. d&\n(11)\nA AA-OlA/i]"
+      }
+    ],
+    "sha256": "ebf5306f56eee386d8ff7d03270a56b937fae548691487a1249864bfad90cb30",
+    "width": 1320,
+    "height": 1044
+  },
+  {
+    "id": "12",
+    "title": "立体角：方向上的面积，而不是地面像元面积",
+    "file": "evidence-12.png",
+    "regions": [
+      {
+        "source": "ocean-protocols",
+        "pdf_page": 21,
+        "label": "PDF 第 21 页／书内第 15 页：原图 2.3，单位球面的微分面积",
+        "box": [
+          115,
+          64,
+          478,
+          320
+        ],
+        "highlights": [],
+        "source_url": "https://oceancolor.gsfc.nasa.gov/files/resources/docs/technical/protocols_ver4_voli.pdf",
+        "source_sha256": "55038e8af91e2584211449c96e6dc01cc86434ab29179eaf8acbd66f9c434b27",
+        "extracted_text": ""
+      }
+    ],
+    "sha256": "c1c65b26548902e7e5c0a0607bddb65bc500f8d8db01ba2183326e70567471f8",
+    "width": 1320,
+    "height": 1024
+  },
+  {
+    "id": "13",
+    "title": "BRDF、反射因子与朗伯模型有不同定义",
+    "file": "evidence-13.png",
+    "regions": [
+      {
+        "source": "nist-brdf",
+        "pdf_page": 19,
+        "label": "PDF 第 19 页／书内第 5 页：式 (9)，BRDF 的 sr⁻¹ 单位",
+        "box": [
+          45,
+          620,
+          488,
+          655
+        ],
+        "highlights": [],
+        "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/MONO/nbsmonograph160.pdf",
+        "source_sha256": "d1f8c489813f812b26c36c4a3b894fe0495b097d4a3e61c884fa816962012f20",
+        "extracted_text": "Me,,<t>i;dr,4>r)^dLridt,<l>i;er,<l>r;E,)/dEi{ei,<l>i)\n^dLr{ei,<f>i;0rAr;Ei)/[Li{ei,<l>i)-COS0i-d(Oi] [sT'']. (9)"
+      },
+      {
+        "source": "nist-brdf",
+        "pdf_page": 25,
+        "label": "PDF 第 25 页／书内第 11 页：表 1，方向—半球反射率",
+        "box": [
+          59,
+          68,
+          376,
+          91
+        ],
+        "highlights": [],
+        "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/MONO/nbsmonograph160.pdf",
+        "source_sha256": "d1f8c489813f812b26c36c4a3b894fe0495b097d4a3e61c884fa816962012f20",
+        "extracted_text": "3. Dir\nr\ne\ne\nc\nf\nt\nl\ni\ne\no\nc\nn\nt\na\na\nl\nn\n-\nc\nh\ne\nemispherical p(Si,<^)j;27r) =\nj^\"\nfr[0i,(l>i;0r,<t>r)' dClr"
+      },
+      {
+        "source": "nist-brdf",
+        "pdf_page": 26,
+        "label": "PDF 第 26 页／书内第 12 页：表 2，双向反射因子",
+        "box": [
+          29,
+          89,
+          325,
+          111
+        ],
+        "highlights": [],
+        "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/MONO/nbsmonograph160.pdf",
+        "source_sha256": "d1f8c489813f812b26c36c4a3b894fe0495b097d4a3e61c884fa816962012f20",
+        "extracted_text": "=\n1. Bidirectional reflectance R{dt,<t)i;dr,4>r) '\"'fr(0i.<t>i;6r,(l>r)\nfactor*\""
+      },
+      {
+        "source": "nist-brdf",
+        "pdf_page": 57,
+        "label": "PDF 第 57 页／书内第 43 页：式 (C4)，朗伯表面的关系",
+        "box": [
+          157,
+          632,
+          476,
+          656
+        ],
+        "highlights": [],
+        "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/MONO/nbsmonograph160.pdf",
+        "source_sha256": "d1f8c489813f812b26c36c4a3b894fe0495b097d4a3e61c884fa816962012f20",
+        "extracted_text": "=\nfr.d{Oi,<t>i;dr,(t>r) Pdi(Oi;27T)/TT [sr (C4)"
+      }
+    ],
+    "sha256": "8edd5f2de7164b829c258e06e8be18f2c2b2a9bab79e9bb6db2cb5475037513a",
+    "width": 1320,
+    "height": 846
+  },
+  {
+    "id": "14",
+    "title": "太阳天顶角、高度角与日地距离字段",
+    "file": "evidence-14.png",
+    "regions": [
+      {
+        "source": "sen2cor-atbd",
+        "pdf_page": 67,
+        "label": "式 (0.20)：TOA 反射率与传感器辐亮度的直接关系",
+        "box": [
+          190,
+          105,
+          514,
+          146
+        ],
+        "highlights": [],
+        "source_url": "https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf",
+        "source_sha256": "fca403d6ea3cf9bc4c1fa4f22e435e43027cb26b95a66d58380297b76dc86379",
+        "extracted_text": "L ( k )\nE\ns\n( k )\nd\nc o\n2\ns\ns\nT O A\n( k )\n\n\n\n= (0.20)"
+      },
+      {
+        "source": "landsat-handbook",
+        "pdf_page": 63,
+        "label": "PDF 第 63 页／书内第 55 页：天顶角与高度角的定义和互余关系",
+        "box": [
+          101,
+          112,
+          535,
+          175
+        ],
+        "highlights": [],
+        "source_url": "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/atoms/files/LSDS-1574_L8_Data_Users_Handbook-v5.0.pdf",
+        "source_sha256": "baf10fd32ebbc5d21a509869e2879f5ef23f0d275d8bddc01462ed02d18bc756",
+        "extracted_text": "ρ = TOA planetary reflectance\nλ\nθ = Local sun elevation angle; the scene center sun elevation angle in\nSE\ndegrees is provided in the metadata\nθ = Local solar zenith angle; θSZ = 90° - θSE\nSZ"
+      },
+      {
+        "source": "s2-psd",
+        "pdf_page": 439,
+        "label": "表 101：U 日地距离修正、各波段太阳辐照度",
+        "box": [
+          35,
+          260,
+          729,
+          313
+        ],
+        "highlights": [],
+        "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+        "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+        "extracted_text": "Correction to take into account the Sun-Earth distance variation (this\nProduct_Image_Characteristics/Reflectance_Conversion/U correction is computed using the acquisition date)\nProduct_Image_Characteristics/\nReflectance parameters defined for each band\nReflectance_Conversion/Solar_Irradiance_List/SOLAR_IRRADIANCE"
+      }
+    ],
+    "sha256": "4a446ec36305be2fedd41ef71a8661c6caa5889082e5359081ad54329144cad5",
+    "width": 1320,
+    "height": 838
+  },
+  {
+    "id": "15",
+    "title": "吸收、散射与大气窗口",
+    "file": "evidence-15.png",
+    "regions": [
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 12,
+        "label": "散射：粒子或气体改变辐射传播方向",
+        "box": [
+          79.51079999999995,
+          372.53760000000005,
+          534.5953199999996,
+          402.32700000000006
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "Scattering occurs when particles or large gas molecules present in the atmosphere interact\nwith and cause the electromagnetic radiation to be redirected from its original path. How much"
+      },
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 14,
+        "label": "吸收：大气分子吸收不同波长的能量",
+        "box": [
+          79.5,
+          107.27999999999986,
+          338.84748000000025,
+          179.82119999999998
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "Absorption is the other main mechanism at work\nwhen electromagnetic radiation interacts with the\natmosphere. In contrast to scattering, this\nphenomenon causes molecules in the atmosphere to\nabsorb energy at various wavelengths. Ozone,"
+      },
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 14,
+        "label": "大气窗口：受吸收较小的光谱区域",
+        "box": [
+          325.5,
+          518.1419999999999,
+          530.2547999999999,
+          598.7819999999999
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "purposes. Those areas of the\nspectrum which are not severely\ninfluenced by atmospheric absorption\nand thus, are useful to remote\nsensors, are called atmospheric\nwindows. By comparing the"
+      }
+    ],
+    "sha256": "9cdea47f82bdf856b981c88f970841963c413b3c4346615e94b677c67f63c229",
+    "width": 1320,
+    "height": 986
+  },
+  {
+    "id": "16",
+    "title": "路径辐射、透过率与地表项进入同一个模型",
+    "file": "evidence-16.png",
+    "regions": [
+      {
+        "source": "modis-atmosphere",
+        "pdf_page": 21,
+        "label": "式 (1)：TOA 辐亮度 = 大气路径项 + 经透射与多次反射的地表项",
+        "box": [
+          70,
+          198,
+          537,
+          245
+        ],
+        "highlights": [],
+        "source_url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod08.pdf",
+        "source_sha256": "0df984f20ad67ca5281d9562604c9f1b57b0a395781384cac1a65ba6b5a1b550",
+        "extracted_text": "( )\n( ) ( ) T(m )Tm( )m rFm m f , ,\nL m m, f , =m Lm f , , + s [ v ( 0 s s s ) ]v (1)\nTOA s v 0 s v p 1-r m m f , , S\ns s v"
+      },
+      {
+        "source": "modis-atmosphere",
+        "pdf_page": 21,
+        "label": "式 (3)：总透过率中的直射和漫射项",
+        "box": [
+          70,
+          565,
+          536,
+          593
+        ],
+        "highlights": [],
+        "source_url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod08.pdf",
+        "source_sha256": "0df984f20ad67ca5281d9562604c9f1b57b0a395781384cac1a65ba6b5a1b550",
+        "extracted_text": "T(m )= e-t /m +t (m ) (3)\nd"
+      }
+    ],
+    "sha256": "3464df334e894a28bbd6e309c1451f4ec028202de093cd5b1f98bd169148837b",
+    "width": 1320,
+    "height": 547
+  },
+  {
+    "id": "17",
+    "title": "邻近效应：来自相邻地物的大气散射贡献",
+    "file": "evidence-17.png",
+    "regions": [
+      {
+        "source": "modis-atmosphere",
+        "pdf_page": 23,
+        "label": "原文将相邻地物、观测辐亮度与大气散射联系起来",
+        "box": [
+          70,
+          570,
+          543,
+          625
+        ],
+        "highlights": [
+          [
+            70,
+            589,
+            543,
+            625
+          ]
+        ],
+        "source_url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod08.pdf",
+        "source_sha256": "0df984f20ad67ca5281d9562604c9f1b57b0a395781384cac1a65ba6b5a1b550",
+        "extracted_text": "(250m) we have to consider adjacency effects. Adjacency effects occur when a\ndifferent but adjacent land cover influences the satellite measured radiance of a\ngiven land cover due to atmospheric scattering. The case of inhomogeneous ground"
+      }
+    ],
+    "sha256": "62367c0fc3447325b0a221928b9b22a6d41d277f17dd2709749563b9c38cb7d3",
+    "width": 1320,
+    "height": 396
+  },
+  {
+    "id": "18",
+    "title": "光学厚度：垂直积分及各组分相加",
+    "file": "evidence-18.png",
+    "regions": [
+      {
+        "source": "ocean-protocols",
+        "pdf_page": 32,
+        "label": "式 (2.56)：有限垂直路径；式 (2.57)：完整大气柱",
+        "box": [
+          72,
+          539,
+          507,
+          637
+        ],
+        "highlights": [
+          [
+            234,
+            554,
+            505,
+            582
+          ],
+          [
+            234,
+            613,
+            505,
+            637
+          ]
+        ],
+        "source_url": "https://oceancolor.gsfc.nasa.gov/files/resources/docs/technical/protocols_ver4_voli.pdf",
+        "source_sha256": "55038e8af91e2584211449c96e6dc01cc86434ab29179eaf8acbd66f9c434b27",
+        "extracted_text": "Optical depth is defined for a vertical path, from z = 0 to Z, through a medium as\nτ(Z,λ)≡∫ Z c(z,λ)dz. (2.56)\n0\nτ(z,λ) is obviously an IOP of the medium, and it increases monotonically with increasing z. Optical thic\nsimply the optical depth over the entire height of the medium, i.e. for the atmosphere\nτ(λ)=∫ ZTOAc(z,λ)dz (2.57)\n0"
+      },
+      {
+        "source": "ocean-protocols",
+        "pdf_page": 32,
+        "label": "式 (2.58)：总光学厚度含分子、臭氧、气溶胶贡献",
+        "box": [
+          214,
+          666,
+          508,
+          687
+        ],
+        "highlights": [],
+        "source_url": "https://oceancolor.gsfc.nasa.gov/files/resources/docs/technical/protocols_ver4_voli.pdf",
+        "source_sha256": "55038e8af91e2584211449c96e6dc01cc86434ab29179eaf8acbd66f9c434b27",
+        "extracted_text": "τ(λ)=τ (λ)+τ (λ)+τ (λ), (2.58)\nR O3 a"
+      }
+    ],
+    "sha256": "e2eafd34fe2dff73152ad209adcffdc995d9150f9c2ac8096529ff814aca2c49",
+    "width": 1320,
+    "height": 687
+  },
+  {
+    "id": "19",
+    "title": "水汽柱含量的单位需要分清",
+    "file": "evidence-19.png",
+    "regions": [
+      {
+        "source": "s2-l2a",
+        "pdf_page": 39,
+        "label": "附录 A：L2A 水汽产品的换算与 g·cm⁻² 单位",
+        "box": [
+          64,
+          520,
+          383,
+          546
+        ],
+        "highlights": [],
+        "source_url": "https://step.esa.int/thirdparties/sen2cor/2.10.0/docs/S2-PDGS-MPC-L2A-PDD-V14.9-v4.9.pdf",
+        "source_sha256": "cd9fe14e0ef44d90f05b41b766fbfa5188af5a6d99ac552b323bbad3e3518460",
+        "extracted_text": "Water_Vapour WVP = DN / 1000. g.cm-2 (or cm)"
+      },
+      {
+        "source": "envi-flaash",
+        "pdf_page": 21,
+        "label": "表 2-1：atm-cm 与 g/cm² 的数值明显不同",
+        "box": [
+          130,
+          74,
+          533,
+          165
+        ],
+        "highlights": [
+          [
+            282,
+            76,
+            440,
+            165
+          ]
+        ],
+        "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+        "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+        "extracted_text": "Water Vapor Water Vapor Surface Air\nModel Atmosphere\n(std atm-cm) (g/cm2) Temperature\nSub-Arctic Summer (SAS) 2589 2.08 14 °C or 57 °\nMid-Latitude Summer (MLS) 3636 2.92 21 °C or 70 °\nTropical (T) 5119 4.11 27 °C or 80 °"
+      }
+    ],
+    "sha256": "686c1d5f19519dd44dec1dbb96ddec5b5dbf86099a7343f7b499730aaedbc801",
+    "width": 1320,
+    "height": 703
+  },
+  {
+    "id": "20",
+    "title": "产品级别、DEM 正射与地理网格",
+    "file": "evidence-20.png",
+    "regions": [
+      {
+        "source": "s2-psd",
+        "pdf_page": 54,
+        "label": "L1B、L1C、L2A 的原始定义；L1C 明确使用 DEM",
+        "box": [
+          108,
+          112,
+          537,
+          191
+        ],
+        "highlights": [
+          [
+            108,
+            138,
+            526,
+            166
+          ]
+        ],
+        "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+        "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+        "extracted_text": "o Level-1B: \"Radiometrically corrected.” product with geometric model refined\nappended but not applied,\no Level-1C: Orthorectified product (geometric ortho-correction taking into account a\nDEM) providing Top Of Atmosphere Reflectances.\no Level-2A: Orthorectified product providing Bottom-Of-Atmosphere reflectances, and\nbasic pixel classification (including classes for different types of cloud)."
+      },
+      {
+        "source": "s2-handbook",
+        "pdf_page": 45,
+        "label": "L1C 输出网格：UTM／WGS84",
+        "box": [
+          69.024,
+          276.52567999999997,
+          474.27256,
+          292.06567999999993
+        ],
+        "highlights": [],
+        "source_url": "https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook",
+        "source_sha256": "a57ed7fa07c768e0b86538e43a4b35547d806fff09dfa70be6d5cbea614c6c99",
+        "extracted_text": "The Level-1C product is composed of 100 km2 tiles (ortho-images in UTM/WGS84"
+      },
+      {
+        "source": "s2-handbook",
+        "pdf_page": 45,
+        "label": "输出 GSD：10、20、60 m",
+        "box": [
+          69.024,
+          334.06568,
+          522.2323199999998,
+          362.02567999999997
+        ],
+        "highlights": [],
+        "source_url": "https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook",
+        "source_sha256": "a57ed7fa07c768e0b86538e43a4b35547d806fff09dfa70be6d5cbea614c6c99",
+        "extracted_text": "into radiances. Level-1C products are resampled with a constant Ground Sampling Distance\n(GSD) of 10, 20 and 60 m depending on the native resolution of the different spectral bands."
+      }
+    ],
+    "sha256": "079c7cf38383673c56c8de28942b644df08dff2c2829f74573ea524a3425256f",
+    "width": 1320,
+    "height": 791
+  },
+  {
+    "id": "21",
+    "title": "SCL 的每个整数都对应一个类别",
+    "file": "evidence-21.png",
+    "regions": [
+      {
+        "source": "s2-psd",
+        "pdf_page": 291,
+        "label": "表 68：0–11 的分类定义；0／1／8–11 是筛选时常查的编码",
+        "box": [
+          108,
+          145,
+          421,
+          450
+        ],
+        "highlights": [
+          [
+            118,
+            199,
+            417,
+            236
+          ],
+          [
+            119,
+            365,
+            417,
+            444
+          ]
+        ],
+        "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+        "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+        "extracted_text": "Table 68: Level-2 classification map\nLabel Classification\n0 NO_DATA\n1 SATURATED_OR_DEFECTIVE\n2 CAST_SHADOWS\n3 CLOUD_SHADOWS\n4 VEGETATION\n5 NOT VEGATATED\n6 WATER\n7 UNCLASSIFIED\n8 CLOUD_MEDIUM_PROBABILITY\n9 CLOUD_HIGH_PROBABILITY\n10 THIN_CIRRUS\n11 SNOW /ICE"
+      }
+    ],
+    "sha256": "2b3ddf3f79db94b19fcf6943f12d254e714c2c4f584e27018c7c0cab201054ed",
+    "width": 1320,
+    "height": 1171
+  },
+  {
+    "id": "22",
+    "title": "地表反射率、AOT 和 WVP 的换算各不相同",
+    "file": "evidence-22.png",
+    "regions": [
+      {
+        "source": "s2-l2a",
+        "pdf_page": 39,
+        "label": "附录 A：两种历史 SR 编码规则；实际数据仍应按元数据解码",
+        "box": [
+          64,
+          201,
+          383,
+          372
+        ],
+        "highlights": [],
+        "source_url": "https://step.esa.int/thirdparties/sen2cor/2.10.0/docs/S2-PDGS-MPC-L2A-PDD-V14.9-v4.9.pdf",
+        "source_sha256": "cd9fe14e0ef44d90f05b41b766fbfa5188af5a6d99ac552b323bbad3e3518460",
+        "extracted_text": "Image Type Conversion Physical\nformula Units\nSurface_reflectance PSD >= 14.9: Unit less\nSR = (DN – 1000)\n/ 10000.\nPSD<14.9:\nSR = DN / 10000."
+      },
+      {
+        "source": "s2-l2a",
+        "pdf_page": 39,
+        "label": "AOT = DN / 1000，无量纲",
+        "box": [
+          64,
+          373,
+          383,
+          400
+        ],
+        "highlights": [],
+        "source_url": "https://step.esa.int/thirdparties/sen2cor/2.10.0/docs/S2-PDGS-MPC-L2A-PDD-V14.9-v4.9.pdf",
+        "source_sha256": "cd9fe14e0ef44d90f05b41b766fbfa5188af5a6d99ac552b323bbad3e3518460",
+        "extracted_text": "Resampled_AOT AOT = DN / 1000. Unit less"
+      },
+      {
+        "source": "s2-l2a",
+        "pdf_page": 39,
+        "label": "WVP = DN / 1000，g·cm⁻²",
+        "box": [
+          64,
+          520,
+          383,
+          546
+        ],
+        "highlights": [],
+        "source_url": "https://step.esa.int/thirdparties/sen2cor/2.10.0/docs/S2-PDGS-MPC-L2A-PDD-V14.9-v4.9.pdf",
+        "source_sha256": "cd9fe14e0ef44d90f05b41b766fbfa5188af5a6d99ac552b323bbad3e3518460",
+        "extracted_text": "Water_Vapour WVP = DN / 1000. g.cm-2 (or cm)"
+      }
+    ],
+    "sha256": "84a02064bf2a4bedef206d1b5ef9123f58db988263c30e4d53174122c14417ea",
+    "width": 1320,
+    "height": 1120
+  },
+  {
+    "id": "23",
+    "title": "Landsat 的 Level-1 辐亮度与 Collection 2 L2 编码",
+    "file": "evidence-23.png",
+    "regions": [
+      {
+        "source": "landsat-handbook",
+        "pdf_page": 62,
+        "label": "PDF 第 62 页／书内第 54 页：Lλ = ML × Qcal + AL",
+        "box": [
+          101,
+          192,
+          451,
+          335
+        ],
+        "highlights": [],
+        "source_url": "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/atoms/files/LSDS-1574_L8_Data_Users_Handbook-v5.0.pdf",
+        "source_sha256": "baf10fd32ebbc5d21a509869e2879f5ef23f0d275d8bddc01462ed02d18bc756",
+        "extracted_text": "L = ML Q + A\nλ * cal L\ne:\nL = Spectral radiance (W/(m2 * sr * μm))\nλ\nM = Radiance multiplicative scaling factor for the band\nL\n(RADIANCE_MULT_BAND_n from the metadata)\nA = Radiance additive scaling factor for the band\nL\n(RADIANCE_ADD_BAND_n from the metadata)\nQ = Level 1 pixel value in DN\ncal"
+      },
+      {
+        "source": "landsat-c2",
+        "pdf_page": 18,
+        "label": "PDF 第 18 页／书内第 12 页：表 6-1 的 SR 比例与偏移",
+        "box": [
+          118,
+          84,
+          688,
+          185
+        ],
+        "highlights": [
+          [
+            563,
+            84,
+            688,
+            185
+          ]
+        ],
+        "source_url": "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-1619_Landsat8-9-Collection2-Level2-Science-Product-Guide-v6.pdf",
+        "source_sha256": "98ca9baafa118629c009130d6dcd7730127d81bd612337873459286a5264602e",
+        "extracted_text": "Data Fill Multiplicative\nBand Designation Band Name Data Type Units Range Valid Range Value Scale Factor Additive Offset\nProductID_SR_B1 Band 1 SR UINT16 Reflectance 1 - 65535 7273 - 43636 0 0.0000275 -0.2\nProductID_SR_B2 Band 2 SR UINT16 Reflectance 1 - 65535 7273 – 43636 0 0.0000275 -0.2\nProductID_SR_B3 Band 3 SR UINT16 Reflectance 1 - 65535 7273 - 43636 0 0.0000275 -0.2\nProductID_SR_B4 Band 4 SR UINT16 Reflectance 1 - 65535 7273 - 43636 0 0.0000275 -0.2\nProductID_SR_B5 Band 5 SR UINT16 Reflectance 1 - 65535 7273 - 43636 0 0.0000275 -0.2\nProductID_SR_B6 Band 6 SR UINT16 Reflectance 1 - 65535 7273 - 43636 0 0.0000275 -0.2\nProductID_SR_B7 Band 7 SR UINT16 Reflectance 1 - 65535 7273 - 43636 0 0.0000275 -0.2\nProductID_ST_B10 Band 10 ST UINT16 Kelvin 1 - 65535 293 - 61440 0 0.00341802 149"
+      }
+    ],
+    "sha256": "6b2c823a55baa14e98a78acf11c3b3c8d7e1bcf33786cb39e92808d83e732b4e",
+    "width": 1320,
+    "height": 995
+  },
+  {
+    "id": "24",
+    "title": "NDVI 定义与大气的加性、乘性影响",
+    "file": "evidence-24.png",
+    "regions": [
+      {
+        "source": "modis-vi",
+        "pdf_page": 28,
+        "label": "PDF 第 28 页／书内第 19 页：正确的差／和形式，式 (5)",
+        "box": [
+          247,
+          661,
+          544,
+          707
+        ],
+        "highlights": [],
+        "source_url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod13.pdf",
+        "source_sha256": "1772f5ce915957eed709e761c6ea7f759b2474a0b5be666aba25af675006189d",
+        "extracted_text": "NIR to red ratio and is more commonly expressed as:\n[ ]\nX - X\nNDVI= [ nir red ] (5)\nX + X\nnir red"
+      },
+      {
+        "source": "modis-vi",
+        "pdf_page": 40,
+        "label": "PDF 第 40 页／书内第 31 页：路径辐射加性项与透过率乘性项",
+        "box": [
+          70,
+          186,
+          543,
+          215
+        ],
+        "highlights": [],
+        "source_url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod13.pdf",
+        "source_sha256": "1772f5ce915957eed709e761c6ea7f759b2474a0b5be666aba25af675006189d",
+        "extracted_text": "oVnI itnh etw No IwRa-ryesd (dKiaffuefrmenacne a onrd t hTea nNréIR, /1re9d9 2r)a: tiinof.l u Tehnece a atms opsapthh-erraicd iaanecroes (oal dindfitluiveen eceffse cot)n,\nand influence through transmittance (multiplicative effect). The additive effect is"
+      }
+    ],
+    "sha256": "abe43963afdd44504f88b5e05378fee48f2e0ac9a6d78ade9514bf15be812eb8",
+    "width": 1320,
+    "height": 564
+  },
+  {
+    "id": "25",
+    "title": "FLAASH 的模型原式：邻近地表与球面反照率",
+    "file": "evidence-25.png",
+    "regions": [
+      {
+        "source": "envi-flaash",
+        "pdf_page": 10,
+        "label": "式 (1)：ρ 与周围地表的平均反射率 ρe 分开进入模型",
+        "box": [
+          212,
+          174,
+          461,
+          215
+        ],
+        "highlights": [],
+        "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+        "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+        "extracted_text": "L =  ------ A ----  --------  +  ----- B ----  ----e-----  + L (1)\n1– S 1 – S a\ne e"
+      }
+    ],
+    "sha256": "d2780076894dae4c8025cd62bdd04cf86fc2e6b7e2cfa39bc82a6cf15657c23d",
+    "width": 1320,
+    "height": 379
+  },
+  {
+    "id": "26",
+    "title": "大气模型是带有温度、水汽与季节条件的假设",
+    "file": "evidence-26.png",
+    "regions": [
+      {
+        "source": "envi-flaash",
+        "pdf_page": 21,
+        "label": "表 2-1：三种夏季／热带模型的标准水汽与温度",
+        "box": [
+          130,
+          74,
+          533,
+          165
+        ],
+        "highlights": [],
+        "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+        "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+        "extracted_text": "Water Vapor Water Vapor Surface Air\nModel Atmosphere\n(std atm-cm) (g/cm2) Temperature\nSub-Arctic Summer (SAS) 2589 2.08 14 °C or 57 °\nMid-Latitude Summer (MLS) 3636 2.92 21 °C or 70 °\nTropical (T) 5119 4.11 27 °C or 80 °"
+      },
+      {
+        "source": "envi-flaash",
+        "pdf_page": 21,
+        "label": "表 2-2：纬度与季节选择表；不是只看一个地区名称",
+        "box": [
+          135,
+          212,
+          529,
+          574
+        ],
+        "highlights": [],
+        "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+        "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+        "extracted_text": "Latitude\nJan. March May July Sept. Nov.\n(°N)\n80 SAW SAW SAW MLW MLW SAW\n70 SAW SAW MLW MLW MLW SAW\n60 MLW MLW MLW SAS SAS MLW\n50 MLW MLW SAS SAS SAS SAS\n40 SAS SAS SAS MLS MLS SAS\n30 MLS MLS MLS T T MLS\n20 T T T T T T\n10 T T T T T T\n0 T T T T T T\n-10 T T T T T T\n-20 T T T MLS MLS T\n-30 MLS MLS MLS MLS MLS MLS\n-40 SAS SAS SAS SAS SAS SAS\n-50 SAS SAS SAS MLW MLW SAS\n-60 MLW MLW MLW MLW MLW MLW\n-70 MLW MLW MLW MLW MLW MLW\n-80 MLW MLW MLW SAW MLW MLW"
+      }
+    ],
+    "sha256": "b406b93827e21482f19f4ffe2a56d2c821741a4bf3f337da3aa7ff2a4d7336e6",
+    "width": 1320,
+    "height": 1711
+  },
+  {
+    "id": "27",
+    "title": "水汽反演：FLAASH 的要求与 Sen2Cor 的算法不同",
+    "file": "evidence-27.png",
+    "regions": [
+      {
+        "source": "envi-flaash",
+        "pdf_page": 22,
+        "label": "经典 FLAASH：15 nm 或更细，并覆盖吸收特征区间",
+        "box": [
+          128,
+          351,
+          395,
+          369
+        ],
+        "highlights": [],
+        "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+        "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+        "extracted_text": "To use this water retrieval method, the image must have band\nfollowing ranges at a spectral resolution of 15 nm or better:"
+      },
+      {
+        "source": "envi-flaash",
+        "pdf_page": 22,
+        "label": "原列出的三个覆盖区间",
+        "box": [
+          136,
+          371,
+          369,
+          428
+        ],
+        "highlights": [],
+        "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+        "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+        "extracted_text": "(cid:129) 1050-1210 nm (for the 1135 nm water feature)\n(cid:129) 870-1020 nm (for the 940 nm water feature)\n(cid:129) 770-870 nm (for the 820 nm water feature)"
+      },
+      {
+        "source": "sen2cor-atbd",
+        "pdf_page": 64,
+        "label": "§4.4：Sen2Cor 使用 B8a 参考波段与 B9 吸收波段",
+        "box": [
+          96,
+          408,
+          514,
+          456
+        ],
+        "highlights": [],
+        "source_url": "https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf",
+        "source_sha256": "fca403d6ea3cf9bc4c1fa4f22e435e43027cb26b95a66d58380297b76dc86379",
+        "extracted_text": "performed with the APDA (atmospheric precorrected differential absorption)\nalgorithm [6] which has to be applied to Sentinel-2 bands B8a (865 nm) and B9\n(945 nm). Band 8a is the reference band in an atmospheric window region and\nband B9 is the measurement band in the WV absorption region. The absorption"
+      }
+    ],
+    "sha256": "5270017643de0f72a4b5163906917f6cc48419f0069d23ba9301e77d9975849b",
+    "width": 1320,
+    "height": 812
+  },
+  {
+    "id": "28",
+    "title": "文件格式：GeoTIFF／COG 的结构与存储顺序",
+    "file": "evidence-28.png",
+    "regions": [
+      {
+        "source": "ogc-cog",
+        "pdf_page": 17,
+        "label": "BIP：一个像元的各分量连续存储",
+        "box": [
+          63.239999999999995,
+          276.75,
+          550.0397762499998,
+          308.6700000000001
+        ],
+        "highlights": [],
+        "source_url": "https://docs.ogc.org/is/21-026/21-026.pdf",
+        "source_sha256": "c93378e6daf428c776c33739084aabc3e0ef625dd8e42632dbad555a0d728272",
+        "extracted_text": "RGB combinations of bands. The data is stored as RGBRGBRGB… (this arrangement is also\nknown as Band Interleaved by Pixel, BIP)."
+      },
+      {
+        "source": "ogc-cog",
+        "pdf_page": 17,
+        "label": "分波段存储：独立分量平面",
+        "box": [
+          53.8805,
+          313.95000000000005,
+          550.0400952500001,
+          330.09000000000003
+        ],
+        "highlights": [],
+        "source_url": "https://docs.ogc.org/is/21-026/21-026.pdf",
+        "source_sha256": "c93378e6daf428c776c33739084aabc3e0ef625dd8e42632dbad555a0d728272",
+        "extracted_text": "• The components are stored in separate component planes. This is marked in the file as"
+      },
+      {
+        "source": "ogc-cog",
+        "pdf_page": 25,
+        "label": "HTTP Range：请求一个资源的一部分",
+        "box": [
+          45.24,
+          108.17000000000007,
+          550.0401799499998,
+          140.09000000000003
+        ],
+        "highlights": [],
+        "source_url": "https://docs.ogc.org/is/21-026/21-026.pdf",
+        "source_sha256": "c93378e6daf428c776c33739084aabc3e0ef625dd8e42632dbad555a0d728272",
+        "extracted_text": "HTTP Version 1.1 introduced a range header in the GET requests that supports requesting only a\nfragment of a resource. If the server advertises \"Accept-Ranges: bytes\" in its response headers of a"
+      }
+    ],
+    "sha256": "efb12f3ad7e65f05999b3cfc5a430afdc0de77c7aaf4cdd08a780e913ffba055",
+    "width": 1320,
+    "height": 642
+  },
+  {
+    "id": "29",
+    "title": "真彩色、假彩色与显示拉伸",
+    "file": "evidence-29.png",
+    "regions": [
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 21,
+        "label": "多波段被分配给显示屏的 RGB 通道",
+        "box": [
+          79.49999999999994,
+          267.7620000000001,
+          529.7568,
+          299.08200000000005
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "referred to as a band. We can combine and display channels of information digitally\nusing the three primary colours (blue, green, and red). The data from each channel"
+      },
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 155,
+        "label": "线性拉伸：扩大范围，提高显示对比度",
+        "box": [
+          79.51080000000007,
+          151.32000000000005,
+          521.3199600000004,
+          179.8212000000001
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "the full 256 levels available. A linear stretch uniformly expands this small range to cover the\nfull range of values from 0 to 255. This enhances the contrast in the image with light toned"
+      }
+    ],
+    "sha256": "48deb070f4bc1fe1349f510f5ff4ef80f1f21f7cef5cdcf3604a634f3933b8ac",
+    "width": 1320,
+    "height": 513
+  },
+  {
+    "id": "30",
+    "title": "离水辐亮度与水色遥感反射率",
+    "file": "evidence-30.png",
+    "regions": [
+      {
+        "source": "ocean-protocols",
+        "pdf_page": 32,
+        "label": "PDF 第 32 页／书内第 26 页：式 (2.54)，RRS = LW / Ed",
+        "box": [
+          226,
+          68,
+          510,
+          105
+        ],
+        "highlights": [],
+        "source_url": "https://oceancolor.gsfc.nasa.gov/files/resources/docs/technical/protocols_ver4_voli.pdf",
+        "source_sha256": "55038e8af91e2584211449c96e6dc01cc86434ab29179eaf8acbd66f9c434b27",
+        "extracted_text": "L (λ,θ,φ)\nR (λ,θ,φ)= W (2.54)\nRS E ( 0+,λ )\nd"
+      },
+      {
+        "source": "ocean-protocols",
+        "pdf_page": 21,
+        "label": "PDF 第 21 页：图 2.4，水面处的反射与折射几何",
+        "box": [
+          100,
+          366,
+          504,
+          582
+        ],
+        "highlights": [],
+        "source_url": "https://oceancolor.gsfc.nasa.gov/files/resources/docs/technical/protocols_ver4_voli.pdf",
+        "source_sha256": "55038e8af91e2584211449c96e6dc01cc86434ab29179eaf8acbd66f9c434b27",
+        "extracted_text": ""
+      }
+    ],
+    "sha256": "2992804e1a9e6f21baa0c6a0291cae1eae5d6108cbe18c8367bbcc4242bd6b7e",
+    "width": 1320,
+    "height": 1109
+  },
+  {
+    "id": "31",
+    "title": "热红外反演包含地表发射、大气热辐射与发射率",
+    "file": "evidence-31.png",
+    "regions": [
+      {
+        "source": "modis-temperature",
+        "pdf_page": 10,
+        "label": "PDF 第 10 页／书内第 8 页：式 (8)，地表与大气的不同热辐射项",
+        "box": [
+          61,
+          441,
+          561,
+          505
+        ],
+        "highlights": [
+          [
+            66,
+            442,
+            280,
+            465
+          ]
+        ],
+        "source_url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod11.pdf",
+        "source_sha256": "09d2ac7c27d2067d67c73b127556f88086acd89d7cab6803b81b16b4b12107fd",
+        "extracted_text": "L(l ,m )=t (l ,m )e (l ,m )B(l ,T )+L (l ,m )+L (l ,m ,m ,f )+t (l ,m ,m )m E (l ) f (m ;m ,f )\n1 s a s 0 0 2 0 0 0 r 0 0\n2p 1\n(cid:242) (cid:242)\n+ m ´f (m ;m ´,f ´)[t (l ,m )L (l ,-m ´,f ´)+t (l ,m )L (l ,-m ´,f ´)]dm ´df ´, (8)\nr 3 d 4 t\n0 0"
+      },
+      {
+        "source": "modis-temperature",
+        "pdf_page": 10,
+        "label": "原文定义 ε 为地表光谱发射率，B 为同温度黑体辐亮度",
+        "box": [
+          50,
+          510,
+          559,
+          544
+        ],
+        "highlights": [],
+        "source_url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod11.pdf",
+        "source_sha256": "09d2ac7c27d2067d67c73b127556f88086acd89d7cab6803b81b16b4b12107fd",
+        "extracted_text": "wherem iscosine oftheviewing zenith angle,e (l ,m )isthesurface spectral emissivity,B(l ,T )isthe radiance emitted bya\ns\nblackbody at surface temperature T ,E (l )isthe spectral solar irradiance incident onthe topofatmosphere (normaltothe\ns 0"
+      }
+    ],
+    "sha256": "7b0de0cacc97f9301e5f058911e15f9384de4aea327fa9f35f818bc017463eff",
+    "width": 1320,
+    "height": 588
+  },
+  {
+    "id": "33",
+    "title": "辐亮度输入单位与除法缩放",
+    "file": "evidence-33.png",
+    "regions": [
+      {
+        "source": "envi-flaash",
+        "pdf_page": 12,
+        "label": "原手册的单位和 scale factor 关系式",
+        "box": [
+          127,
+          599,
+          541,
+          636
+        ],
+        "highlights": [],
+        "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+        "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+        "extracted_text": ""
+      }
+    ],
+    "sha256": "689078b27f24c1b57e041983642bac9e727f23b12e668c513e4752d19c89c6f3",
+    "width": 1320,
+    "height": 364
+  },
+  {
+    "id": "34",
+    "title": "经典 FLAASH 参数的原始界面",
+    "file": "evidence-34.png",
+    "regions": [
+      {
+        "source": "envi-flaash",
+        "pdf_page": 17,
+        "label": "图 2-1：实际参数字段；旧界面中的设置不是本文推荐默认值",
+        "box": [
+          130,
+          326,
+          531,
+          597
+        ],
+        "highlights": [
+          [
+            275,
+            447,
+            360,
+            499
+          ],
+          [
+            361,
+            472,
+            439,
+            499
+          ],
+          [
+            292,
+            512,
+            377,
+            558
+          ]
+        ],
+        "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+        "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+        "extracted_text": ""
+      },
+      {
+        "source": "envi-flaash",
+        "pdf_page": 20,
+        "label": "成像时间字段明确使用 GMT",
+        "box": [
+          137.4,
+          376.35089999999997,
+          540.418134,
+          391.482702
+        ],
+        "highlights": [],
+        "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+        "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+        "extracted_text": "7. In the Flight Time GMT (HH:MM:SS) fields, enter the Greenwich Mean Time when"
+      }
+    ],
+    "sha256": "427b4999c0f50db73f069dffc592ec91253336e1cdb5f3a4ea76ea7f08921789",
+    "width": 1320,
+    "height": 1210
+  },
+  {
+    "id": "35",
+    "title": "QUAC 的输入波段条件也有明确限制",
+    "file": "evidence-35.png",
+    "regions": [
+      {
+        "source": "envi-flaash",
+        "pdf_page": 12,
+        "label": "原文要求至少三个波段和有效波长",
+        "box": [
+          126.60109799999998,
+          209.71267499999993,
+          496.66825199999954,
+          237.70260599999995
+        ],
+        "highlights": [],
+        "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+        "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+        "extracted_text": "allowed as QUAC input. QUAC input files must have at least three bands and valid\nwavelengths."
+      }
+    ],
+    "sha256": "6361df3e1dcd108940fcb360989097d9014e9b07df846a9f36500f8365ca046b",
+    "width": 1320,
+    "height": 340
+  },
+  {
+    "id": "36",
+    "title": "配准、正射与坡面照明校正是不同步骤",
+    "file": "evidence-36.png",
+    "regions": [
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 151,
+        "label": "几何校正：补偿成像过程中的位置畸变",
+        "box": [
+          79.5,
+          122.81880000000001,
+          526.1831999999996,
+          165.7218000000001
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "rotation of the Earth. Geometric corrections are intended to compensate for these distortions\nso that the geometric representation of the imagery will be as close as possible to the real\nworld. Many of these variations are systematic, or predictable in nature and can be"
+      },
+      {
+        "source": "ccrs-fundamentals",
+        "pdf_page": 151,
+        "label": "配准也可以把一幅影像对到另一幅影像",
+        "box": [
+          79.50000000000006,
+          663.5694000000002,
+          530.9492400000001,
+          692.0706000000002
+        ],
+        "highlights": [],
+        "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+        "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+        "extracted_text": "Geometric registration may also be performed by registering one (or more) images to another\nimage, instead of to geographic coordinates. This is called image-to-image registration and is"
+      },
+      {
+        "source": "sen2cor-atbd",
+        "pdf_page": 68,
+        "label": "§4.7：正射需要高程；坡面照明校正还需要坡度、坡向",
+        "box": [
+          96,
+          353,
+          514,
+          438
+        ],
+        "highlights": [],
+        "source_url": "https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf",
+        "source_sha256": "fca403d6ea3cf9bc4c1fa4f22e435e43027cb26b95a66d58380297b76dc86379",
+        "extracted_text": "While the ortho-rectification needs only the terrain elevation data, the atmospheric\n/ topographic correction requires the following additional products derived from\nthe DEM:\n• map of DEM slope (unit degree) (mandatory),\n• map of DEM aspect (unit degree) (mandatory),"
+      }
+    ],
+    "sha256": "fcfcc744e161de80331e7ba049b182b1ab34ab3c3e78e6e6146bee618cd4c76b",
+    "width": 1320,
+    "height": 886
+  },
+  {
+    "id": "37",
+    "title": "SAFE 文件组织与 MGRS 瓦片都有正式定义",
+    "file": "evidence-37.png",
+    "regions": [
+      {
+        "source": "s2-psd",
+        "pdf_page": 398,
+        "label": "图 4-17：原生 L1C 产品结构图",
+        "box": [
+          118,
+          318,
+          528,
+          431
+        ],
+        "highlights": [],
+        "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+        "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+        "extracted_text": ""
+      },
+      {
+        "source": "s2-psd",
+        "pdf_page": 50,
+        "label": "§2.7.2：UTM／WGS84、MGRS 与 100 km 网格方块",
+        "box": [
+          54,
+          513,
+          542,
+          553
+        ],
+        "highlights": [],
+        "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+        "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+        "extracted_text": "For ortho-rectified products (Level-1C and Level-2A), the Granules are called Tiles. A Tile consists\nof 100kmx100km squared ortho-images in cartographic reference frame UTM/WGS84 (Universal\nTransverse Mercator / World Geodetic System 1984) projection."
+      },
+      {
+        "source": "s2-psd",
+        "pdf_page": 50,
+        "label": "MGRS 是基于 UTM／UPS 的另一套标记方式",
+        "box": [
+          54,
+          639,
+          542,
+          668
+        ],
+        "highlights": [],
+        "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+        "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+        "extracted_text": "The MGRS is derived from the UTM grid system and the UPS (Universal Polar Stereographic) grid\nsystem, but uses a different labelling convention. The MGRS is used for the entire earth."
+      }
+    ],
+    "sha256": "5670bdff5de43c55278bf27feb5745299a29f762d6856f1467ac6e61b62acc00",
+    "width": 1320,
+    "height": 952
+  },
+  {
+    "id": "38",
+    "title": "Sen2Cor 的查找表与透过率定义",
+    "file": "evidence-38.png",
+    "regions": [
+      {
+        "source": "sen2cor-atbd",
+        "pdf_page": 51,
+        "label": "式 (0.1)：路径辐射、透过率、地表辐照度与反射率",
+        "box": [
+          130,
+          517,
+          514,
+          553
+        ],
+        "highlights": [],
+        "source_url": "https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf",
+        "source_sha256": "fca403d6ea3cf9bc4c1fa4f22e435e43027cb26b95a66d58380297b76dc86379",
+        "extracted_text": "𝐿(𝜌) = 𝐿 + 𝜏 ∙ 𝐸 𝑔 (0) ∙ 𝜌 = 𝐿 + 𝜏 ∙ 𝐸 (𝜌) ∙ 𝜌\n(0.1)\n𝑝 𝑝 𝑔\n(1−𝑠∙𝜌) 𝜋 𝜋"
+      },
+      {
+        "source": "sen2cor-atbd",
+        "pdf_page": 51,
+        "label": "LUT：预先计算不同几何、高程和大气参数的传播关系",
+        "box": [
+          96.264,
+          635.94172,
+          513.3218400000001,
+          674.22172
+        ],
+        "highlights": [],
+        "source_url": "https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf",
+        "source_sha256": "fca403d6ea3cf9bc4c1fa4f22e435e43027cb26b95a66d58380297b76dc86379",
+        "extracted_text": "The LibRadtran version 2.0.2 code was employed to calculate a database of all\nradiative transfer functions in equation (0.1) for different sensor and solar\ngeometries, ground elevations, and atmospheric parameters6. These Look-Up-"
+      }
+    ],
+    "sha256": "2502f9b9a9a0033a23a7e71c7cdd66a0590b7c548d5a05c95ab991d2ca846b85",
+    "width": 1320,
+    "height": 571
+  },
+  {
+    "id": "39",
+    "title": "波数单位与 FWHM 这个名字的完整含义",
+    "file": "evidence-39.png",
+    "regions": [
+      {
+        "source": "nist-radiometry",
+        "pdf_page": 12,
+        "label": "§1.1.1：波数是单位长度中的波数，单位为长度的倒数",
+        "box": [
+          40,
+          626,
+          516,
+          686
+        ],
+        "highlights": [],
+        "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf",
+        "source_sha256": "061db652aa2e34f74972a665407f3272de136c4c510438c226187117da67c500",
+        "extracted_text": "The wavelength A [m] is defined as the distance between two adjacent points in a periodic wave\nhaving the same phase. The wavenumber o [m'1] is the number of waves in a given length\ninterval"
+      },
+      {
+        "source": "envi-flaash",
+        "pdf_page": 12,
+        "label": "FWHM = full width half maximum",
+        "box": [
+          126.59999999999997,
+          473.7411900000001,
+          540.2874000000005,
+          499.7209680000001
+        ],
+        "highlights": [],
+        "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+        "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+        "extracted_text": "Retrieval” on page 23). For hyperspectral sensors, wavelengths and full width half maximum\n(FWHM) values must be available in the ENVI header file or in separate ASCII files. Known"
+      }
+    ],
+    "sha256": "b1e25aebeda1620bc5acae63c7bad5778aeb1fb2050581d793e9401b3e39f961",
+    "width": 1320,
+    "height": 580
+  }
+]

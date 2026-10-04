@@ -1,0 +1,107 @@
+[
+  {
+    "name": "ogc-cog",
+    "url": "https://docs.ogc.org/is/21-026/21-026.pdf",
+    "pages": 33,
+    "bytes": 491104,
+    "sha256": "c93378e6daf428c776c33739084aabc3e0ef625dd8e42632dbad555a0d728272"
+  },
+  {
+    "name": "sen2cor-atbd",
+    "url": "https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf",
+    "pages": 78,
+    "bytes": 4897580,
+    "sha256": "fca403d6ea3cf9bc4c1fa4f22e435e43027cb26b95a66d58380297b76dc86379"
+  },
+  {
+    "name": "landsat-c2",
+    "url": "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-1619_Landsat8-9-Collection2-Level2-Science-Product-Guide-v6.pdf",
+    "pages": 45,
+    "bytes": 3092375,
+    "sha256": "98ca9baafa118629c009130d6dcd7730127d81bd612337873459286a5264602e"
+  },
+  {
+    "name": "s2-handbook",
+    "url": "https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook",
+    "pages": 64,
+    "bytes": 1773283,
+    "sha256": "a57ed7fa07c768e0b86538e43a4b35547d806fff09dfa70be6d5cbea614c6c99"
+  },
+  {
+    "name": "nist-radiometry",
+    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf",
+    "pages": 132,
+    "bytes": 6202668,
+    "sha256": "061db652aa2e34f74972a665407f3272de136c4c510438c226187117da67c500"
+  },
+  {
+    "name": "nist-brdf",
+    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/MONO/nbsmonograph160.pdf",
+    "pages": 72,
+    "bytes": 3817452,
+    "sha256": "d1f8c489813f812b26c36c4a3b894fe0495b097d4a3e61c884fa816962012f20"
+  },
+  {
+    "name": "ccrs-fundamentals",
+    "url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "pages": 258,
+    "bytes": 13031289,
+    "sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0"
+  },
+  {
+    "name": "landsat-handbook",
+    "url": "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/atoms/files/LSDS-1574_L8_Data_Users_Handbook-v5.0.pdf",
+    "pages": 114,
+    "bytes": 7231518,
+    "sha256": "baf10fd32ebbc5d21a509869e2879f5ef23f0d275d8bddc01462ed02d18bc756"
+  },
+  {
+    "name": "modis-vi",
+    "url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod13.pdf",
+    "pages": 129,
+    "bytes": 1996323,
+    "sha256": "1772f5ce915957eed709e761c6ea7f759b2474a0b5be666aba25af675006189d"
+  },
+  {
+    "name": "modis-atmosphere",
+    "url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod08.pdf",
+    "pages": 107,
+    "bytes": 1868740,
+    "sha256": "0df984f20ad67ca5281d9562604c9f1b57b0a395781384cac1a65ba6b5a1b550"
+  },
+  {
+    "name": "modis-temperature",
+    "url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod11.pdf",
+    "pages": 77,
+    "bytes": 686929,
+    "sha256": "09d2ac7c27d2067d67c73b127556f88086acd89d7cab6803b81b16b4b12107fd"
+  },
+  {
+    "name": "ocean-protocols",
+    "url": "https://oceancolor.gsfc.nasa.gov/files/resources/docs/technical/protocols_ver4_voli.pdf",
+    "pages": 56,
+    "bytes": 746742,
+    "sha256": "55038e8af91e2584211449c96e6dc01cc86434ab29179eaf8acbd66f9c434b27"
+  },
+  {
+    "name": "s2-psd",
+    "url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+    "pages": 487,
+    "bytes": 8987249,
+    "sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db"
+  },
+  {
+    "name": "s2-l2a",
+    "url": "https://step.esa.int/thirdparties/sen2cor/2.10.0/docs/S2-PDGS-MPC-L2A-PDD-V14.9-v4.9.pdf",
+    "pages": 39,
+    "bytes": 871860,
+    "sha256": "cd9fe14e0ef44d90f05b41b766fbfa5188af5a6d99ac552b323bbad3e3518460"
+  },
+  {
+    "name": "envi-flaash",
+    "url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+    "pages": 44,
+    "bytes": 350333,
+    "sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988"
+  }
+]

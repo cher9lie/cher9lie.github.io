@@ -20,6 +20,8 @@ comment: true
 
 写作起点是[这篇 FLAASH 入门文章](https://mp.weixin.qq.com/s/S0A2gPy-05P64CwOTr-0uQ)。下面依据技术规范补充其中的简化之处，尤其是 L1C 的物理含义、像元大小的单位、水汽反演条件和软件版本差异。
 
+阅读时可以沿着正文的“原文证据”编号回到原材料：每张摘图都保留原文件中的文字、公式或表格，红框只是本文的标注。PDF 页码按文件浏览器计数；书内印刷页码不同的地方会另注。原文件下载链接紧接在图注后。概念图、本文的代数推导与原文摘图分别标明，不能互相当作实测证据。
+
 ![太阳光、大气、地表与光学卫星之间的光路示意](./atmosphere-path.png)
 
 *图 1：AI 生成的光学遥感概念图。黄色实线表示入射阳光，白色实线表示地表反射后进入传感器的信号；蓝色虚线提示大气散射贡献。箭头是解释用的叠加线，卫星、距离与大气厚度不按比例。这不是卫星观测，也不是大气校正的前后对比。*
@@ -34,13 +36,49 @@ comment: true
 
 电磁波的<strong>波长</strong>决定它与物质怎样作用。可见光约为 400–700 nm；近红外（NIR）在可见红光以外，短波红外（SWIR）更长。这里 $1\ \mu\mathrm m=1000\ \mathrm{nm}$。红外并不都在测温：近红外、短波红外白天主要用于观测反射太阳光；热红外则关注物体自身的热辐射。Sentinel‑2 MSI 没有用于地表温度反演的热红外波段。
 
+<span id="evidence-01"></span>
+
+![原文证据 01：遥感、被动／主动观测与电磁波，原文件摘图与红框标注](./evidence-01.png)
+
+*原文证据 01：CCRS 的定义同时包含反射与发射；被动传感器使用自然能量，主动传感器提供自己的能量。最后一框是波长定义。原文件下载与定位：[CCRS 遥感基础，PDF 第 5 页](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf#page=5)； [CCRS 遥感基础，PDF 第 19 页](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf#page=19)； [CCRS 遥感基础，PDF 第 8 页](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf#page=8)。*
+
 <strong>波段</strong>不是一个无限窄的波长，而是传感器接收的一段波长范围。<strong>光谱响应函数</strong>描述仪器在这段范围内对不同波长的相对敏感程度；中心波长只是一种概括。<strong>半高全宽（FWHM）</strong>是响应曲线达到峰值一半时的宽度，常用于描述带宽。做物理校正时，仅凭“这是第 4 波段”并不能确定这些信息。
 
 这些响应曲线可以实际下载：[Copernicus 的 MSI 文档目录](https://sentiwiki.copernicus.eu/web/s2-documents)保存了各版文件，其中 [2024 年 4.0 版 XLSX](https://sentiwiki.copernicus.eu/__attachments/a_ece6183b6698587e7ecd9804974bece3d82e39e151aa5aeca9d8fd95e1f1558c/COPE-GSEG-EOPG-TN-15-0007%20-%20Sentinel-2%20Spectral%20Response%20Functions%202024%20-%204.0.xlsx)包含 Sentinel‑2A、2B、2C 的逐波长响应。目录还提供后续版本；应按平台和处理版本选择，不能把最新文件无条件套在历史产品上。
 
+<span id="evidence-08"></span>
+
+![原文证据 08：光谱信息需要读取文件里的实际字段，原文件摘图与红框标注](./evidence-08.png)
+
+*原文证据 08：产品规范把 RESOLUTION、波长上下界、CENTRAL 与响应 STEP 分开记录。NASA 原式则把仪器响应函数写进波段平均；后者用于说明物理定义，不是 Sentinel‑2 的处理流程。原文件下载与定位：[S2 产品规范 15.0，PDF 第 439 页](https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0#page=439)； [NASA 地表温度 ATBD，PDF 第 10 页](https://modis.gsfc.nasa.gov/data/atbd/atbd_mod11.pdf#page=10)。*
+
+<strong>“中心”和“带宽”也有计算约定。</strong>官方 4.0 版 XLSX 的 `Equivalent Wavelengths` 工作表使用响应加权平均：
+
+$$
+\lambda_{eq}=\frac{\int\lambda S(\lambda)\,\mathrm d\lambda}{\int S(\lambda)\,\mathrm d\lambda}.
+$$
+
+$S(\lambda)$ 是仪器相对光谱响应，不是后文的大气球面反照率 $S$。`Bandwidth and mid-wavelength` 工作表另用响应上升、下降两侧最陡斜率位置 $\lambda_1,\lambda_2$，定义带宽 $\Delta\lambda=\lambda_2-\lambda_1$、带宽中点 $\lambda_m=(\lambda_1+\lambda_2)/2$。这与<strong>半高全宽</strong>的定义并不自动等同；FWHM 要找响应值为峰值一半的左右位置。实际文件写着 Bandwidth 时，应先查看它自己的计算约定。
+
+例如该文件给出 S2A B4 的等效波长约 664.622 nm，而带宽中点为 665 nm；这不是矛盾，是计算定义不同。设计表的名义值、地面试验得到的平均响应、不同探测器的响应差异，也应分别看待。
+
+<span id="evidence-32"></span>
+
+![原文证据 32：MSI 官方 XLSX 中等效波长与带宽定义的两张原始内嵌附图](./evidence-32.png)
+
+*原文证据 32：直接提取 XLSX 内的两张原图，再标出公式；不是重新绘制的曲线。位置分别为 `Equivalent Wavelengths` 工作表 G4 起的内嵌图，和 `Bandwidth and mid-wavelength` 工作表 I5 起的内嵌图。[下载原 XLSX](https://sentiwiki.copernicus.eu/__attachments/a_ece6183b6698587e7ecd9804974bece3d82e39e151aa5aeca9d8fd95e1f1558c/COPE-GSEG-EOPG-TN-15-0007%20-%20Sentinel-2%20Spectral%20Response%20Functions%202024%20-%204.0.xlsx)。*
+
+还有一个<strong>采样</strong>容易混淆：`Spectral Responses (S2A)!A2:A2302` 的 `SR_WL` 从 300 到 2600 nm，每行相隔 1 nm。它是<strong>响应曲线在波长轴上的数值采样步长</strong>，不是“MSI 每个影像波段只有 1 nm 带宽”，更不是地面的 1 m 像元。地面采样距离用 m，波长采样步长和光谱带宽在这里用 nm，描述的维度不同。
+
 ### 1.2 像元与四种分辨率
 
-影像通常是由行、列和波段组成的<strong>栅格</strong>。<strong>像元</strong>是网格上的一个采样单元，其数值代表一个地面空间足迹内、某个波段接收到的信号。一个像元里可能同时有树、土壤和道路，这叫<strong>混合像元</strong>。它不会因为做了大气校正，就自动拆成三种纯地物。
+影像通常是由行、列和波段组成的<strong>栅格</strong>。<strong>像元</strong>是网格上的一个采样单元，其数值代表一个地面空间足迹内、某个波段接收到的信号。一个像元里可能同时有树、土壤和道路，这叫<strong>混合像元</strong>。它不会因为做了大气校正，就自动拆成三种纯地物。仪器的<strong>瞬时视场（IFOV）</strong>是一个角范围；距离越远，同样角范围覆盖的地面足迹越大。产品的<strong>地面采样距离（GSD）</strong>则指输出网格相邻采样位置的地面间距。
+
+<span id="evidence-02"></span>
+
+![原文证据 02：像元、空间分辨率与采样不能混为一谈，原文件摘图与红框标注](./evidence-02.png)
+
+*原文证据 02：保留像元与 IFOV 的原文，并标出“像元大小与空间分辨率不可互换”。IFOV 是仪器瞬时可见的角范围；它与距离共同决定地面足迹。原文件下载与定位：[CCRS 遥感基础，PDF 第 20 页](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf#page=20)； [CCRS 遥感基础，PDF 第 39 页](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf#page=39)。*
 
 | 名称 | 它说明什么 | 为什么不能混淆 |
 | --- | --- | --- |
@@ -49,31 +87,71 @@ comment: true
 | 辐射分辨率 | 仪器把信号量化成多少数字等级的能力 | 16 位文件容器不等于 16 位有效测量精度，也不等于辐射准确度 |
 | 时间分辨率 | 对同一区域重复观测的时间间隔 | 名义重访周期不保证有无云、适合分析的影像 |
 
-<strong>多光谱</strong>是在若干波段采样，<strong>高光谱</strong>通常以密集、连续且更窄的波段观察光谱。后者更容易看清细小吸收特征，但也更依赖准确的定标、波段位置和足够的信噪比。信噪比表示有用信号相对于测量噪声的强弱。
+<strong>多光谱</strong>是在若干波段采样，<strong>高光谱</strong>通常以密集、连续且更窄的波段观察光谱。后者更容易看清细小吸收特征，但也更依赖准确的定标、波段位置和足够的信噪比。信噪比表示有用信号相对于测量噪声的强弱。MSI 的 12 位仪器量化给出 $2^{12}=4096$ 个数字等级；L1C／L2A 经过定标与重新编码，仍可使用 16 位文件，不能据此认为原始仪器也获得了 16 位辐射精度。下面波段原表的 SNR 与特定参考辐亮度 Lref 绑定。
+
+<strong>辐射准确度</strong>关注测量值与校准参考值有多接近；信噪比关注随机噪声对信号的影响，量化位数关注可编码的等级数。高信噪比的仪器仍可能带有系统性的定标偏差，更多位数也不会自动消除这种偏差。手册写出的“低于 5%、目标 3%”是 MSI 的辐射准确度设计要求，不能转换成“任意 L2A 像元的地表反射率误差都低于 5%”。
+
+<span id="evidence-03"></span>
+
+![原文证据 03：四种分辨率中的光谱、辐射与时间，原文件摘图与红框标注](./evidence-03.png)
+
+*原文证据 03：分别核对光谱、高光谱、辐射和时间概念；这里的 8 位是通用量化例子，不能读成 MSI 的仪器位数。原文件下载与定位：[CCRS 遥感基础，PDF 第 41 页](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf#page=41)； [第 42 页](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf#page=42)； [第 43 页](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf#page=43)； [第 44 页](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf#page=44)。*
+
+<span id="evidence-04"></span>
+
+![原文证据 04：MSI 的 12 位量化、辐射准确度与 SNR，原文件摘图与红框标注](./evidence-04.png)
+
+*原文证据 04：2015 年 MSI 手册给出 12 位量化，即 4096 个等级，并另列辐射准确度要求和 SNR。这些是任务指标，不能当成每个产品像元的实测误差。原文件下载与定位：[S2 用户手册，PDF 第 53 页](https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook#page=53)。*
 
 ### 1.3 Sentinel‑2 的 13 个波段
 
-MSI 有 13 个波段，但不是 13 个 10 m 波段。下表采用任务设计的<strong>名义中心波长</strong>；不同卫星的实际中心和响应曲线略有差别，计算时应使用对应平台的元数据或官方响应文件。[ESA 任务资料](https://sentiwiki.copernicus.eu/web/s2-mission)提供波段与采样说明。
+MSI 有 13 个波段，但不是 13 个 10 m 波段。下表采用《Sentinel‑2 User Handbook》2015 年版第 53–54 页表 3–5 的<strong>任务设计中心波长和带宽</strong>，不把它们当作各平台实测响应的同义词；不同卫星的实际中心和响应曲线略有差别，计算时应使用对应平台的元数据或官方响应文件。[ESA 任务资料](https://sentiwiki.copernicus.eu/web/s2-mission)提供波段与采样说明。
 
-| 波段 | 名义中心波长 | 原生采样间距 | 主要信息 |
-| --- | --- | --- | --- |
-| B1 | 443 nm | 60 m | 沿海蓝光，对大气散射敏感 |
-| B2 | 490 nm | 10 m | 蓝光 |
-| B3 | 560 nm | 10 m | 绿光 |
-| B4 | 665 nm | 10 m | 红光，植被叶绿素吸收明显 |
-| B5 | 705 nm | 20 m | 红边 |
-| B6 | 740 nm | 20 m | 红边 |
-| B7 | 783 nm | 20 m | 红边／近红外过渡 |
-| B8 | 842 nm | 10 m | 宽近红外，常与 B4 计算 NDVI |
-| B8A | 865 nm | 20 m | 较窄近红外，不能默认与 B8 等价 |
-| B9 | 945 nm | 60 m | 水汽吸收区域 |
-| B10 | 1375 nm | 60 m | 卷云检测，标准 L2A 不提供其地表反射率 |
-| B11 | 1610 nm | 20 m | 短波红外，对含水状况等敏感 |
-| B12 | 2190 nm | 20 m | 短波红外，对含水、矿物、烧毁地表等敏感 |
+| 波段 | 名义中心波长 | 设计带宽 | 原生采样间距 | 主要信息 |
+| --- | --- | --- | --- | --- |
+| B1 | 443 nm | 20 nm | 60 m | 沿海蓝光，对大气散射敏感 |
+| B2 | 490 nm | 65 nm | 10 m | 蓝光 |
+| B3 | 560 nm | 35 nm | 10 m | 绿光 |
+| B4 | 665 nm | 30 nm | 10 m | 红光，植被叶绿素吸收明显 |
+| B5 | 705 nm | 15 nm | 20 m | 红边 |
+| B6 | 740 nm | 15 nm | 20 m | 红边 |
+| B7 | 783 nm | 20 nm | 20 m | 红边／近红外过渡 |
+| B8 | 842 nm | 115 nm | 10 m | 宽近红外，常与 B4 计算 NDVI |
+| B8A | 865 nm | 20 nm | 20 m | 较窄近红外，不能默认与 B8 等价 |
+| B9 | 945 nm | 20 nm | 60 m | 水汽吸收区域 |
+| B10 | 1375 nm | 30 nm | 60 m | 卷云检测，标准 L2A 不提供其地表反射率 |
+| B11 | 1610 nm | 90 nm | 20 m | 短波红外，对含水状况等敏感 |
+| B12 | 2190 nm | 180 nm | 20 m | 短波红外，对含水、矿物、烧毁地表等敏感 |
+
+<span id="evidence-05"></span>
+
+![原文证据 05：10 m 波段：中心波长、带宽与参考信噪比，原文件摘图与红框标注](./evidence-05.png)
+
+*原文证据 05：原表 3 对应 10 m 组。红框标出中心波长、带宽和 SNR 列；SNR @ Lref 指指定参考辐亮度下的指标，不是对所有地物都固定不变的 SNR。原文件下载与定位：[S2 用户手册，PDF 第 53 页](https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook#page=53)。*
+
+<span id="evidence-06"></span>
+
+![原文证据 06：20 m 波段：红边、窄近红外与短波红外，原文件摘图与红框标注](./evidence-06.png)
+
+*原文证据 06：原表 4 对应 20 m 组。2015 年手册中的“8b”是历史记号，本文与现行 B8A 对应说明，截图保留原记号。B8 的 115 nm 与该窄近红外的 20 nm 设计带宽明显不同。原文件下载与定位：[S2 用户手册，PDF 第 53 页](https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook#page=53)。*
+
+<span id="evidence-07"></span>
+
+![原文证据 07：60 m 波段与原生采样分组，原文件摘图与红框标注](./evidence-07.png)
+
+*原文证据 07：原表 5 对应 60 m 组；另附产品规范 15.0 的采样分组，以免只依赖旧手册。两种文件都给出 4 个 10 m、6 个 20 m、3 个 60 m 波段。原文件下载与定位：[S2 用户手册，PDF 第 54 页](https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook#page=54)； [S2 产品规范 15.0，PDF 第 49 页](https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0#page=49)。*
 
 <strong>红边</strong>是健康植被光谱从红光强吸收向近红外较高反射快速上升的区域。B5–B7 用来观察这段变化；它不是“红色边界”的空间位置。
 
 如果把 60 m 的 B9 重采样到 10 m，只是让网格更密，水汽观测没有获得新的 10 m 细节。<strong>重采样</strong>是在新网格上计算数值：连续量可以按目的使用最近邻、双线性等方法；分类编码应使用最近邻等保留类别的方法，不能用双线性把“云类”和“植被类”插值成一个新类别。
+
+Sen2Cor ATBD 2.10 的第 15 页还明确写出：没有在 10 m 空间尺度进行 AOT 和 WV 反演。因而看到 10 m 输出文件，不能就说气溶胶或水汽也被独立观测、反演到了 10 m；应区分原生观测网格、算法运算网格和输出网格。
+
+<span id="evidence-09"></span>
+
+![原文证据 09：重采样改变网格，也可能改变数值，原文件摘图与红框标注](./evidence-09.png)
+
+*原文证据 09：CCRS 解释最近邻与双线性；Sen2Cor ATBD 的脚注写明连续波段与分类层使用不同重采样规则，第 15 页则说明 10 m AOT／WV 的反演限制。这是所引用算法版本的具体规则，不是所有软件的通则。原文件下载与定位：[CCRS 遥感基础，PDF 第 152 页](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf#page=152)； [Sen2Cor ATBD 第 11 页](https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf#page=11)； [第 15 页](https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf#page=15)。*
 
 ## 2. DN、辐亮度、反射率：先认清数字的身份
 
@@ -90,6 +168,12 @@ $$
 恢复反射率，$s$ 是比例系数（scale），$o$ 是偏移量（offset）。只有读过该产品的定义，才能解释 3200。若 $s=0.0001,o=0$，它对应 0.32；若 $o=-0.1$，则对应 0.22。
 
 <strong>NoData</strong> 是“这个位置没有有效观测”的特殊编码，不是零反射率；<strong>饱和</strong>是信号超过仪器可记录范围，也不是一个可靠的高反射率测量。处理时应先识别这些特殊值，再计算物理量。
+
+<span id="evidence-10"></span>
+
+![原文证据 10：DN 与 NoData：先辨认有效信号的编码，原文件摘图与红框标注](./evidence-10.png)
+
+*原文证据 10：产品规范把 NoData 编码与有效信号范围分开说明。这里的 1–65535 是编码值范围，不是反射率的物理范围，也不是 MSI 的原始 12 位仪器量化。原文件下载与定位：[S2 产品规范 15.0，PDF 第 397 页](https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0#page=397)。*
 
 ### 2.2 辐亮度与辐照度
 
@@ -117,7 +201,7 @@ $$
 E_\lambda=\int_{\Omega^+}L_{\lambda,i}(\theta_i,\varphi_i)\cos\theta_i\,\mathrm d\Omega_i.
 $$
 
-$\Omega^+$ 是表面上方的入射半球；下标 $i$ 表示入射，$\varphi_i$ 是方位角，$\mathrm d\Omega_i=\sin\theta_i\,\mathrm d\theta_i\,\mathrm d\varphi_i$。积分的意思是把所有入射方向的贡献相加，斜着照到表面的光按余弦权重计入。于是 $E_\lambda$ 的单位是 $\mathrm{W\,m^{-2}\,\mu m^{-1}}$。[NIST 的辐射量定义与传输关系](https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf#page=15)可用来核对这两类量。
+$\Omega^+$ 是表面上方的入射半球；下标 $i$ 表示入射，$\varphi_i$ 是方位角，$\mathrm d\Omega_i=\sin\theta_i\,\mathrm d\theta_i\,\mathrm d\varphi_i$。积分的意思是把所有入射方向的贡献相加，斜着照到表面的光按余弦权重计入。于是 $E_\lambda$ 的单位是 $\mathrm{W\,m^{-2}\,\mu m^{-1}}$。[NIST 的辐射量定义与传输关系](https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf#page=16)可用来核对这两类量。
 
 实际波段接收的是一段光谱。若 $R_b(\lambda)$ 表示第 $b$ 个波段的相对响应，可以定义响应加权的平均光谱辐亮度：
 
@@ -126,6 +210,18 @@ $$
 $$
 
 它说明波段值并不等于中心波长处的单点值。这个式子是解释用的归一化定义，具体产品仍须遵循自己的定标约定；涉及辐亮度与太阳辐照度时，也必须使用相容的波段响应。[NIST 光谱辐亮度定标手册](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nbsspecialpublication250-1.pdf)说明了响应函数如何进入测量积分。
+
+<span id="evidence-11"></span>
+
+![原文证据 11：辐亮度、辐照度与光谱密度的原始定义，原文件摘图与红框标注](./evidence-11.png)
+
+*原文证据 11：NIST 原式分别定义方向辐亮度、面上辐照度和波长光谱密度。原扫描稿用 Φ 等符号；正文采用现代记号表达同一类物理量。原文件下载与定位：[NIST 辐射度量手册，PDF 第 13 页](https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf#page=13)； [NIST 辐射度量手册，PDF 第 16 页](https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf#page=16)； [NIST 辐射度量手册，PDF 第 17 页](https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf#page=17)。*
+
+<span id="evidence-12"></span>
+
+![原文证据 12：立体角：方向上的面积，而不是地面像元面积，原文件摘图与红框标注](./evidence-12.png)
+
+*原文证据 12：NASA 原图 2.3 用单位球上的面积解释立体角。sr 记录方向范围，不能与地面像元的 m² 面积合并解释。原文件下载与定位：[NASA 水色验证协议，PDF 第 21 页](https://oceancolor.gsfc.nasa.gov/files/resources/docs/technical/protocols_ver4_voli.pdf#page=21)。*
 
 ### 2.3 反射率与方向性
 
@@ -154,6 +250,12 @@ $$
 
 若表面是朗伯体，$f_r=\rho_{dh}/\pi$，因为半球上的 $\int\cos\theta_r\,\mathrm d\Omega_r=\pi$；这正是前面 $L=E\rho/\pi$ 的来由。[NIST 朗伯反射模型](https://pages.nist.gov/SCATMECH/docs/lambert.htm)采用这一关系。在定向照明约定下，常定义<strong>双向反射因子</strong> $\mathrm{BRF}=\pi f_r$，表示表面比同照明下理想白色朗伯面在该方向亮多少。方向性明显时，它可以超过 1，而被动表面向全部方向反射的总功率比例不能超过 1；解释卫星产品异常值时，要先区分这些量。
 
+<span id="evidence-13"></span>
+
+![原文证据 13：BRDF、反射因子与朗伯模型有不同定义，原文件摘图与红框标注](./evidence-13.png)
+
+*原文证据 13：NBS/NIST 依次列出 BRDF、方向—半球反射率、双向反射因子，以及朗伯面的 fr = ρ/π。书内页码分别是 5、11、12、43，PDF 页码因前置页而不同。原文件下载与定位：[NBS/NIST 反射术语专著，PDF 第 19 页](https://nvlpubs.nist.gov/nistpubs/Legacy/MONO/nbsmonograph160.pdf#page=19)； [NBS/NIST 反射术语专著，PDF 第 25 页](https://nvlpubs.nist.gov/nistpubs/Legacy/MONO/nbsmonograph160.pdf#page=25)； [NBS/NIST 反射术语专著，PDF 第 26 页](https://nvlpubs.nist.gov/nistpubs/Legacy/MONO/nbsmonograph160.pdf#page=26)； [NBS/NIST 反射术语专著，PDF 第 57 页](https://nvlpubs.nist.gov/nistpubs/Legacy/MONO/nbsmonograph160.pdf#page=57)。*
+
 ## 3. TOA 与 BOA：同叫反射率，位置不同
 
 <strong>TOA（Top Of Atmosphere，大气顶）反射率</strong>把卫星观测的辐亮度按太阳照明条件归一化，但没有去掉大气吸收、散射贡献。<strong>BOA（Bottom Of Atmosphere，大气底）反射率</strong>是经大气校正估计的地表反射率，通常也称 SR（Surface Reflectance）。BOA 不是在地面放仪器实测的结果，而是一种反演估计。
@@ -174,6 +276,12 @@ $$
 
 这是恢复传感器物理输入，不是大气校正。太阳辐照度、距离修正因子和角度应来自元数据，不能用网上某张表替代所有平台与日期。[Copernicus L1C 处理说明](https://s2.pages.eopf.copernicus.eu/msi/s2msi/main/PDFS_ADFS/L1/PDFS_S2_MSI_L1C.html)给出相应关系。
 
+<span id="evidence-14"></span>
+
+![原文证据 14：太阳天顶角、高度角与日地距离字段，原文件摘图与红框标注](./evidence-14.png)
+
+*原文证据 14：Sen2Cor ATBD 式 (0.20)给出 TOA 反射率至辐亮度的关系；Landsat 手册定义天顶角与高度角，S2 产品规范指出 U 的日地距离修正用途及逐波段太阳辐照度字段。各任务的整数定标步骤仍应分别执行。原文件下载与定位：[Sen2Cor ATBD 2.10，PDF 第 67 页](https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf#page=67)； [USGS Landsat 8 手册，PDF 第 63 页](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/atoms/files/LSDS-1574_L8_Data_Users_Handbook-v5.0.pdf#page=63)； [S2 产品规范 15.0，PDF 第 439 页](https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0#page=439)。*
+
 ## 4. 大气究竟怎样改变信号
 
 ### 4.1 吸收、散射与路径辐射
@@ -184,6 +292,12 @@ $$
 
 <strong>路径辐亮度</strong>是太阳光没有在目标地表反射，却被大气散射进传感器的贡献。它常给暗地物叠上一层亮的背景。<strong>透过率</strong>表示沿一条传播路径保留下来的辐射比例。
 
+<span id="evidence-15"></span>
+
+![原文证据 15：吸收、散射与大气窗口，原文件摘图与红框标注](./evidence-15.png)
+
+*原文证据 15：三处原文分别描述散射、吸收与大气窗口。气溶胶属于颗粒物；水汽是气态水。气体和颗粒造成的影响随波长变化。原文件下载与定位：[CCRS 遥感基础，PDF 第 12 页](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf#page=12)； [CCRS 遥感基础，PDF 第 14 页](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf#page=14)。*
+
 用一个解释性的简化式，可以把传感器观测写成：
 
 $$
@@ -193,6 +307,12 @@ $$
 
 $L_{path}$ 是路径辐亮度；$T_{\uparrow}$ 是地表至传感器的上行透过率；$E_{\downarrow}$ 是到达地表的直射和散射辐照度；$\rho_s$ 是地表反射率。式子说明大气既会增加信号，也会削弱信号。真实模型还包括多次散射和空间相邻地物的贡献。
 
+<span id="evidence-16"></span>
+
+![原文证据 16：路径辐射、透过率与地表项进入同一个模型，原文件摘图与红框标注](./evidence-16.png)
+
+*原文证据 16：NASA 原式保留路径辐射、透过率、地表项与多次散射关系。本文上方的公式是用于解释的简化式，不能当作完整实现。原文件下载与定位：[NASA 大气校正 ATBD，PDF 第 21 页](https://modis.gsfc.nasa.gov/data/atbd/atbd_mod08.pdf#page=21)。*
+
 ### 4.2 邻近效应与几个大气参数
 
 <strong>邻近效应</strong>是大气散射把周围地物的信号带进目标像元的视线。暗水体旁边的亮沙滩，可能影响水体观测；这和一个像元内部包含岸与水的混合像元问题有关联，却不是同一件事。
@@ -200,6 +320,12 @@ $L_{path}$ 是路径辐亮度；$T_{\uparrow}$ 是地表至传感器的上行透
 ![亮岸反射经大气散射后进入水体观测视线的概念图](./adjacency-effect.png)
 
 *图 2：AI 生成的邻近效应示意。橙色折线表示亮岸信号在大气中散射后进入传感器，淡蓝线表示水体方向的信号。为了易读，散射位置和卫星被放大；线条不代表可见激光，也不代表散射强度的计算结果。*
+
+<span id="evidence-17"></span>
+
+![原文证据 17：邻近效应：来自相邻地物的大气散射贡献，原文件摘图与红框标注](./evidence-17.png)
+
+*原文证据 17：NASA 大气校正 ATBD 明确把相邻地物对目标辐亮度的影响归因于大气散射；这给出了与像元内混合问题的区别。原文件下载与定位：[NASA 大气校正 ATBD，PDF 第 23 页](https://modis.gsfc.nasa.gov/data/atbd/atbd_mod08.pdf#page=23)。*
 
 <strong>气溶胶光学厚度</strong>（AOT，也常称 AOD）是沿大气柱积分的消光程度，是无量纲量，必须同时说明波长。数值越大，直接穿过该柱的光通常衰减越强。它不是空气质量指数，也不是地面颗粒物浓度。
 
@@ -219,9 +345,21 @@ $$
 
 这里 $\tau_{path}$ 是沿实际光路的<strong>总</strong>消光光学厚度。若只研究气溶胶这一项，在平行平面大气近似下，其斜程光学厚度为 $\tau_{path,a}\approx\tau_a/\cos\theta$，$\theta$ 是光路天顶角；接近地平线时，这个简单近似不可靠。例如垂直气溶胶 AOT 为 0.2，仅该项对应的直射透过率为 $e^{-0.2}\approx0.819$。真实大气还含气体吸收、分子散射，地表也接收散射光，因而<strong>不能把 $e^{-\tau_a}$ 直接当作完整大气校正系数</strong>。[NOAA SURFRAD 的 AOD 与 Beer 定律说明](https://www.gml.noaa.gov/grad/surfrad/aod/)解释了直射束测量中这些贡献的分离。
 
+<span id="evidence-18"></span>
+
+![原文证据 18：光学厚度：垂直积分及各组分相加，原文件摘图与红框标注](./evidence-18.png)
+
+*原文证据 18：NASA 水色协议将有限路径光学深度、完整大气柱光学厚度及各组分的相加分别定义。原式中的 c 是消光系数，不是前面 NDVI 推导里的加性常数。原文件下载与定位：[NASA 水色验证协议，PDF 第 32 页](https://oceancolor.gsfc.nasa.gov/files/resources/docs/technical/protocols_ver4_voli.pdf#page=32)。*
+
 <strong>能见度</strong>以距离表达近地面大气对目标辨识的影响，常用于模型的气溶胶负载参数化。它和整层大气的 AOT 不可直接当作同一个量。
 
 <strong>水汽柱含量</strong>是单位地面面积上方整根大气柱里的水汽总量，不是相对湿度。常用“可降水量”表达：若这根气柱的水汽全部凝结，会形成多厚的水层。相对湿度描述局部空气距离饱和有多近，不能直接替代柱含量。
+
+<span id="evidence-19"></span>
+
+![原文证据 19：水汽柱含量的单位需要分清，原文件摘图与红框标注](./evidence-19.png)
+
+*原文证据 19：L2A 水汽产品使用 g·cm⁻²；FLAASH 模型表同时列出 atm-cm 和 g/cm²，两个数值相差很大。atm-cm 表达规定状态下的等效气体柱，不是液态水深的 cm。原文件下载与定位：[L2A 产品定义 4.9，PDF 第 39 页](https://step.esa.int/thirdparties/sen2cor/2.10.0/docs/S2-PDGS-MPC-L2A-PDD-V14.9-v4.9.pdf#page=39)； [经典 ENVI 手册，PDF 第 21 页](https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf#page=21)。*
 
 ### 4.3 大气校正的目标与边界
 
@@ -230,6 +368,14 @@ $$
 所以“校正后得到真实反射率、完全消除大气影响”说得过满。更准确的表达是：得到更接近地表性质、带有模型与输入误差的估计。它改善了跨日期比较的条件，但并没有自动统一不同传感器的波段响应、太阳角度、空间分辨率和处理版本。
 
 厚云遮住地表时，传感器没有看见下面的树。大气校正不能把这一缺失观测变回来；云影、雪、饱和、薄云等也仍需质量筛选。
+
+Sen2Cor 的 ATBD 还把计算系数存入<strong>查找表（LUT）</strong>：先对若干太阳／观察角、高程和大气状态计算传播关系，处理影像时再按条件选取或插值。查找表使逐像元处理可行，也意味着结果受表的参数范围与插值近似约束。这里提到的是所引用 Sen2Cor 版本的实现；它使用 LibRadtran 生成相应 LUT，不能把 Sen2Cor 与 FLAASH 的内部模型直接当成同一个。
+
+<span id="evidence-38"></span>
+
+![原文证据 38：Sen2Cor 的查找表与透过率定义，原文件摘图与红框标注](./evidence-38.png)
+
+*原文证据 38：Sen2Cor §4.1 给出辐射传输原式，并说明 LibRadtran 计算的数据库／LUT。它与 FLAASH 原式共享一些物理量，但属于不同处理器。原文件下载与定位：[Sen2Cor ATBD 2.10，PDF 第 51 页](https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf#page=51)。*
 
 ## 5. 辐射、几何、正射校正分别解决什么
 
@@ -246,6 +392,18 @@ $$
 <strong>DEM（数字高程模型）</strong>是地面高程的栅格表示。<strong>坐标参考系统</strong>说明位置依据的基准和坐标方式；<strong>地图投影</strong>把曲面位置表达为平面坐标。Sentinel‑2 标准瓦片采用 WGS84 基准及 UTM 投影，UTM 将地球划分为纵向投影带，以米表达平面位置。EPSG 编号是坐标系统的登记代码，例如本文公开文件的 `EPSG:32633` 表示 WGS84／UTM 33N。
 
 把不同分辨率的波段组合成一个多波段栅格，称为<strong>波段堆叠</strong>。堆叠前需统一投影、覆盖范围、像元大小、网格原点与 NoData；仅仅让行列数相同，不保证每个像元落在同一位置。
+
+<span id="evidence-36"></span>
+
+![原文证据 36：配准、正射与坡面照明校正是不同步骤，原文件摘图与红框标注](./evidence-36.png)
+
+*原文证据 36：配准解决影像位置对应；Sen2Cor §4.7 则明确区分仅用高程的正射与还需要坡度、坡向的地形照明校正。DEM 出现在流程中，不等于所有这类校正都已执行。原文件下载与定位：[CCRS 遥感基础，PDF 第 151 页](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf#page=151)； [Sen2Cor ATBD 2.10，PDF 第 68 页](https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf#page=68)。*
+
+<span id="evidence-20"></span>
+
+![原文证据 20：产品级别、DEM 正射与地理网格，原文件摘图与红框标注](./evidence-20.png)
+
+*原文证据 20：S2 产品级别的正式定义同时标明 DEM 正射、TOA 与 BOA；手册另列 UTM／WGS84 输出及 10／20／60 m 网格。这些概念分别描述几何与辐射处理。原文件下载与定位：[S2 产品规范 15.0，PDF 第 54 页](https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0#page=54)； [S2 用户手册，PDF 第 45 页](https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook#page=45)。*
 
 ## 6. L1C、L2A：要看具体任务的定义
 
@@ -279,7 +437,21 @@ $$
 | WVP／WV | 水汽柱含量图 | 不等于水体深度，也不与反射率共用缩放规则 |
 | TCI | B4、B3、B2 合成的真彩色显示图 | 用来浏览，不是计算 NDVI 的原始反射率波段 |
 
+在所引用的 L2A 产品定义附录 A 中，AOT 按 $DN/1000$ 解码，单位为 1；WVP 按 $DN/1000$ 解码，单位是 $\mathrm{g\,cm^{-2}}$。按液态水密度约 $1\ \mathrm{g\,cm^{-3}}$ 换算，$1\ \mathrm{g\,cm^{-2}}$ 相当于 1 cm、即 10 mm 可降水量。公开平台可能重新编码这些资产，仍应读取各自的 scale、offset 和单位。
+
 标准 SCL 的编码为：0 无数据，1 饱和／坏像元，2 暗地物或地形阴影（名称随处理版本调整），3 云影，4 植被，5 非植被，6 水体，7 未分类，8 中概率云，9 高概率云，10 薄卷云，11 雪冰。常规地表分析至少应认真处理 0、1、3、8–11，其他类是否保留由研究目的决定。SCL 是算法估计，边缘云和薄云仍可能漏检。
+
+<span id="evidence-21"></span>
+
+![原文证据 21：SCL 的每个整数都对应一个类别，原文件摘图与红框标注](./evidence-21.png)
+
+*原文证据 21：现行引用的 PSD 15.0 表 68 把类别 2 写为 CAST_SHADOWS；旧数据可能采用暗地物等旧名称。红框标出无数据、坏像元和主要云／雪类别。分类编号的含义必须与产品版本一起读。原文件下载与定位：[S2 产品规范 15.0，PDF 第 291 页](https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0#page=291)。*
+
+<span id="evidence-22"></span>
+
+![原文证据 22：地表反射率、AOT 和 WVP 的换算各不相同，原文件摘图与红框标注](./evidence-22.png)
+
+*原文证据 22：原附录将 SR、AOT、WVP 的解码独立列出。历史 SR 公式是该规范的记录；实际读取仍以对应产品的逐波段 offset 和 quantification 字段为准。原文件下载与定位：[L2A 产品定义 4.9，PDF 第 39 页](https://step.esa.int/thirdparties/sen2cor/2.10.0/docs/S2-PDGS-MPC-L2A-PDD-V14.9-v4.9.pdf#page=39)。*
 
 ![L2A 产品定义中的地表反射率与 B10 说明](./manual-sentinel-l2a.png)
 
@@ -296,6 +468,12 @@ $$
 这里 $M_L$ 是波段乘数，$A_L$ 是加数。这个公式来自 [USGS Landsat Level‑1 使用说明](https://www.usgs.gov/landsat-missions/using-usgs-landsat-level-1-data-product)，不能把它直接套到 Sentinel‑2 L1C 的 JP2 整数上。
 
 同样，[Landsat Collection 2 Level‑2](https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products)既有地表反射率也有地表温度产品；其 SR 编码常用 $\rho=DN\times0.0000275-0.2$。它不等于 Sentinel‑2 的缩放规则。<strong>产品级别必须与卫星任务、物理量和版本一起读。</strong>
+
+<span id="evidence-23"></span>
+
+![原文证据 23：Landsat 的 Level-1 辐亮度与 Collection 2 L2 编码，原文件摘图与红框标注](./evidence-23.png)
+
+*原文证据 23：Landsat Level‑1 手册给出辐亮度乘数与加数；Collection 2 Level‑2 指南表 6-1 则独立给出 SR 的 0.0000275 与 −0.2。不能把 Level‑1 的公式或 S2 的缩放套到所有产品上。原文件下载与定位：[USGS Landsat 8 手册，PDF 第 62 页](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/atoms/files/LSDS-1574_L8_Data_Users_Handbook-v5.0.pdf#page=62)； [USGS Collection 2 L2 指南，PDF 第 18 页](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-1619_Landsat8-9-Collection2-Level2-Science-Product-Guide-v6.pdf#page=18)。*
 
 ## 7. NDVI 为什么不能自动抵消大气影响
 
@@ -329,6 +507,12 @@ $$
 
 文件编码的 offset 也会破坏“直接用 DN 算比值”的做法。只有两个波段同尺度、<strong>无加性偏移</strong>且特殊值已排除等条件满足时，共同乘法缩放才能抵消。跨时间、跨传感器定量比较应使用相容产品、正确解码和质量控制；不能仅用“NDVI 是比值”跳过这些步骤。
 
+<span id="evidence-24"></span>
+
+![原文证据 24：NDVI 定义与大气的加性、乘性影响，原文件摘图与红框标注](./evidence-24.png)
+
+*原文证据 24：采用植被指数 ATBD 第 28 页式 (5)的差／和定义；第 40 页明确写出路径辐射的加性作用与透过率的乘性作用。正文对共同系数、共同加数的等式是本文代数推导。原文件下载与定位：[NASA 植被指数 ATBD，PDF 第 28 页](https://modis.gsfc.nasa.gov/data/atbd/atbd_mod13.pdf#page=28)； [NASA 植被指数 ATBD，PDF 第 40 页](https://modis.gsfc.nasa.gov/data/atbd/atbd_mod13.pdf#page=40)。*
+
 ## 8. FLAASH 怎样从辐亮度估计地表
 
 FLAASH 的名称通常展开为 <strong>Fast Line‑of‑sight Atmospheric Analysis of Spectral Hypercubes</strong>。它是 ENVI 大气校正模块中的物理模型方法，由 Spectral Sciences 等机构在美国政府支持下开发；把它称作“美国空军单独开发”并不完整。[模块介绍](https://www.nv5geospatialsoftware.com/docs/AboutAtmosphericCorrectionModule.html)说明了开发背景。
@@ -354,6 +538,12 @@ $$
 
 不需要先会推导这个式子才能运行工具，但应理解：反演依赖假设。普通 FLAASH 采用反射太阳光谱范围内的模型，不是万能的热红外温度校正工具，也不能保证在每一种水体、气溶胶和地形条件下“精度最高”。
 
+<span id="evidence-25"></span>
+
+![原文证据 25：FLAASH 的模型原式：邻近地表与球面反照率，原文件摘图与红框标注](./evidence-25.png)
+
+*原文证据 25：经典 FLAASH 手册第 10 页式 (1)是本文模型式的原始出处。本文反解公式由它整理而来；原式与实际求系数、估计邻近反射率的迭代过程不能混为一谈。原文件下载与定位：[经典 ENVI 手册，PDF 第 10 页](https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf#page=10)。*
+
 ## 9. FLAASH 的关键参数怎样理解
 
 ### 9.1 高度、像元大小与时间
@@ -373,6 +563,12 @@ $$
 | Scene Center／Viewing Geometry | 场景位置及观察方向 | 从对应元数据读取；太阳天顶角与传感器视线天顶角是两种不同角度 |
 | Output Reflectance／Directory | 科学输出和运行文件的位置 | 连同头文件、日志、参数保存，确保路径可写和磁盘空间足够 |
 
+<span id="evidence-34"></span>
+
+![原文证据 34：经典 FLAASH 参数的原始界面，原文件摘图与红框标注](./evidence-34.png)
+
+*原文证据 34：保留经典版本的真实界面与 GMT 字段。界面里展示的日期、传感器和模型只是手册示例，不是本例 Sentinel‑2 的参数；当前版本应按实际界面核对。原文件下载与定位：[经典 ENVI 手册，PDF 第 17 页](https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf#page=17)； [经典 ENVI 手册，PDF 第 20 页](https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf#page=20)。*
+
 ### 9.2 大气模型与气溶胶模型
 
 Tropical、Mid‑Latitude Summer／Winter 等<strong>大气模型</strong>是代表性的温度、压力、气体垂直剖面。它们不是当天的天气测量，也不能只因某地“属于亚热带”就永远选某一项。季节、温度、水汽和海拔资料都应参与判断。
@@ -380,6 +576,12 @@ Tropical、Mid‑Latitude Summer／Winter 等<strong>大气模型</strong>是代
 Rural、Urban、Maritime 等<strong>气溶胶模型</strong>表示颗粒物光学特性的假设。Urban 不是“城市像元分类”；海边城市可能受海盐影响，农村也可能受沙尘或烟霾影响。选项应反映成像时的大气，而不只是土地利用名称。
 
 <strong>气溶胶反演</strong>利用特定波段和暗目标假设估计气溶胶负载。所谓暗目标，是在合适波段反射较弱、能够帮助区分大气贡献的地物。K‑T 方法通常指 Kaufman–Tanré 波段关系方法，需要合适波段及场景条件；没有可靠目标时，结果可能退回指定能见度。选 None 是不用影像去反演气溶胶负载，仍会按所设大气、气溶胶与能见度计算校正，不是“大气中没有气溶胶”。相关参数见 [FLAASH 任务接口](https://www.nv5geospatialsoftware.com/docs/enviflaashtask.html)。
+
+<span id="evidence-26"></span>
+
+![原文证据 26：大气模型是带有温度、水汽与季节条件的假设，原文件摘图与红框标注](./evidence-26.png)
+
+*原文证据 26：MODTRAN 标准剖面带有不同的温度和水汽柱；纬度／季节表说明模型选择依赖实际大气条件，而不只看“城市／农村”或某个地区名称。原文件下载与定位：[经典 ENVI 手册，PDF 第 21 页](https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf#page=21)。*
 
 ### 9.3 为什么有 B9 不等于 Water Retrieval 可以直接选 Yes
 
@@ -399,6 +601,18 @@ $$
 
 例如 $1\ \mu\mathrm m$ 对应 $10000\ \mathrm{cm^{-1}}$，$2\ \mu\mathrm m$ 对应 $5000\ \mathrm{cm^{-1}}$。因倒数关系，相同的波数间隔在不同波长处不对应相同的 nm 间隔。[FLAASH 官方文档](https://www.nv5geospatialsoftware.com/docs/FLAASH.html)列出 MODTRAN Resolution 的波数单位与选项。
 
+<span id="evidence-27"></span>
+
+![原文证据 27：水汽反演：FLAASH 的要求与 Sen2Cor 的算法不同，原文件摘图与红框标注](./evidence-27.png)
+
+*原文证据 27：经典 FLAASH 的水汽反演写出光谱分辨率与覆盖区间要求。Sen2Cor §4.4 则说明 APDA 使用 B8a 与 B9；存在另一算法能用 B9，不表示经典 FLAASH 的条件自动满足。原文件下载与定位：[经典 ENVI 手册，PDF 第 22 页](https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf#page=22)； [Sen2Cor ATBD 2.10，PDF 第 64 页](https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf#page=64)。*
+
+<span id="evidence-39"></span>
+
+![原文证据 39：波数单位与 FWHM 这个名字的完整含义，原文件摘图与红框标注](./evidence-39.png)
+
+*原文证据 39：NIST 给出波数的倒长度量纲；FLAASH 手册把 FWHM 展开为 full width half maximum。正文的 cm⁻¹ 换算是按长度单位做的数学转换，不是把 1 nm 响应表步长当成带宽。原文件下载与定位：[NIST 辐射度量手册，PDF 第 12 页](https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf#page=12)； [经典 ENVI 手册，PDF 第 12 页](https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf#page=12)。*
+
 ### 9.4 辐亮度单位与 Input Scale
 
 FLAASH 使用的辐亮度单位为 $\mathrm{\mu W\,cm^{-2}\,nm^{-1}\,sr^{-1}}$。许多定标工具输出 $\mathrm{W\,m^{-2}\,\mu m^{-1}\,sr^{-1}}$，两者数值关系为：
@@ -414,6 +628,12 @@ $$
 
 输出也可能是反射率乘 10000 后的整数，应读取输出头文件的 Reflectance Scale Factor，而不是看到整数就套用某个常数。
 
+<span id="evidence-33"></span>
+
+![原文证据 33：辐亮度输入单位与除法缩放，原文件摘图与红框标注](./evidence-33.png)
+
+*原文证据 33：原关系式以输入数据除以 scale factor，得到手册指定单位的辐亮度。正文的 0.1 单位换算是量纲推导；实际 Input Scale 必须与输入文件单位共同核对。原文件下载与定位：[经典 ENVI 手册，PDF 第 12 页](https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf#page=12)。*
+
 ### 9.5 BIL、BIP、BSQ 与版本差异
 
 这三个词描述<strong>多波段数值在文件里的存放顺序</strong>，不描述数据级别：
@@ -428,7 +648,7 @@ $$
 
 *图 6：同一 ENVI 手册第 12 页局部，旧版要求已明确包含 BIL 或 BIP，不能概括为“只接受 BIL”。[原 PDF，第 12 页](https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf#page=12)。*
 
-当前 ENVI 6.3 在线文档说明可接受任意 interleave，并可对非辐亮度输入自动定标；[ENVI 5.7 更新记录](https://www.nv5geospatialsoftware.com/docs/whats_new_5_7.html)也记录了自动辐射校正的改进。自动转换仍需要软件识别传感器和有效元数据，不能理解为任意无头文件栅格都能正确转换。旧教程、经典界面和当前工具的操作要求需要分开核对。
+当前 ENVI 6.3 在线文档说明可接受任意 interleave，并可对非辐亮度输入自动定标； [ENVI 5.7 更新记录](https://www.nv5geospatialsoftware.com/docs/whats_new_5_7.html)也记录了自动辐射校正的改进。自动转换仍需要软件识别传感器和有效元数据，不能理解为任意无头文件栅格都能正确转换。旧教程、经典界面和当前工具的操作要求需要分开核对。
 
 ## 10. 两条可执行的 Sentinel‑2 流程
 
@@ -457,6 +677,12 @@ ENVI 的输出常见为一个二进制数据文件与一个文本 `.hdr` 头文�
 ## 11. 一次真实观测：产品页面与文件下载
 
 下面选取 Sentinel‑2A 于 <strong>2020‑09‑15</strong> 获取的 <strong>T33TVM</strong> 瓦片。MGRS 是 Military Grid Reference System，即一种用字母数字组合标识地理网格的系统；T33TVM 是瓦片标识，不是行政区名称。这是一块位于中欧、意大利东北部／邻近地区的边缘瓦片。这里示范如何核对产品与文件，不将它当作经过精度验证的 FLAASH 实验。
+
+<span id="evidence-37"></span>
+
+![原文证据 37：SAFE 文件组织与 MGRS 瓦片都有正式定义，原文件摘图与红框标注](./evidence-37.png)
+
+*原文证据 37：S2 产品规范提供原生 L1C 目录结构图及 MGRS／UTM 网格说明。产品中的文件与目录名有正式组织关系，不能只凭扩展名解释其物理意义。原文件下载与定位：[S2 产品规范 15.0，PDF 第 398 页](https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0#page=398)； [S2 产品规范 15.0，PDF 第 50 页](https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0#page=50)。*
 
 ### 11.1 官方 L1C 与 L2A：同次观测、PB 05.00
 
@@ -519,6 +745,12 @@ Product: S2A_MSIL2A_20200915T101031_N0214_R022_T33TVM_20200915T130644.SAFE
 ```
 
 <strong>STAC（时空资产目录）</strong>用一个 Item 记录一次数据项的时空和处理信息，用 assets 列出各个文件的 URL、分辨率、缩放等。这里的 PB <strong>02.14</strong> 与前面官方 PB <strong>05.00</strong> 不同：同一次观测不代表相同处理结果。这一公开版本用于文件练习；正式分析应选择适合的统一产品版本。
+
+<span id="evidence-28"></span>
+
+![原文证据 28：文件格式：GeoTIFF／COG 的结构与存储顺序，原文件摘图与红框标注](./evidence-28.png)
+
+*原文证据 28：OGC COG 标准解释像元内分量连续存储、分波段平面和 HTTP Range 请求。COG 是数据组织方式，不是另一种反射率级别。© 2023 Open Geospatial Consortium；红框为本文附加标注。原文件下载与定位：[OGC COG 标准，PDF 第 17 页](https://docs.ogc.org/is/21-026/21-026.pdf#page=17)； [OGC COG 标准，PDF 第 25 页](https://docs.ogc.org/is/21-026/21-026.pdf#page=25)。*
 
 ![2020年9月15日 T33TVM 的真实 Sentinel-2 L2A 预览](./sentinel-real-thumbnail.jpg)
 
@@ -583,6 +815,12 @@ for filename in ["B04.tif", "B08.tif", "SCL.tif", "granule_metadata.xml"]:
 
 结果颜色更鲜艳，只能证明显示效果改变了。屏幕的<strong>拉伸</strong>会把数据范围映射到显示亮度，<strong>真彩色合成</strong>把红、绿、蓝波段映射到屏幕 RGB；两者都不是科学精度检验。<strong>假彩色</strong>把近红外等波段映射到可见颜色，用于突出地物差异，同样不改变原始物理量。
 
+<span id="evidence-29"></span>
+
+![原文证据 29：真彩色、假彩色与显示拉伸，原文件摘图与红框标注](./evidence-29.png)
+
+*原文证据 29：CCRS 分别说明多波段显示映射与线性拉伸。为了显示而改变亮度映射，不能作为反射率精度提高的证据。原文件下载与定位：[CCRS 遥感基础，PDF 第 21 页](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf#page=21)； [CCRS 遥感基础，PDF 第 155 页](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf#page=155)。*
+
 先检查输入／输出物理量、单位、波段顺序、缩放和特殊值，再检查日志里是否真的执行了期望的定标及大气反演。Water Retrieval 或气溶胶反演失败后使用了默认参数，必须在方法记录中说明。
 
 然后查看不同地物的光谱是否合理，负值或异常高值集中在哪里。大量负值可能来自单位、偏移、模型或暗目标问题；超过 1 的值也可能和云、强方向性反射、饱和或处理误差有关。不要一开始就把所有数值裁到 0–1，掩盖诊断线索。
@@ -591,16 +829,76 @@ for filename in ["B04.tif", "B08.tif", "SCL.tif", "granule_metadata.xml"]:
 
 <strong>QUAC（QUick Atmospheric Correction）</strong>是 ENVI 的经验校正方法，利用场景光谱统计，参数较少、通常运行较快。它并不是“任何多波段数据都适用”：[官方使用说明](https://www.nv5geospatialsoftware.com/docs/quac.html)要求至少三个波段与有效波长，场景需要足够多样的材料等条件。纯海洋、大面积单一地物、复杂照明可能不满足它的假设。不能仅按“初学者／写论文”给 QUAC 和 FLAASH 排等级；应按输入资料、场景和验证结果选择。
 
+<span id="evidence-35"></span>
+
+![原文证据 35：QUAC 的输入波段条件也有明确限制，原文件摘图与红框标注](./evidence-35.png)
+
+*原文证据 35：经典手册也要求 QUAC 输入至少三个波段和有效波长。材料多样性等场景条件还须查方法说明；“任何多波段数据都可用”并不成立。原文件下载与定位：[经典 ENVI 手册，PDF 第 12 页](https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf#page=12)。*
+
 水质反演尤其需要谨慎：来自水体内部、穿过水面向上的<strong>离水辐亮度</strong>往往很弱，大气贡献、太阳耀斑（镜面反射阳光）与岸边邻近效应可能占很大比例。水色领域的<strong>遥感反射率</strong>常定义为 $R_{rs}=L_w/E_d$，即水面上方的离水辐亮度除以下行辐照度，单位是 $\mathrm{sr^{-1}}$；常说的无量纲离水反射率则可按相应约定写为 $\rho_w=\pi R_{rs}$。这两个量不能直接与一般陆地 SR 混用，还应说明观测方向与归一化约定。[NASA 水色反射率说明](https://modis.gsfc.nasa.gov/data/dataprod/Rrs.php)解释了大气与水面贡献的分离。使用水质算法前应确认它究竟需要哪一种量。
+
+<span id="evidence-30"></span>
+
+![原文证据 30：离水辐亮度与水色遥感反射率，原文件摘图与红框标注](./evidence-30.png)
+
+*原文证据 30：NASA 水色协议的式 (2.54)定义 RRS = LW / Ed；图 2.4保留水面反射与折射的几何，说明为什么要分清水面贡献和离水贡献。原文件下载与定位：[NASA 水色验证协议，PDF 第 32 页](https://oceancolor.gsfc.nasa.gov/files/resources/docs/technical/protocols_ver4_voli.pdf#page=32)； [NASA 水色验证协议，PDF 第 21 页](https://oceancolor.gsfc.nasa.gov/files/resources/docs/technical/protocols_ver4_voli.pdf#page=21)。*
 
 温度反演需要热红外辐射、<strong>发射率</strong>与热大气模型。发射率描述实际表面在某波长的热辐射相对于同温度理想黑体的比例；理想黑体是在该波长完全吸收并按温度发射辐射的参考模型。地表的热辐射与大气自身的热发射都要处理，FLAASH 的反射光流程不能替代它。
 
+<span id="evidence-31"></span>
+
+![原文证据 31：热红外反演包含地表发射、大气热辐射与发射率，原文件摘图与红框标注](./evidence-31.png)
+
+*原文证据 31：NASA 地表温度 ATBD 式 (8)同时包含地表热发射、大气路径辐射和表面反射等项，并明确 ε、B 的定义。它用于说明热反演的物理范围，不能拿来宣称 FLAASH 完成了温度校正。原文件下载与定位：[NASA 地表温度 ATBD，PDF 第 10 页](https://modis.gsfc.nasa.gov/data/atbd/atbd_mod11.pdf#page=10)。*
+
 回到开头的 3200：只有当文件、元数据和处理链彼此一致，我们才知道这个数字意味着什么。可靠的遥感分析不是每幅影像都运行一遍某个工具，而是知道每一步改变了什么、还留下什么不确定性，以及最后用什么证据检验结果。
+
+## 概念与原始文件的定位索引
+
+下面的编号连接到正文红框图；具体页码、工作表和原文件下载地址都在相应图注中。本文的简化模型、量纲换算和代数整理是解释，不冒充手册原式。
+
+| 要核对的概念或细节 | 对应原文证据 | 原始文件中的位置 |
+| --- | --- | --- |
+| 遥感、主动／被动、波长 | [01](#evidence-01) | CCRS §1.1、1.2、1.6，PDF 5、8、19 页 |
+| 像元、IFOV、空间分辨率与 GSD | [02](#evidence-02)、[20](#evidence-20) | CCRS 20、39 页；S2 Handbook 45 页 |
+| 光谱／辐射／时间分辨率，高光谱、12 位与 16 位 | [03](#evidence-03)、[04](#evidence-04)、[10](#evidence-10) | CCRS 41–44 页；S2 Handbook 53 页；PSD 397 页 |
+| 13 个波段、设计波长、带宽、10／20／60 m、Lref 与 SNR | [05](#evidence-05)、[06](#evidence-06)、[07](#evidence-07) | Handbook 53–54 页表 3–5；PSD 49 页 |
+| 中心／等效波长、带宽中点、FWHM、1 nm 曲线步长 | [32](#evidence-32)、[08](#evidence-08)、[39](#evidence-39) | SRF 4.0 XLSX 的两个定义工作表与 S2A A2:A2302；PSD 439 页 |
+| 重采样、最近邻、双线性、块均值、三次样条、SCL 保类别；10 m 产品的运算尺度 | [09](#evidence-09) | CCRS 152 页；Sen2Cor ATBD 11 页脚注 2、15 页 §2.4.4 |
+| DN、NoData、饱和、scale／offset | [10](#evidence-10)、[21](#evidence-21)、[22](#evidence-22)、[23](#evidence-23) | PSD 397、291 页；L2A PDD 39 页；USGS C2 指南 18 页 |
+| 辐亮度、辐照度、光谱密度、波段响应积分、sr | [11](#evidence-11)、[12](#evidence-12)、[08](#evidence-08) | NIST HB152 PDF 13、16、17 页；NASA 协议 21 页；MODIS LST 10 页 |
+| BRDF、方向—半球反射率、BRF、朗伯面 | [13](#evidence-13) | NBS Monograph 160 PDF 19、25、26、57 页 |
+| TOA／BOA、太阳天顶／高度角、日地距离 U | [14](#evidence-14)、[20](#evidence-20)及原图 3／4 | Sen2Cor ATBD 67 页；Landsat 手册 63 页；PSD 54、397、439 页；PDD 13 页 |
+| 吸收、散射、大气窗口、路径辐亮度、透过率 | [15](#evidence-15)、[16](#evidence-16)、[38](#evidence-38) | CCRS 12、14 页；MODIS AC 21 页；Sen2Cor ATBD 51 页 |
+| 邻近效应、混合像元、AOT／AOD、消光、Beer 衰减 | [17](#evidence-17)、[18](#evidence-18)、[16](#evidence-16)、[24](#evidence-24) | MODIS AC 23、21 页；NASA 水色协议 32 页；MODIS VI 28 页 |
+| 水汽柱、可降水量、g/cm² 与 atm-cm | [19](#evidence-19)、[22](#evidence-22)、[26](#evidence-26) | L2A PDD 附录 A 第 39 页；FLAASH 手册表 2-1，第 21 页 |
+| 定标、几何校正、配准、DEM、正射、坡度／坡向 | [23](#evidence-23)、[36](#evidence-36)、[20](#evidence-20) | Landsat 手册 62 页；CCRS 151 页；Sen2Cor ATBD 68 页；PSD 54 页 |
+| L1B／L1C／L2A、Sen2Cor、LUT、SCL／AOT／WVP | [20](#evidence-20)、[21](#evidence-21)、[22](#evidence-22)、[38](#evidence-38) | PSD 54、291 页；L2A PDD 39 页；Sen2Cor ATBD 51 页 |
+| NDVI 定义、植被／背景混合、加性／乘性影响 | [24](#evidence-24) | MODIS VI ATBD PDF 28 页式 (5)、40 页 §3.1.4 |
+| FLAASH、MODTRAN 原式、球面反照率与邻近地表 | [25](#evidence-25)、[26](#evidence-26)、[34](#evidence-34) | FLAASH 手册第 10 页式 (1)、21 页表 2-1／2-2、17 页界面 |
+| 高度 km、像元 m、时间 GMT、辐亮度输入单位与除法 scale | 原图 5、[34](#evidence-34)、[33](#evidence-33) | FLAASH 手册 20、17、12 页 |
+| 水汽反演覆盖范围、15 nm 条件、B8A／B9 APDA、波数 | [27](#evidence-27)、[39](#evidence-39) | FLAASH 22 页；Sen2Cor ATBD 64 页；NIST HB152 12 页 |
+| BIL／BIP／BSQ、GeoTIFF／COG、HTTP Range | 原图 6、[28](#evidence-28) | FLAASH 12 页；OGC COG 17、25 页；现代 ENVI 文件文档见正文 |
+| SAFE、XML／JP2、GRANULE、MGRS、UTM／WGS84 | [37](#evidence-37)及第 11 节真实文件清单 | PSD 398 页图 4-17、50 页 §2.7.2；对应产品／瓦片 XML 与 Nodes 清单 |
+| 显示拉伸、真／假彩色、TCI、QUAC 输入限制 | [29](#evidence-29)、[35](#evidence-35) | CCRS 21、155 页；FLAASH 12 页；PSD 291 页 TCI 小节 |
+| 离水辐亮度、Rrs、归一化方向、水面反射与折射 | [30](#evidence-30) | NASA Ocean Optics Protocols Vol. I PDF 32 页式 (2.54)、21 页图 2.4 |
+| 热红外、发射率、黑体与大气热辐射 | [31](#evidence-31) | MODIS LST ATBD PDF 10 页式 (8)及变量定义 |
 
 ## 技术手册与可核对材料
 
 | 材料 | 本文用它核对什么 | 原文件／官方页面 |
 | --- | --- | --- |
+| ESA Sentinel‑2 User Handbook，2015，Issue 1 Rev 2 | 采样与波段原表：53–54 页；L1C 几何网格：45 页 | [原 PDF 下载](https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook) |
+| 加拿大遥感中心 CCRS Fundamentals of Remote Sensing | 基础定义：5–44 页；重采样：152 页；显示拉伸：155 页 | [原 PDF 下载](https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf) |
+| NBS/NIST Monograph 160，1977 | BRDF 与各类反射量：PDF 19、25、26、57 页 | [原 PDF 下载](https://nvlpubs.nist.gov/nistpubs/Legacy/MONO/nbsmonograph160.pdf) |
+| ESA Sen2Cor L2A ATBD 2.10，2021‑11‑15 | 采样脚注：11 页；LUT：51 页；水汽：64 页；TOA 与地形：67–68 页 | [原 PDF 下载](https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf) |
+| NASA MODIS Vegetation Index ATBD 3，1999 | NDVI：PDF 28 页式 (5)；大气影响：40 页 | [原 PDF 下载](https://modis.gsfc.nasa.gov/data/atbd/atbd_mod13.pdf) |
+| NASA MODIS Atmospheric Correction ATBD 4.0，1999 | 传播关系：21 页；邻近效应：23 页 | [原 PDF 下载](https://modis.gsfc.nasa.gov/data/atbd/atbd_mod08.pdf) |
+| NASA MODIS Land Surface Temperature ATBD 3.3，1999 | 波段响应积分、热辐射模型：PDF 10 页 | [原 PDF 下载](https://modis.gsfc.nasa.gov/data/atbd/atbd_mod11.pdf) |
+| NASA Ocean Optics Protocols Rev. 4，Vol. I，2003 | 立体角：PDF 21 页；Rrs 与光学厚度：32 页 | [原 PDF 下载](https://oceancolor.gsfc.nasa.gov/files/resources/docs/technical/protocols_ver4_voli.pdf) |
+| USGS LSDS‑1574 Landsat 8 手册 v5.0，2019 | 辐亮度定标：PDF 62 页；太阳角度：63 页 | [原 PDF 下载](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/atoms/files/LSDS-1574_L8_Data_Users_Handbook-v5.0.pdf) |
+| USGS LSDS‑1619 Collection 2 L2 指南 v6.0 | SR 比例与偏移：PDF 18 页表 6-1 | [原 PDF 下载](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-1619_Landsat8-9-Collection2-Level2-Science-Product-Guide-v6.pdf) |
+| OGC Cloud Optimized GeoTIFF Standard 1.0，2023 | 存储顺序：17 页；HTTP 范围读取：25 页 | [原 PDF 下载](https://docs.ogc.org/is/21-026/21-026.pdf) |
 | Sentinel‑2 产品规范 15.0，2024‑04‑30 | L1C 物理量与量化字段，第 397 页；L2A 元数据，第 439 页 | [PDF 下载](https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0) |
 | NIST Handbook 152 与光谱辐亮度定标手册 | 辐亮度、辐照度、光谱密度与响应积分 | [Handbook 152 PDF](https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf) · [光谱定标 PDF](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nbsspecialpublication250-1.pdf) |
 | NIST MIST／SCATMECH | BRDF 的量纲、方向性与朗伯反射模型 | [BRDF 定义](https://pages.nist.gov/ScatterMIST/docs/Introduction.htm) · [朗伯模型](https://pages.nist.gov/SCATMECH/docs/lambert.htm) |
@@ -613,4 +911,6 @@ for filename in ["B04.tif", "B08.tif", "SCL.tif", "granule_metadata.xml"]:
 | Copernicus SentiWiki／Sen2Cor | 处理基线、偏移和 L2A 处理器 | [产品说明](https://sentiwiki.copernicus.eu/web/s2-products) · [Sen2Cor](https://step.esa.int/main/snap-supported-plugins/sen2cor/) |
 | CDSE OData 与 Earth Search | 实际 UUID、节点目录、下载认证、资产信息 | [OData 文档](https://documentation.dataspace.copernicus.eu/APIs/OData.html) · [Earth Search 文档](https://github.com/Element84/earth-search) |
 
-文中的手册图是原 PDF 局部摘图，中文标题和红框为本文添加；图 1、2 是 AI 概念示意，图 7 是本文绘制的流程图，图 8 是真实数据预览。教学公式中的假设数值不作为真实校正实验报告。
+本次增补的原文证据 01–39 中，32 直接取自原 XLSX 内嵌图，其余直接渲染原 PDF 再裁取；原文内容未重新排版，中文标题和红框为本文添加；图 1、2 是 AI 概念示意，图 7 是本文绘制的流程图，图 8 是真实数据预览。教学公式中的假设数值不作为真实校正实验报告。
+
+CCRS 原文摘图用于本篇非商业教学说明，来源为 Canada Centre for Remote Sensing／Natural Resources Canada；原教程第 256 页列出教育用途复制条件。NASA、NIST／NBS 和 USGS 文件在此作为物理定义的原始技术材料；历史算法文档的年份与版本均保留，不作为当前软件或当前产品结构的无条件说明。
