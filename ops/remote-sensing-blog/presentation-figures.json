@@ -1,0 +1,510 @@
+[
+  {
+    "number": 1,
+    "file": "atmosphere-path.png",
+    "title": "太阳光、大气、地表与光学卫星之间的光路示意"
+  },
+  {
+    "number": 2,
+    "file": "manual-ccrs-fundamentals-p005.png",
+    "anchor": "page-ccrs-fundamentals-p005",
+    "source": "ccrs-fundamentals",
+    "pdf_page": 5,
+    "title": "遥感的定义"
+  },
+  {
+    "number": 3,
+    "file": "manual-ccrs-fundamentals-p019.png",
+    "anchor": "page-ccrs-fundamentals-p019",
+    "source": "ccrs-fundamentals",
+    "pdf_page": 19,
+    "title": "主动与被动遥感"
+  },
+  {
+    "number": 4,
+    "file": "manual-ccrs-fundamentals-p008.png",
+    "anchor": "page-ccrs-fundamentals-p008",
+    "source": "ccrs-fundamentals",
+    "pdf_page": 8,
+    "title": "电磁波与波长"
+  },
+  {
+    "number": 5,
+    "file": "manual-s2-psd-p439.png",
+    "anchor": "page-s2-psd-p439",
+    "source": "s2-psd",
+    "pdf_page": 439,
+    "title": "L2A 元数据中的波长、采样与太阳辐照度字段"
+  },
+  {
+    "number": 6,
+    "file": "manual-modis-temperature-p010.png",
+    "anchor": "page-modis-temperature-p010",
+    "source": "modis-temperature",
+    "pdf_page": 10,
+    "title": "波段响应积分与热辐射模型"
+  },
+  {
+    "number": 7,
+    "file": "manual-srf-equivalent.png",
+    "anchor": "manual-srf-equivalent",
+    "title": "响应加权的等效波长",
+    "worksheet": "Equivalent Wavelengths",
+    "cell": "G4"
+  },
+  {
+    "number": 8,
+    "file": "manual-srf-bandwidth.png",
+    "anchor": "manual-srf-bandwidth",
+    "title": "带宽与带宽中点的计算约定",
+    "worksheet": "Bandwidth and mid-wavelength",
+    "cell": "I5"
+  },
+  {
+    "number": 9,
+    "file": "manual-ccrs-fundamentals-p020.png",
+    "anchor": "page-ccrs-fundamentals-p020",
+    "source": "ccrs-fundamentals",
+    "pdf_page": 20,
+    "title": "栅格影像与像元"
+  },
+  {
+    "number": 10,
+    "file": "manual-ccrs-fundamentals-p039.png",
+    "anchor": "page-ccrs-fundamentals-p039",
+    "source": "ccrs-fundamentals",
+    "pdf_page": 39,
+    "title": "瞬时视场与地面空间分辨率"
+  },
+  {
+    "number": 11,
+    "file": "manual-ccrs-fundamentals-p041.png",
+    "anchor": "page-ccrs-fundamentals-p041",
+    "source": "ccrs-fundamentals",
+    "pdf_page": 41,
+    "title": "光谱分辨率"
+  },
+  {
+    "number": 12,
+    "file": "manual-ccrs-fundamentals-p043.png",
+    "anchor": "page-ccrs-fundamentals-p043",
+    "source": "ccrs-fundamentals",
+    "pdf_page": 43,
+    "title": "辐射分辨率与数字量化"
+  },
+  {
+    "number": 13,
+    "file": "manual-ccrs-fundamentals-p042.png",
+    "anchor": "page-ccrs-fundamentals-p042",
+    "source": "ccrs-fundamentals",
+    "pdf_page": 42,
+    "title": "高光谱传感器"
+  },
+  {
+    "number": 14,
+    "file": "manual-ccrs-fundamentals-p044.png",
+    "anchor": "page-ccrs-fundamentals-p044",
+    "source": "ccrs-fundamentals",
+    "pdf_page": 44,
+    "title": "重复观测与时间分辨率"
+  },
+  {
+    "number": 15,
+    "file": "manual-s2-handbook-p053.png",
+    "anchor": "page-s2-handbook-p053",
+    "source": "s2-handbook",
+    "pdf_page": 53,
+    "title": "MSI 辐射指标与 10 m、20 m 波段参数"
+  },
+  {
+    "number": 16,
+    "file": "manual-s2-handbook-p054.png",
+    "anchor": "page-s2-handbook-p054",
+    "source": "s2-handbook",
+    "pdf_page": 54,
+    "title": "MSI 的 60 m 波段参数"
+  },
+  {
+    "number": 17,
+    "file": "manual-s2-psd-p049.png",
+    "anchor": "page-s2-psd-p049",
+    "source": "s2-psd",
+    "pdf_page": 49,
+    "title": "13 个波段的原生采样分组"
+  },
+  {
+    "number": 18,
+    "file": "manual-ccrs-fundamentals-p152.png",
+    "anchor": "page-ccrs-fundamentals-p152",
+    "source": "ccrs-fundamentals",
+    "pdf_page": 152,
+    "title": "影像重采样的方法"
+  },
+  {
+    "number": 19,
+    "file": "manual-sen2cor-atbd-p011.png",
+    "anchor": "page-sen2cor-atbd-p011",
+    "source": "sen2cor-atbd",
+    "pdf_page": 11,
+    "title": "Sen2Cor 的重采样规则"
+  },
+  {
+    "number": 20,
+    "file": "manual-sen2cor-atbd-p015.png",
+    "anchor": "page-sen2cor-atbd-p015",
+    "source": "sen2cor-atbd",
+    "pdf_page": 15,
+    "title": "Sen2Cor 的 10 m 处理流程"
+  },
+  {
+    "number": 21,
+    "file": "manual-s2-psd-p397.png",
+    "anchor": "page-s2-psd-p397",
+    "source": "s2-psd",
+    "pdf_page": 397,
+    "title": "L1C 的 TOA 反射率及整数编码"
+  },
+  {
+    "number": 22,
+    "file": "manual-nist-radiometry-p013.png",
+    "anchor": "page-nist-radiometry-p013",
+    "source": "nist-radiometry",
+    "pdf_page": 13,
+    "title": "辐亮度的定义"
+  },
+  {
+    "number": 23,
+    "file": "manual-nist-radiometry-p016.png",
+    "anchor": "page-nist-radiometry-p016",
+    "source": "nist-radiometry",
+    "pdf_page": 16,
+    "title": "辐照度的定义"
+  },
+  {
+    "number": 24,
+    "file": "manual-nist-radiometry-p017.png",
+    "anchor": "page-nist-radiometry-p017",
+    "source": "nist-radiometry",
+    "pdf_page": 17,
+    "title": "光谱密度的定义"
+  },
+  {
+    "number": 25,
+    "file": "manual-ocean-protocols-p021.png",
+    "anchor": "page-ocean-protocols-p021",
+    "source": "ocean-protocols",
+    "pdf_page": 21,
+    "title": "立体角与水面反射几何"
+  },
+  {
+    "number": 26,
+    "file": "manual-nist-brdf-p019.png",
+    "anchor": "page-nist-brdf-p019",
+    "source": "nist-brdf",
+    "pdf_page": 19,
+    "title": "BRDF 的定义"
+  },
+  {
+    "number": 27,
+    "file": "manual-nist-brdf-p025.png",
+    "anchor": "page-nist-brdf-p025",
+    "source": "nist-brdf",
+    "pdf_page": 25,
+    "title": "反射率的几何分类"
+  },
+  {
+    "number": 28,
+    "file": "manual-nist-brdf-p026.png",
+    "anchor": "page-nist-brdf-p026",
+    "source": "nist-brdf",
+    "pdf_page": 26,
+    "title": "反射因子的几何分类"
+  },
+  {
+    "number": 29,
+    "file": "manual-nist-brdf-p057.png",
+    "anchor": "page-nist-brdf-p057",
+    "source": "nist-brdf",
+    "pdf_page": 57,
+    "title": "朗伯表面与反射率"
+  },
+  {
+    "number": 30,
+    "file": "manual-sen2cor-atbd-p067.png",
+    "anchor": "page-sen2cor-atbd-p067",
+    "source": "sen2cor-atbd",
+    "pdf_page": 67,
+    "title": "TOA 反射率与辐亮度的转换"
+  },
+  {
+    "number": 31,
+    "file": "manual-landsat-handbook-p063.png",
+    "anchor": "page-landsat-handbook-p063",
+    "source": "landsat-handbook",
+    "pdf_page": 63,
+    "title": "太阳天顶角与高度角"
+  },
+  {
+    "number": 32,
+    "file": "manual-ccrs-fundamentals-p012.png",
+    "anchor": "page-ccrs-fundamentals-p012",
+    "source": "ccrs-fundamentals",
+    "pdf_page": 12,
+    "title": "大气散射"
+  },
+  {
+    "number": 33,
+    "file": "manual-ccrs-fundamentals-p014.png",
+    "anchor": "page-ccrs-fundamentals-p014",
+    "source": "ccrs-fundamentals",
+    "pdf_page": 14,
+    "title": "大气吸收与窗口"
+  },
+  {
+    "number": 34,
+    "file": "manual-modis-atmosphere-p021.png",
+    "anchor": "page-modis-atmosphere-p021",
+    "source": "modis-atmosphere",
+    "pdf_page": 21,
+    "title": "大气辐射传输的基本关系"
+  },
+  {
+    "number": 35,
+    "file": "adjacency-effect.png",
+    "title": "亮岸反射经大气散射后进入水体观测视线的概念图"
+  },
+  {
+    "number": 36,
+    "file": "manual-modis-atmosphere-p023.png",
+    "anchor": "page-modis-atmosphere-p023",
+    "source": "modis-atmosphere",
+    "pdf_page": 23,
+    "title": "邻近地物对观测的影响"
+  },
+  {
+    "number": 37,
+    "file": "manual-ocean-protocols-p032.png",
+    "anchor": "page-ocean-protocols-p032",
+    "source": "ocean-protocols",
+    "pdf_page": 32,
+    "title": "遥感反射率与光学厚度"
+  },
+  {
+    "number": 38,
+    "file": "manual-s2-l2a-p039.png",
+    "anchor": "page-s2-l2a-p039",
+    "source": "s2-l2a",
+    "pdf_page": 39,
+    "title": "反射率、AOT 与水汽柱含量的编码"
+  },
+  {
+    "number": 39,
+    "file": "manual-envi-flaash-p021.png",
+    "anchor": "page-envi-flaash-p021",
+    "source": "envi-flaash",
+    "pdf_page": 21,
+    "title": "大气模型的温度、水汽与季节条件"
+  },
+  {
+    "number": 40,
+    "file": "manual-sen2cor-atbd-p051.png",
+    "anchor": "page-sen2cor-atbd-p051",
+    "source": "sen2cor-atbd",
+    "pdf_page": 51,
+    "title": "Sen2Cor 辐射传输关系与查找表"
+  },
+  {
+    "number": 41,
+    "file": "manual-ccrs-fundamentals-p151.png",
+    "anchor": "page-ccrs-fundamentals-p151",
+    "source": "ccrs-fundamentals",
+    "pdf_page": 151,
+    "title": "几何校正与影像配准"
+  },
+  {
+    "number": 42,
+    "file": "manual-sen2cor-atbd-p068.png",
+    "anchor": "page-sen2cor-atbd-p068",
+    "source": "sen2cor-atbd",
+    "pdf_page": 68,
+    "title": "坡面照明与地形校正"
+  },
+  {
+    "number": 43,
+    "file": "manual-s2-psd-p054.png",
+    "anchor": "page-s2-psd-p054",
+    "source": "s2-psd",
+    "pdf_page": 54,
+    "title": "Sentinel-2 的处理级别"
+  },
+  {
+    "number": 44,
+    "file": "manual-s2-handbook-p045.png",
+    "anchor": "page-s2-handbook-p045",
+    "source": "s2-handbook",
+    "pdf_page": 45,
+    "title": "L1C 的 UTM／WGS84 网格"
+  },
+  {
+    "number": 45,
+    "file": "manual-s2-psd-p291.png",
+    "anchor": "page-s2-psd-p291",
+    "source": "s2-psd",
+    "pdf_page": 291,
+    "title": "场景分类层 SCL 的类别表"
+  },
+  {
+    "number": 46,
+    "file": "manual-s2-l2a-p013.png",
+    "anchor": "page-s2-l2a-p013",
+    "source": "s2-l2a",
+    "pdf_page": 13,
+    "title": "L2A 地表反射率与波段组成"
+  },
+  {
+    "number": 47,
+    "file": "manual-landsat-handbook-p062.png",
+    "anchor": "page-landsat-handbook-p062",
+    "source": "landsat-handbook",
+    "pdf_page": 62,
+    "title": "Landsat 辐亮度定标"
+  },
+  {
+    "number": 48,
+    "file": "manual-landsat-c2-p018.png",
+    "anchor": "page-landsat-c2-p018",
+    "source": "landsat-c2",
+    "pdf_page": 18,
+    "title": "Collection 2 地表反射率的缩放"
+  },
+  {
+    "number": 49,
+    "file": "manual-modis-vi-p028.png",
+    "anchor": "page-modis-vi-p028",
+    "source": "modis-vi",
+    "pdf_page": 28,
+    "title": "NDVI 的差／和定义"
+  },
+  {
+    "number": 50,
+    "file": "manual-modis-vi-p040.png",
+    "anchor": "page-modis-vi-p040",
+    "source": "modis-vi",
+    "pdf_page": 40,
+    "title": "大气的加性与乘性影响"
+  },
+  {
+    "number": 51,
+    "file": "manual-envi-flaash-p010.png",
+    "anchor": "page-envi-flaash-p010",
+    "source": "envi-flaash",
+    "pdf_page": 10,
+    "title": "FLAASH 的辐射传输模型"
+  },
+  {
+    "number": 52,
+    "file": "manual-envi-flaash-p020.png",
+    "anchor": "page-envi-flaash-p020",
+    "source": "envi-flaash",
+    "pdf_page": 20,
+    "title": "FLAASH 高度、像元大小与时间字段"
+  },
+  {
+    "number": 53,
+    "file": "manual-envi-flaash-p017.png",
+    "anchor": "page-envi-flaash-p017",
+    "source": "envi-flaash",
+    "pdf_page": 17,
+    "title": "经典 FLAASH 参数界面"
+  },
+  {
+    "number": 54,
+    "file": "manual-envi-flaash-p022.png",
+    "anchor": "page-envi-flaash-p022",
+    "source": "envi-flaash",
+    "pdf_page": 22,
+    "title": "FLAASH 水汽反演的光谱条件"
+  },
+  {
+    "number": 55,
+    "file": "manual-sen2cor-atbd-p064.png",
+    "anchor": "page-sen2cor-atbd-p064",
+    "source": "sen2cor-atbd",
+    "pdf_page": 64,
+    "title": "B8A／B9 水汽反演"
+  },
+  {
+    "number": 56,
+    "file": "manual-nist-radiometry-p012.png",
+    "anchor": "page-nist-radiometry-p012",
+    "source": "nist-radiometry",
+    "pdf_page": 12,
+    "title": "波长、频率与波数"
+  },
+  {
+    "number": 57,
+    "file": "manual-envi-flaash-p012.png",
+    "anchor": "page-envi-flaash-p012",
+    "source": "envi-flaash",
+    "pdf_page": 12,
+    "title": "FLAASH 输入条件、单位与缩放"
+  },
+  {
+    "number": 58,
+    "file": "processing-chain.png",
+    "title": "L1C 经辐亮度和 FLAASH 与 L2A 直接解码分析的处理链"
+  },
+  {
+    "number": 59,
+    "file": "manual-s2-psd-p398.png",
+    "anchor": "page-s2-psd-p398",
+    "source": "s2-psd",
+    "pdf_page": 398,
+    "title": "L1C 产品目录结构"
+  },
+  {
+    "number": 60,
+    "file": "manual-s2-psd-p050.png",
+    "anchor": "page-s2-psd-p050",
+    "source": "s2-psd",
+    "pdf_page": 50,
+    "title": "UTM 与 MGRS 瓦片网格"
+  },
+  {
+    "number": 61,
+    "file": "manual-ogc-cog-p017.png",
+    "anchor": "page-ogc-cog-p017",
+    "source": "ogc-cog",
+    "pdf_page": 17,
+    "title": "GeoTIFF 的分量存放顺序"
+  },
+  {
+    "number": 62,
+    "file": "manual-ogc-cog-p025.png",
+    "anchor": "page-ogc-cog-p025",
+    "source": "ogc-cog",
+    "pdf_page": 25,
+    "title": "COG 与 HTTP 范围读取"
+  },
+  {
+    "number": 63,
+    "file": "sentinel-real-thumbnail.jpg",
+    "title": "2020年9月15日 T33TVM 的真实 Sentinel-2 L2A 预览"
+  },
+  {
+    "number": 64,
+    "file": "manual-ccrs-fundamentals-p021.png",
+    "anchor": "page-ccrs-fundamentals-p021",
+    "source": "ccrs-fundamentals",
+    "pdf_page": 21,
+    "title": "多波段影像的颜色合成"
+  },
+  {
+    "number": 65,
+    "file": "manual-ccrs-fundamentals-p155.png",
+    "anchor": "page-ccrs-fundamentals-p155",
+    "source": "ccrs-fundamentals",
+    "pdf_page": 155,
+    "title": "显示对比度与线性拉伸"
+  }
+]

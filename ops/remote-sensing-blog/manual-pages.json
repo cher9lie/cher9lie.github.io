@@ -1,0 +1,1810 @@
+[
+  {
+    "source": "ccrs-fundamentals",
+    "pdf_page": 5,
+    "file": "manual-ccrs-fundamentals-p005.png",
+    "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+    "sha256": "25f7bfbcc4cfc5de3c47769f271fe242fc05cfdce65d480967af49a3296912eb",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        109.49999999999994,
+        302.652,
+        501.17999999999995,
+        345.162
+      ]
+    ],
+    "notes": [
+      "遥感：不接触地表，记录反射或发射能量"
+    ]
+  },
+  {
+    "source": "ccrs-fundamentals",
+    "pdf_page": 19,
+    "file": "manual-ccrs-fundamentals-p019.png",
+    "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+    "sha256": "68d7e5a1fed83b600c7009234acf1814a353499c82311c57eaf376041cd66bbc",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        79.5,
+        208.9854000000002,
+        305.85024000000004,
+        251.73720000000026
+      ],
+      [
+        240.72240000000005,
+        364.32960000000026,
+        521.0132400000003,
+        394.11900000000026
+      ]
+    ],
+    "notes": [
+      "被动观测：利用自然存在的能量",
+      "主动观测：仪器提供照明能量"
+    ]
+  },
+  {
+    "source": "ccrs-fundamentals",
+    "pdf_page": 8,
+    "file": "manual-ccrs-fundamentals-p008.png",
+    "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+    "sha256": "4f0a3aede28c93db4f244dd76e66eb543b201f09bcb56e6323650f6115827d9e",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        79.5,
+        78.77879999999993,
+        507.47759999999977,
+        108.83819999999997
+      ]
+    ],
+    "notes": [
+      "波长：相邻波峰之间的距离"
+    ]
+  },
+  {
+    "source": "ccrs-fundamentals",
+    "pdf_page": 20,
+    "file": "manual-ccrs-fundamentals-p020.png",
+    "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+    "sha256": "3218e71cbcfc6160335e7c43c70640629b3e0c3d1740d238d2d7ae6e016dd03b",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        339.0,
+        500.082,
+        519.8232,
+        563.262
+      ]
+    ],
+    "notes": [
+      "栅格：数字图像的行、列和像元"
+    ]
+  },
+  {
+    "source": "ccrs-fundamentals",
+    "pdf_page": 39,
+    "file": "manual-ccrs-fundamentals-p039.png",
+    "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+    "sha256": "98621d2d8c0ef2215ce4fb946c3e2040bded0b8863fecb7bbbc69a08c10b8255",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        252.72120000000007,
+        337.22640000000007,
+        534.7767600000001,
+        394.10460000000006
+      ],
+      [
+        79.49999999999997,
+        592.3187,
+        511.2359999999997,
+        606.5693000000001
+      ]
+    ],
+    "notes": [
+      "IFOV：传感器的瞬时角视场",
+      "像元间距与空间分辨率并非可互换的词"
+    ]
+  },
+  {
+    "source": "ccrs-fundamentals",
+    "pdf_page": 41,
+    "file": "manual-ccrs-fundamentals-p041.png",
+    "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+    "sha256": "f9b9b489d3bdcb307ed60146d0aa44a91c15b6dd820e8a7075a8def825f80d87",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        79.49519999999995,
+        443.0034,
+        518.9704800000005,
+        471.5046
+      ]
+    ],
+    "notes": [
+      "光谱分辨率：区分精细波长区间"
+    ]
+  },
+  {
+    "source": "ccrs-fundamentals",
+    "pdf_page": 43,
+    "file": "manual-ccrs-fundamentals-p043.png",
+    "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+    "sha256": "635e53ec907e867108c4d6ba7fe29f3c554b9cc20131983c392ab79bac31a41c",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        79.49879999999996,
+        474.32579999999996,
+        516.5937600000002,
+        502.827
+      ]
+    ],
+    "notes": [
+      "8 位量化的例子：256 个等级，数值为 0–255"
+    ]
+  },
+  {
+    "source": "ccrs-fundamentals",
+    "pdf_page": 42,
+    "file": "manual-ccrs-fundamentals-p042.png",
+    "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+    "sha256": "ddd07d0d800eeed492a04c2fc385fd85d6345785d24e8fbb2daa186a3b98af30",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        79.48919999999998,
+        208.32240000000013,
+        533.9246400000002,
+        236.85060000000016
+      ]
+    ],
+    "notes": [
+      "高光谱的特征：大量很窄的光谱波段"
+    ]
+  },
+  {
+    "source": "ccrs-fundamentals",
+    "pdf_page": 44,
+    "file": "manual-ccrs-fundamentals-p044.png",
+    "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+    "sha256": "717c0282a633c63113f320bc51017e32833cb190421d7da2b29accd7702e86a2",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        79.49999999999997,
+        251.73720000000026,
+        526.64544,
+        281.3484000000003
+      ]
+    ],
+    "notes": [
+      "实际时间采样还取决于传感器能力、扫描覆盖和纬度"
+    ]
+  },
+  {
+    "source": "s2-handbook",
+    "pdf_page": 53,
+    "file": "manual-s2-handbook-p053.png",
+    "source_url": "https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook",
+    "source_sha256": "a57ed7fa07c768e0b86538e43a4b35547d806fff09dfa70be6d5cbea614c6c99",
+    "sha256": "cd315ad5730137ceeecaa200a3b39d99eb975ad54ac6147521855950bdc27886",
+    "page_size_points": [
+      595.3200073242188,
+      841.9199829101562
+    ],
+    "width": 1786,
+    "height": 2526,
+    "scale": 3,
+    "regions": [
+      [
+        71,
+        99,
+        522,
+        168
+      ],
+      [
+        154,
+        214,
+        334,
+        397
+      ],
+      [
+        448,
+        215,
+        524,
+        397
+      ],
+      [
+        154,
+        447,
+        334,
+        692
+      ],
+      [
+        82,
+        610,
+        334,
+        635
+      ]
+    ],
+    "notes": [
+      "原文将量化位数、准确度与信噪比分别说明",
+      "表 3：B2、B3、B4、B8 的任务设计指标",
+      "表 4：历史记号 8b；本文以现行 B8A 对应说明"
+    ]
+  },
+  {
+    "source": "s2-handbook",
+    "pdf_page": 54,
+    "file": "manual-s2-handbook-p054.png",
+    "source_url": "https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook",
+    "source_sha256": "a57ed7fa07c768e0b86538e43a4b35547d806fff09dfa70be6d5cbea614c6c99",
+    "sha256": "bf16c828db64514b18ac5082f67d91b80e67ef8db778e0db630f2331616eb238",
+    "page_size_points": [
+      595.3200073242188,
+      841.9199829101562
+    ],
+    "width": 1786,
+    "height": 2526,
+    "scale": 3,
+    "regions": [
+      [
+        154,
+        129,
+        334,
+        269
+      ]
+    ],
+    "notes": [
+      "表 5：B1、B9、B10 的设计波长与带宽"
+    ]
+  },
+  {
+    "source": "s2-psd",
+    "pdf_page": 49,
+    "file": "manual-s2-psd-p049.png",
+    "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+    "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+    "sha256": "676ddb982d7eaf36a6f6da7dc9b5c33f64bca5739bfafe18adc16083dabc1e04",
+    "page_size_points": [
+      595.3200073242188,
+      841.9199829101562
+    ],
+    "width": 1786,
+    "height": 2526,
+    "scale": 3,
+    "regions": [
+      [
+        66,
+        150,
+        119,
+        297
+      ],
+      [
+        448,
+        150,
+        523,
+        297
+      ]
+    ],
+    "notes": [
+      "产品规范 15.0：10／20／60 m 的分组仍分别为 4／6／3 个波段"
+    ]
+  },
+  {
+    "source": "s2-psd",
+    "pdf_page": 439,
+    "file": "manual-s2-psd-p439.png",
+    "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+    "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+    "sha256": "ae42614e8168b55a35b83a50c7e779b161d4d1852cc671f971519d60fe6157cc",
+    "page_size_points": [
+      841.9199829101562,
+      595.3200073242188
+    ],
+    "width": 2526,
+    "height": 1786,
+    "scale": 3,
+    "regions": [
+      [
+        36,
+        314,
+        324,
+        432
+      ],
+      [
+        35,
+        260,
+        729,
+        313
+      ]
+    ],
+    "notes": [
+      "表 101：采样间距、波长范围、中心与响应采样步长",
+      "表 101：U 日地距离修正、各波段太阳辐照度"
+    ]
+  },
+  {
+    "source": "modis-temperature",
+    "pdf_page": 10,
+    "file": "manual-modis-temperature-p010.png",
+    "source_url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod11.pdf",
+    "source_sha256": "09d2ac7c27d2067d67c73b127556f88086acd89d7cab6803b81b16b4b12107fd",
+    "sha256": "2ce58479466bdac861259892f2d355e6302ebedcc04ff74cfc68e32d766070ac",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        61,
+        185,
+        180,
+        266
+      ],
+      [
+        66,
+        442,
+        280,
+        465
+      ],
+      [
+        50,
+        510,
+        559,
+        544
+      ]
+    ],
+    "notes": [
+      "式 (7)：用传感器响应函数对光谱辐亮度加权",
+      "PDF 第 10 页／书内第 8 页：式 (8)，地表与大气的不同热辐射项",
+      "原文定义 ε 为地表光谱发射率，B 为同温度黑体辐亮度"
+    ]
+  },
+  {
+    "source": "ccrs-fundamentals",
+    "pdf_page": 152,
+    "file": "manual-ccrs-fundamentals-p152.png",
+    "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+    "sha256": "ba0149d58f933ce215bfe5705a1200c2849c6b25ed343188b88cf111b077f604",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        79,
+        350.5,
+        535,
+        424
+      ],
+      [
+        289,
+        435,
+        530,
+        581
+      ]
+    ],
+    "notes": [
+      "最近邻：选取原图中最近的像元",
+      "双线性：由四个邻近像元加权"
+    ]
+  },
+  {
+    "source": "sen2cor-atbd",
+    "pdf_page": 11,
+    "file": "manual-sen2cor-atbd-p011.png",
+    "source_url": "https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf",
+    "source_sha256": "fca403d6ea3cf9bc4c1fa4f22e435e43027cb26b95a66d58380297b76dc86379",
+    "sha256": "2128a498be46ff6b311d2dd6bbf58c23915a004f5e1f4dc6091db74bd4797529",
+    "page_size_points": [
+      595.3200073242188,
+      842.0399780273438
+    ],
+    "width": 1786,
+    "height": 2527,
+    "scale": 3,
+    "regions": [
+      [
+        96,
+        713,
+        514,
+        757
+      ]
+    ],
+    "notes": [
+      "算法脚注：连续波段与 SCL 分类采用不同重采样规则"
+    ]
+  },
+  {
+    "source": "sen2cor-atbd",
+    "pdf_page": 15,
+    "file": "manual-sen2cor-atbd-p015.png",
+    "source_url": "https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf",
+    "source_sha256": "fca403d6ea3cf9bc4c1fa4f22e435e43027cb26b95a66d58380297b76dc86379",
+    "sha256": "2a693a6664bbb410775e81620d2f2816dfc2fc023cabf33172b2fa3e5c74269f",
+    "page_size_points": [
+      595.3200073242188,
+      842.0399780273438
+    ],
+    "width": 1786,
+    "height": 2527,
+    "scale": 3,
+    "regions": [
+      [
+        96,
+        135,
+        514,
+        285
+      ]
+    ],
+    "notes": [
+      "10 m 产品不等于在 10 m 网格独立反演 AOT 和 WV"
+    ]
+  },
+  {
+    "source": "s2-psd",
+    "pdf_page": 397,
+    "file": "manual-s2-psd-p397.png",
+    "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+    "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+    "sha256": "e8bbb6797ea4f973c70b2993d5e8938b6b61a648e1e2240ee5f9382a7ad27640",
+    "page_size_points": [
+      595.3200073242188,
+      841.9199829101562
+    ],
+    "width": 1786,
+    "height": 2526,
+    "scale": 3,
+    "regions": [
+      [
+        55,
+        492,
+        541,
+        519
+      ],
+      [
+        55,
+        518,
+        541,
+        546
+      ],
+      [
+        56.164,
+        404.56839999999994,
+        539.10192,
+        430.2084
+      ],
+      [
+        56.164,
+        467.82839999999993,
+        452.51448,
+        480.86839999999995
+      ]
+    ],
+    "notes": [
+      "0 是 NoData；1–65535 是可解码信号的编码范围",
+      "偏移量用于避免截断负值",
+      "L1C 像元的物理意义：大气顶反射率",
+      "解码涉及比例系数和偏移量；括号解释见正文"
+    ]
+  },
+  {
+    "source": "nist-radiometry",
+    "pdf_page": 13,
+    "file": "manual-nist-radiometry-p013.png",
+    "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf",
+    "source_sha256": "061db652aa2e34f74972a665407f3272de136c4c510438c226187117da67c500",
+    "sha256": "5d854c71a2b58fc9650e025716fcfe5e7c0d3b64de2a75675362edfb1a664d02",
+    "page_size_points": [
+      562.0,
+      757.0
+    ],
+    "width": 1686,
+    "height": 2271,
+    "scale": 3,
+    "regions": [
+      [
+        40,
+        457,
+        526,
+        534
+      ]
+    ],
+    "notes": [
+      "PDF 第 13 页／书内第 3 页：辐亮度与投影面积、立体角"
+    ]
+  },
+  {
+    "source": "nist-radiometry",
+    "pdf_page": 16,
+    "file": "manual-nist-radiometry-p016.png",
+    "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf",
+    "source_sha256": "061db652aa2e34f74972a665407f3272de136c4c510438c226187117da67c500",
+    "sha256": "624f779e4bd6294532542f15c47d96db4950b56dffcfac7cd0f3fd53a7e2d311",
+    "page_size_points": [
+      568.0,
+      758.0
+    ],
+    "width": 1704,
+    "height": 2274,
+    "scale": 3,
+    "regions": [
+      [
+        192,
+        210,
+        531,
+        280
+      ]
+    ],
+    "notes": [
+      "PDF 第 16 页／书内第 6 页：单位面积的辐照度"
+    ]
+  },
+  {
+    "source": "nist-radiometry",
+    "pdf_page": 17,
+    "file": "manual-nist-radiometry-p017.png",
+    "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf",
+    "source_sha256": "061db652aa2e34f74972a665407f3272de136c4c510438c226187117da67c500",
+    "sha256": "a431d650242a27487a1f6a6cf31978ca37451099e75781e34138bf830aa06454",
+    "page_size_points": [
+      565.0,
+      758.0
+    ],
+    "width": 1695,
+    "height": 2274,
+    "scale": 3,
+    "regions": [
+      [
+        178,
+        149,
+        531,
+        214
+      ]
+    ],
+    "notes": [
+      "PDF 第 17 页／书内第 7 页：对波长求导的光谱密度"
+    ]
+  },
+  {
+    "source": "ocean-protocols",
+    "pdf_page": 21,
+    "file": "manual-ocean-protocols-p021.png",
+    "source_url": "https://oceancolor.gsfc.nasa.gov/files/resources/docs/technical/protocols_ver4_voli.pdf",
+    "source_sha256": "55038e8af91e2584211449c96e6dc01cc86434ab29179eaf8acbd66f9c434b27",
+    "sha256": "a4d60b52e7fd423663d30be96c6f64be638d831de809e86d918be6a0a56f03a0",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        115,
+        64,
+        478,
+        320
+      ],
+      [
+        100,
+        366,
+        504,
+        582
+      ]
+    ],
+    "notes": [
+      "PDF 第 21 页／书内第 15 页：原图 2.3，单位球面的微分面积",
+      "PDF 第 21 页：图 2.4，水面处的反射与折射几何"
+    ]
+  },
+  {
+    "source": "nist-brdf",
+    "pdf_page": 19,
+    "file": "manual-nist-brdf-p019.png",
+    "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/MONO/nbsmonograph160.pdf",
+    "source_sha256": "d1f8c489813f812b26c36c4a3b894fe0495b097d4a3e61c884fa816962012f20",
+    "sha256": "0e1d420ef1898b7cfa2e3d50ff411f32a4bea7ffb8b29734ee18c80bb22621ba",
+    "page_size_points": [
+      524.0,
+      700.0
+    ],
+    "width": 1572,
+    "height": 2100,
+    "scale": 3,
+    "regions": [
+      [
+        45,
+        620,
+        488,
+        655
+      ]
+    ],
+    "notes": [
+      "PDF 第 19 页／书内第 5 页：式 (9)，BRDF 的 sr⁻¹ 单位"
+    ]
+  },
+  {
+    "source": "nist-brdf",
+    "pdf_page": 25,
+    "file": "manual-nist-brdf-p025.png",
+    "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/MONO/nbsmonograph160.pdf",
+    "source_sha256": "d1f8c489813f812b26c36c4a3b894fe0495b097d4a3e61c884fa816962012f20",
+    "sha256": "5605f8e6be2f7cde22b33834b40d901eda452d8a3c712245bd4a7ad2d65ba942",
+    "page_size_points": [
+      524.0,
+      702.0
+    ],
+    "width": 1572,
+    "height": 2106,
+    "scale": 3,
+    "regions": [
+      [
+        59,
+        68,
+        376,
+        91
+      ]
+    ],
+    "notes": [
+      "PDF 第 25 页／书内第 11 页：表 1，方向—半球反射率"
+    ]
+  },
+  {
+    "source": "nist-brdf",
+    "pdf_page": 26,
+    "file": "manual-nist-brdf-p026.png",
+    "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/MONO/nbsmonograph160.pdf",
+    "source_sha256": "d1f8c489813f812b26c36c4a3b894fe0495b097d4a3e61c884fa816962012f20",
+    "sha256": "5c9d4d90917a48a7050704361b83566a54b9eac6e8f8f4e30e376b64eebb6d8f",
+    "page_size_points": [
+      522.0,
+      701.0
+    ],
+    "width": 1566,
+    "height": 2103,
+    "scale": 3,
+    "regions": [
+      [
+        29,
+        89,
+        325,
+        111
+      ]
+    ],
+    "notes": [
+      "PDF 第 26 页／书内第 12 页：表 2，双向反射因子"
+    ]
+  },
+  {
+    "source": "nist-brdf",
+    "pdf_page": 57,
+    "file": "manual-nist-brdf-p057.png",
+    "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/MONO/nbsmonograph160.pdf",
+    "source_sha256": "d1f8c489813f812b26c36c4a3b894fe0495b097d4a3e61c884fa816962012f20",
+    "sha256": "a8648ec139bb3f5f1e472257c1937975a5920456f56a7dc890d7be6387f86200",
+    "page_size_points": [
+      523.0,
+      703.0
+    ],
+    "width": 1569,
+    "height": 2109,
+    "scale": 3,
+    "regions": [
+      [
+        157,
+        632,
+        476,
+        656
+      ]
+    ],
+    "notes": [
+      "PDF 第 57 页／书内第 43 页：式 (C4)，朗伯表面的关系"
+    ]
+  },
+  {
+    "source": "sen2cor-atbd",
+    "pdf_page": 67,
+    "file": "manual-sen2cor-atbd-p067.png",
+    "source_url": "https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf",
+    "source_sha256": "fca403d6ea3cf9bc4c1fa4f22e435e43027cb26b95a66d58380297b76dc86379",
+    "sha256": "8744d2d75f3d3be3231f1b5ed5929ae7ff7485e021f1e870688d5faa8db5a294",
+    "page_size_points": [
+      595.3200073242188,
+      842.0399780273438
+    ],
+    "width": 1786,
+    "height": 2527,
+    "scale": 3,
+    "regions": [
+      [
+        190,
+        105,
+        514,
+        146
+      ]
+    ],
+    "notes": [
+      "式 (0.20)：TOA 反射率与传感器辐亮度的直接关系"
+    ]
+  },
+  {
+    "source": "landsat-handbook",
+    "pdf_page": 63,
+    "file": "manual-landsat-handbook-p063.png",
+    "source_url": "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/atoms/files/LSDS-1574_L8_Data_Users_Handbook-v5.0.pdf",
+    "source_sha256": "baf10fd32ebbc5d21a509869e2879f5ef23f0d275d8bddc01462ed02d18bc756",
+    "sha256": "08e76e26465ec4e133f991f1adc4d24d68c3e3ab13461eea28a252f67fc9f9f5",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        101,
+        112,
+        535,
+        175
+      ]
+    ],
+    "notes": [
+      "PDF 第 63 页／书内第 55 页：天顶角与高度角的定义和互余关系"
+    ]
+  },
+  {
+    "source": "ccrs-fundamentals",
+    "pdf_page": 12,
+    "file": "manual-ccrs-fundamentals-p012.png",
+    "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+    "sha256": "632029c521a584b811b1974bee841e47b6cc2e0c9e715cff517f10f0e1fd1bdb",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        79.51079999999995,
+        372.53760000000005,
+        534.5953199999996,
+        402.32700000000006
+      ]
+    ],
+    "notes": [
+      "散射：粒子或气体改变辐射传播方向"
+    ]
+  },
+  {
+    "source": "ccrs-fundamentals",
+    "pdf_page": 14,
+    "file": "manual-ccrs-fundamentals-p014.png",
+    "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+    "sha256": "d9aca51da60a03978a2f54cd59e76c21f4f00894b5f4196911114f205398cda8",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        79.5,
+        107.27999999999986,
+        338.84748000000025,
+        179.82119999999998
+      ],
+      [
+        325.5,
+        518.1419999999999,
+        530.2547999999999,
+        598.7819999999999
+      ]
+    ],
+    "notes": [
+      "吸收：大气分子吸收不同波长的能量",
+      "大气窗口：受吸收较小的光谱区域"
+    ]
+  },
+  {
+    "source": "modis-atmosphere",
+    "pdf_page": 21,
+    "file": "manual-modis-atmosphere-p021.png",
+    "source_url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod08.pdf",
+    "source_sha256": "0df984f20ad67ca5281d9562604c9f1b57b0a395781384cac1a65ba6b5a1b550",
+    "sha256": "964e502bea5c98a4b465bbadca52a14170d0f0fd52a68d2eea3cb2d8f602c489",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        70,
+        198,
+        537,
+        245
+      ],
+      [
+        70,
+        565,
+        536,
+        593
+      ]
+    ],
+    "notes": [
+      "式 (1)：TOA 辐亮度 = 大气路径项 + 经透射与多次反射的地表项",
+      "式 (3)：总透过率中的直射和漫射项"
+    ]
+  },
+  {
+    "source": "modis-atmosphere",
+    "pdf_page": 23,
+    "file": "manual-modis-atmosphere-p023.png",
+    "source_url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod08.pdf",
+    "source_sha256": "0df984f20ad67ca5281d9562604c9f1b57b0a395781384cac1a65ba6b5a1b550",
+    "sha256": "2a2a1f9b7b9a8ee7ddcb9344f25717562170f8c560dd98d7e1e967f473eee4c2",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        70,
+        589,
+        543,
+        625
+      ]
+    ],
+    "notes": [
+      "原文将相邻地物、观测辐亮度与大气散射联系起来"
+    ]
+  },
+  {
+    "source": "ocean-protocols",
+    "pdf_page": 32,
+    "file": "manual-ocean-protocols-p032.png",
+    "source_url": "https://oceancolor.gsfc.nasa.gov/files/resources/docs/technical/protocols_ver4_voli.pdf",
+    "source_sha256": "55038e8af91e2584211449c96e6dc01cc86434ab29179eaf8acbd66f9c434b27",
+    "sha256": "c9688539db35ce41d54c4b82340b863e32ebf1ab6c272c1043a87e3cf3180c24",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        234,
+        554,
+        505,
+        582
+      ],
+      [
+        234,
+        613,
+        505,
+        637
+      ],
+      [
+        214,
+        666,
+        508,
+        687
+      ],
+      [
+        226,
+        68,
+        510,
+        105
+      ]
+    ],
+    "notes": [
+      "式 (2.56)：有限垂直路径；式 (2.57)：完整大气柱",
+      "式 (2.58)：总光学厚度含分子、臭氧、气溶胶贡献",
+      "PDF 第 32 页／书内第 26 页：式 (2.54)，RRS = LW / Ed"
+    ]
+  },
+  {
+    "source": "s2-l2a",
+    "pdf_page": 39,
+    "file": "manual-s2-l2a-p039.png",
+    "source_url": "https://step.esa.int/thirdparties/sen2cor/2.10.0/docs/S2-PDGS-MPC-L2A-PDD-V14.9-v4.9.pdf",
+    "source_sha256": "cd9fe14e0ef44d90f05b41b766fbfa5188af5a6d99ac552b323bbad3e3518460",
+    "sha256": "480c71cd94f38f0e585205dfcf309a966b0ef378950bb3d1777624ea36728fb4",
+    "page_size_points": [
+      595.3200073242188,
+      842.0399780273438
+    ],
+    "width": 1786,
+    "height": 2527,
+    "scale": 3,
+    "regions": [
+      [
+        64,
+        520,
+        383,
+        546
+      ],
+      [
+        64,
+        201,
+        383,
+        372
+      ],
+      [
+        64,
+        373,
+        383,
+        400
+      ]
+    ],
+    "notes": [
+      "附录 A：L2A 水汽产品的换算与 g·cm⁻² 单位",
+      "附录 A：两种历史 SR 编码规则；实际数据仍应按元数据解码",
+      "AOT = DN / 1000，无量纲",
+      "WVP = DN / 1000，g·cm⁻²"
+    ]
+  },
+  {
+    "source": "envi-flaash",
+    "pdf_page": 21,
+    "file": "manual-envi-flaash-p021.png",
+    "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+    "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+    "sha256": "30901455a5d591b9b280bd8d4e30e2b430bf8005d34e9fa5a4430e48c41fd66e",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        282,
+        76,
+        440,
+        165
+      ],
+      [
+        130,
+        74,
+        533,
+        165
+      ],
+      [
+        135,
+        212,
+        529,
+        574
+      ]
+    ],
+    "notes": [
+      "表 2-1：atm-cm 与 g/cm² 的数值明显不同",
+      "表 2-1：三种夏季／热带模型的标准水汽与温度",
+      "表 2-2：纬度与季节选择表；不是只看一个地区名称"
+    ]
+  },
+  {
+    "source": "s2-psd",
+    "pdf_page": 54,
+    "file": "manual-s2-psd-p054.png",
+    "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+    "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+    "sha256": "575651fdfb179ad526790c7ae928254ebc0c12bad645e5e3100b5f06c5f5b0ac",
+    "page_size_points": [
+      595.3200073242188,
+      841.9199829101562
+    ],
+    "width": 1786,
+    "height": 2526,
+    "scale": 3,
+    "regions": [
+      [
+        108,
+        138,
+        526,
+        166
+      ]
+    ],
+    "notes": [
+      "L1B、L1C、L2A 的原始定义；L1C 明确使用 DEM"
+    ]
+  },
+  {
+    "source": "s2-handbook",
+    "pdf_page": 45,
+    "file": "manual-s2-handbook-p045.png",
+    "source_url": "https://sentinels.copernicus.eu/documents/247904/685211/Sentinel-2_User_Handbook",
+    "source_sha256": "a57ed7fa07c768e0b86538e43a4b35547d806fff09dfa70be6d5cbea614c6c99",
+    "sha256": "c5ba05db2129d09b8af9dba645480ecfa2d8b7bb2a5e15bfebf02bfb88a7fbb4",
+    "page_size_points": [
+      595.3200073242188,
+      841.9199829101562
+    ],
+    "width": 1786,
+    "height": 2526,
+    "scale": 3,
+    "regions": [
+      [
+        69.024,
+        276.52567999999997,
+        474.27256,
+        292.06567999999993
+      ],
+      [
+        69.024,
+        334.06568,
+        522.2323199999998,
+        362.02567999999997
+      ]
+    ],
+    "notes": [
+      "L1C 输出网格：UTM／WGS84",
+      "输出 GSD：10、20、60 m"
+    ]
+  },
+  {
+    "source": "s2-psd",
+    "pdf_page": 291,
+    "file": "manual-s2-psd-p291.png",
+    "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+    "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+    "sha256": "d863aca3ab874dcdb99ee4f4e0fdc774e00e5bb0dd87af11dd9e672bd42222a0",
+    "page_size_points": [
+      595.3200073242188,
+      841.9199829101562
+    ],
+    "width": 1786,
+    "height": 2526,
+    "scale": 3,
+    "regions": [
+      [
+        118,
+        199,
+        417,
+        236
+      ],
+      [
+        119,
+        365,
+        417,
+        444
+      ]
+    ],
+    "notes": [
+      "表 68：0–11 的分类定义；0／1／8–11 是筛选时常查的编码"
+    ]
+  },
+  {
+    "source": "landsat-handbook",
+    "pdf_page": 62,
+    "file": "manual-landsat-handbook-p062.png",
+    "source_url": "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/atoms/files/LSDS-1574_L8_Data_Users_Handbook-v5.0.pdf",
+    "source_sha256": "baf10fd32ebbc5d21a509869e2879f5ef23f0d275d8bddc01462ed02d18bc756",
+    "sha256": "5245637c6c9e2b2c52e57a81de422b07dab38262fa3293740cff0f2389d12da4",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        101,
+        192,
+        451,
+        335
+      ]
+    ],
+    "notes": [
+      "PDF 第 62 页／书内第 54 页：Lλ = ML × Qcal + AL"
+    ]
+  },
+  {
+    "source": "landsat-c2",
+    "pdf_page": 18,
+    "file": "manual-landsat-c2-p018.png",
+    "source_url": "https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/files/LSDS-1619_Landsat8-9-Collection2-Level2-Science-Product-Guide-v6.pdf",
+    "source_sha256": "98ca9baafa118629c009130d6dcd7730127d81bd612337873459286a5264602e",
+    "sha256": "06ade25bc07e959cf23b0cb56e1165105c872c780eb3bf9ac7051d0722041ad4",
+    "page_size_points": [
+      792.0,
+      612.0
+    ],
+    "width": 2376,
+    "height": 1836,
+    "scale": 3,
+    "regions": [
+      [
+        563,
+        84,
+        688,
+        185
+      ]
+    ],
+    "notes": [
+      "PDF 第 18 页／书内第 12 页：表 6-1 的 SR 比例与偏移"
+    ]
+  },
+  {
+    "source": "modis-vi",
+    "pdf_page": 28,
+    "file": "manual-modis-vi-p028.png",
+    "source_url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod13.pdf",
+    "source_sha256": "1772f5ce915957eed709e761c6ea7f759b2474a0b5be666aba25af675006189d",
+    "sha256": "0803cd2c98c93c34e3bbb0e403cb5625b974a243a23c93a5b64d3b9d142102cb",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        247,
+        661,
+        544,
+        707
+      ]
+    ],
+    "notes": [
+      "PDF 第 28 页／书内第 19 页：正确的差／和形式，式 (5)"
+    ]
+  },
+  {
+    "source": "modis-vi",
+    "pdf_page": 40,
+    "file": "manual-modis-vi-p040.png",
+    "source_url": "https://modis.gsfc.nasa.gov/data/atbd/atbd_mod13.pdf",
+    "source_sha256": "1772f5ce915957eed709e761c6ea7f759b2474a0b5be666aba25af675006189d",
+    "sha256": "d6df5ccd02a4ffcee2a9c5b169a67bc73fd84858db72df653b57c26d16cb5d21",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        70,
+        186,
+        543,
+        215
+      ]
+    ],
+    "notes": [
+      "PDF 第 40 页／书内第 31 页：路径辐射加性项与透过率乘性项"
+    ]
+  },
+  {
+    "source": "envi-flaash",
+    "pdf_page": 10,
+    "file": "manual-envi-flaash-p010.png",
+    "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+    "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+    "sha256": "ea0598964782f5ac650e03842b9e7fa14a10869d9824a8e0a6d6312c87b68670",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        212,
+        174,
+        461,
+        215
+      ]
+    ],
+    "notes": [
+      "式 (1)：ρ 与周围地表的平均反射率 ρe 分开进入模型"
+    ]
+  },
+  {
+    "source": "envi-flaash",
+    "pdf_page": 22,
+    "file": "manual-envi-flaash-p022.png",
+    "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+    "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+    "sha256": "c750e86e886f90c4ac1713268ae00c163ca2c3a07e51be820d3cd055f8fa20c0",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        128,
+        351,
+        395,
+        369
+      ],
+      [
+        136,
+        371,
+        369,
+        428
+      ]
+    ],
+    "notes": [
+      "经典 FLAASH：15 nm 或更细，并覆盖吸收特征区间",
+      "原列出的三个覆盖区间"
+    ]
+  },
+  {
+    "source": "sen2cor-atbd",
+    "pdf_page": 64,
+    "file": "manual-sen2cor-atbd-p064.png",
+    "source_url": "https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf",
+    "source_sha256": "fca403d6ea3cf9bc4c1fa4f22e435e43027cb26b95a66d58380297b76dc86379",
+    "sha256": "363124132c06b70605b894dc091eeb23d389a722ef5d808c384982593b241690",
+    "page_size_points": [
+      595.3200073242188,
+      842.0399780273438
+    ],
+    "width": 1786,
+    "height": 2527,
+    "scale": 3,
+    "regions": [
+      [
+        96,
+        408,
+        514,
+        456
+      ]
+    ],
+    "notes": [
+      "§4.4：Sen2Cor 使用 B8a 参考波段与 B9 吸收波段"
+    ]
+  },
+  {
+    "source": "ogc-cog",
+    "pdf_page": 17,
+    "file": "manual-ogc-cog-p017.png",
+    "source_url": "https://docs.ogc.org/is/21-026/21-026.pdf",
+    "source_sha256": "c93378e6daf428c776c33739084aabc3e0ef625dd8e42632dbad555a0d728272",
+    "sha256": "f64a5a020e477a8905f24125bfc5a36cf16a20aeccaf324df6579640f994e81b",
+    "page_size_points": [
+      595.280029296875,
+      841.8900146484375
+    ],
+    "width": 1786,
+    "height": 2526,
+    "scale": 3,
+    "regions": [
+      [
+        63.239999999999995,
+        276.75,
+        550.0397762499998,
+        308.6700000000001
+      ],
+      [
+        53.8805,
+        313.95000000000005,
+        550.0400952500001,
+        330.09000000000003
+      ]
+    ],
+    "notes": [
+      "BIP：一个像元的各分量连续存储",
+      "分波段存储：独立分量平面"
+    ]
+  },
+  {
+    "source": "ogc-cog",
+    "pdf_page": 25,
+    "file": "manual-ogc-cog-p025.png",
+    "source_url": "https://docs.ogc.org/is/21-026/21-026.pdf",
+    "source_sha256": "c93378e6daf428c776c33739084aabc3e0ef625dd8e42632dbad555a0d728272",
+    "sha256": "921b7f2e5237c6abb4038803f3e051dd09c94137eca791baa330946be0203e56",
+    "page_size_points": [
+      595.280029296875,
+      841.8900146484375
+    ],
+    "width": 1786,
+    "height": 2526,
+    "scale": 3,
+    "regions": [
+      [
+        45.24,
+        108.17000000000007,
+        550.0401799499998,
+        140.09000000000003
+      ]
+    ],
+    "notes": [
+      "HTTP Range：请求一个资源的一部分"
+    ]
+  },
+  {
+    "source": "ccrs-fundamentals",
+    "pdf_page": 21,
+    "file": "manual-ccrs-fundamentals-p021.png",
+    "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+    "sha256": "600a69e0e943ef1e48edf6610295fa481c809c68354389f75e295eb59d6153e5",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        79.49999999999994,
+        267.7620000000001,
+        529.7568,
+        299.08200000000005
+      ]
+    ],
+    "notes": [
+      "多波段被分配给显示屏的 RGB 通道"
+    ]
+  },
+  {
+    "source": "ccrs-fundamentals",
+    "pdf_page": 155,
+    "file": "manual-ccrs-fundamentals-p155.png",
+    "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+    "sha256": "0b7a3ed601969cb1f9fbbe3eebb297368aeb927294fb1a35c454f057c71094fd",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        79.51080000000007,
+        151.32000000000005,
+        521.3199600000004,
+        179.8212000000001
+      ]
+    ],
+    "notes": [
+      "线性拉伸：扩大范围，提高显示对比度"
+    ]
+  },
+  {
+    "source": "envi-flaash",
+    "pdf_page": 12,
+    "file": "manual-envi-flaash-p012.png",
+    "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+    "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+    "sha256": "7d3e0a00b4d7140e6f684f00c63ccbb1bc8c11fba5701b88a7c32fa04fd6da4a",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        127,
+        599,
+        541,
+        636
+      ],
+      [
+        126.60109799999998,
+        209.71267499999993,
+        496.66825199999954,
+        237.70260599999995
+      ],
+      [
+        126.59999999999997,
+        473.7411900000001,
+        540.2874000000005,
+        499.7209680000001
+      ],
+      [
+        129.09999999999997,
+        345.72235400000005,
+        430.943216,
+        358.702354
+      ]
+    ],
+    "notes": [
+      "原手册的单位和 scale factor 关系式",
+      "原文要求至少三个波段和有效波长",
+      "FWHM = full width half maximum",
+      "旧手册列出的格式：BIL 或 BIP"
+    ]
+  },
+  {
+    "source": "envi-flaash",
+    "pdf_page": 17,
+    "file": "manual-envi-flaash-p017.png",
+    "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+    "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+    "sha256": "5bab25ff917eac8c6192330da5189fd1193dcdad7080d1de3180e6de1393daec",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        275,
+        447,
+        360,
+        499
+      ],
+      [
+        361,
+        472,
+        439,
+        499
+      ],
+      [
+        292,
+        512,
+        377,
+        558
+      ]
+    ],
+    "notes": [
+      "图 2-1：实际参数字段；旧界面中的设置不是本文推荐默认值"
+    ]
+  },
+  {
+    "source": "envi-flaash",
+    "pdf_page": 20,
+    "file": "manual-envi-flaash-p020.png",
+    "source_url": "https://www.nv5geospatialsoftware.com/portals/0/pdfs/envi/QUAC_FLAASH_Module.pdf",
+    "source_sha256": "1d553cd027421ff198bbbbee06fcdcafa690a9549e0a17745a6ca035a3ded988",
+    "sha256": "40b6706908578a6698ba877551f4a1ded13eea165e3fb89e3cf34881da9a94c8",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        137.4,
+        376.35089999999997,
+        540.418134,
+        391.482702
+      ],
+      [
+        185.920474,
+        198.35090000000002,
+        285.17390600000004,
+        211.33090000000004
+      ],
+      [
+        185.979766,
+        243.35090000000002,
+        296.33946800000007,
+        256.33090000000004
+      ],
+      [
+        185.920474,
+        275.3909,
+        250.99865600000004,
+        288.3709
+      ]
+    ],
+    "notes": [
+      "成像时间字段明确使用 GMT",
+      "卫星高度：km",
+      "平均地面高程：km",
+      "像元大小：m"
+    ]
+  },
+  {
+    "source": "ccrs-fundamentals",
+    "pdf_page": 151,
+    "file": "manual-ccrs-fundamentals-p151.png",
+    "source_url": "https://natural-resources.canada.ca/sites/nrcan/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf",
+    "source_sha256": "5aafe8c246af1e302b6c95baf5270451b4b5d83c1ed3ac3aaa9e1221204713b0",
+    "sha256": "38348050638950ea7d2da951ead4497082d35ce912ab47f7c569b426abe13169",
+    "page_size_points": [
+      612.0,
+      792.0
+    ],
+    "width": 1836,
+    "height": 2376,
+    "scale": 3,
+    "regions": [
+      [
+        79.5,
+        122.81880000000001,
+        526.1831999999996,
+        165.7218000000001
+      ],
+      [
+        79.50000000000006,
+        663.5694000000002,
+        530.9492400000001,
+        692.0706000000002
+      ]
+    ],
+    "notes": [
+      "几何校正：补偿成像过程中的位置畸变",
+      "配准也可以把一幅影像对到另一幅影像"
+    ]
+  },
+  {
+    "source": "sen2cor-atbd",
+    "pdf_page": 68,
+    "file": "manual-sen2cor-atbd-p068.png",
+    "source_url": "https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf",
+    "source_sha256": "fca403d6ea3cf9bc4c1fa4f22e435e43027cb26b95a66d58380297b76dc86379",
+    "sha256": "7ca0f3d8fc4a89db1bf5ce0ba8271edb43ae3fbf421701244f5334a10fcb8191",
+    "page_size_points": [
+      595.3200073242188,
+      842.0399780273438
+    ],
+    "width": 1786,
+    "height": 2527,
+    "scale": 3,
+    "regions": [
+      [
+        96,
+        353,
+        514,
+        438
+      ]
+    ],
+    "notes": [
+      "§4.7：正射需要高程；坡面照明校正还需要坡度、坡向"
+    ]
+  },
+  {
+    "source": "s2-psd",
+    "pdf_page": 398,
+    "file": "manual-s2-psd-p398.png",
+    "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+    "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+    "sha256": "c6cc7045cbc03d6b40ce08d7ed7b7902db7391676ccd7680a1d495cd74967985",
+    "page_size_points": [
+      595.3200073242188,
+      841.9199829101562
+    ],
+    "width": 1786,
+    "height": 2526,
+    "scale": 3,
+    "regions": [
+      [
+        118,
+        318,
+        528,
+        431
+      ]
+    ],
+    "notes": [
+      "图 4-17：原生 L1C 产品结构图"
+    ]
+  },
+  {
+    "source": "s2-psd",
+    "pdf_page": 50,
+    "file": "manual-s2-psd-p050.png",
+    "source_url": "https://sentinels.copernicus.eu/documents/d/sentinel/s2-pdgs-cs-di-psd-v15-0",
+    "source_sha256": "72424fb2826c4d4f171171a668488cf682484bc5b98be35abb02bb555bdb26db",
+    "sha256": "924a4284acf38244fb81ad059309689070ef160a67f23fb7302cc67b473a360d",
+    "page_size_points": [
+      595.3200073242188,
+      841.9199829101562
+    ],
+    "width": 1786,
+    "height": 2526,
+    "scale": 3,
+    "regions": [
+      [
+        54,
+        513,
+        542,
+        553
+      ],
+      [
+        54,
+        639,
+        542,
+        668
+      ]
+    ],
+    "notes": [
+      "§2.7.2：UTM／WGS84、MGRS 与 100 km 网格方块",
+      "MGRS 是基于 UTM／UPS 的另一套标记方式"
+    ]
+  },
+  {
+    "source": "sen2cor-atbd",
+    "pdf_page": 51,
+    "file": "manual-sen2cor-atbd-p051.png",
+    "source_url": "https://sentiwiki.copernicus.eu/__attachments/a_2e88ffb8dabc4e1ec9efb71ba27cc9bcf70feeb378c084a2e80ba990273ebe5c/S2-PDGS-MPC-ATBD-L2A%20-%20Level%202A%20Algorithm%20Theoretical%20Basis%20Document%202021%20-%202.10.pdf",
+    "source_sha256": "fca403d6ea3cf9bc4c1fa4f22e435e43027cb26b95a66d58380297b76dc86379",
+    "sha256": "24b751e1b69ac04d8e392ccdda43885e5020626567629793871d849db57c1721",
+    "page_size_points": [
+      595.3200073242188,
+      842.0399780273438
+    ],
+    "width": 1786,
+    "height": 2527,
+    "scale": 3,
+    "regions": [
+      [
+        130,
+        517,
+        514,
+        553
+      ],
+      [
+        96.264,
+        635.94172,
+        513.3218400000001,
+        674.22172
+      ]
+    ],
+    "notes": [
+      "式 (0.1)：路径辐射、透过率、地表辐照度与反射率",
+      "LUT：预先计算不同几何、高程和大气参数的传播关系"
+    ]
+  },
+  {
+    "source": "nist-radiometry",
+    "pdf_page": 12,
+    "file": "manual-nist-radiometry-p012.png",
+    "source_url": "https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nisthandbook152.pdf",
+    "source_sha256": "061db652aa2e34f74972a665407f3272de136c4c510438c226187117da67c500",
+    "sha256": "32572868b24d3a3407b1ef980e5589af1675c746f42ee48f07441f268f199672",
+    "page_size_points": [
+      568.0,
+      757.0
+    ],
+    "width": 1704,
+    "height": 2271,
+    "scale": 3,
+    "regions": [
+      [
+        40,
+        626,
+        516,
+        686
+      ]
+    ],
+    "notes": [
+      "§1.1.1：波数是单位长度中的波数，单位为长度的倒数"
+    ]
+  },
+  {
+    "source": "s2-l2a",
+    "pdf_page": 13,
+    "file": "manual-s2-l2a-p013.png",
+    "source_url": "https://step.esa.int/thirdparties/sen2cor/2.10.0/docs/S2-PDGS-MPC-L2A-PDD-V14.9-v4.9.pdf",
+    "source_sha256": "cd9fe14e0ef44d90f05b41b766fbfa5188af5a6d99ac552b323bbad3e3518460",
+    "sha256": "2400191b7f2ad348e948941a8dca127120c51253d82df16c09335f730145424e",
+    "page_size_points": [
+      595.3200073242188,
+      842.0399780273438
+    ],
+    "width": 1786,
+    "height": 2527,
+    "scale": 3,
+    "regions": [
+      [
+        245.77571999999998,
+        397.95171999999997,
+        374.33344,
+        409.91171999999995
+      ],
+      [
+        224.79,
+        425.93172,
+        510.39699999999993,
+        451.8117199999999
+      ]
+    ],
+    "notes": [
+      "L2A 提供地表（BOA）反射率",
+      "排除 B10 的理由：它不提供地表信息"
+    ]
+  }
+]
